@@ -295,6 +295,19 @@ code {
   color: inherit;
 }
 
+/* The 404 page reuses the hero layout, with more room below. */
+.not-found {
+  padding-bottom: clamp(72px, 12vw, 160px);
+}
+.not-found .step-num {
+  margin-bottom: 20px;
+}
+.footer-bottom.footer-solo {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
 .hero-stage {
   position: relative;
   margin-top: clamp(40px, 6vw, 72px);

@@ -168,3 +168,22 @@ build logs and deployment history in Workers & Pages → `ultra-tasks`.
 `ultratasks.app` is attached in the project's Custom domains settings. The apex
 CNAME points to `ultra-tasks-2no.pages.dev`; Cloudflare manages DNS and HTTPS.
 Do not deploy the repository root: only `dist/` contains the public site files.
+
+### Caching and the 404 page
+
+Cloudflare Pages serves `styles.css` and `script.js` with `max-age=14400` (four
+hours) but always revalidates HTML. After the first redesign deploy, anyone who
+had loaded the old site in the previous four hours got the new page with the old
+cached stylesheet, and it looked broken. To prevent that, `npm run build` stamps
+a content hash into the references in `dist/index.html` and `dist/404.html`
+(`styles.css?v=<hash>`), so every change to those files gets a new address. The
+source files keep plain names. Do not add other long-cached files under a name
+that you later replace with different content. Rename them, or extend the hash
+step in `scripts/build.mjs`.
+
+The site includes `404.html`. Without one, Cloudflare Pages treats a site as a
+single-page app and answers every unknown address with the home page and a 200
+status. With it, unknown addresses get a real 404, which search engines expect.
+The 404 page is marked `noindex` and uses only root-absolute links, because it is
+served at whatever address was mistyped. `npm run check` enforces both, and the
+local preview serves it the same way.

@@ -19,6 +19,20 @@ const types = {
   ".txt": "text/plain; charset=utf-8",
 };
 
+// Like Cloudflare Pages: unknown addresses get 404.html with a real 404 status.
+function notFound(res) {
+  const page = resolve(root, "404.html");
+  stat(page)
+    .then(() => {
+      res.writeHead(404, {
+        "Content-Type": types[".html"],
+        "Cache-Control": "no-cache",
+      });
+      createReadStream(page).pipe(res);
+    })
+    .catch(() => res.writeHead(404).end("Not found"));
+}
+
 createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://localhost");
@@ -36,12 +50,12 @@ createServer(async (req, res) => {
         file = resolve(root, "index.html");
         info = await stat(file);
       } else {
-        res.writeHead(404).end("Not found");
+        notFound(res);
         return;
       }
     }
     if (!info.isFile()) {
-      res.writeHead(404).end("Not found");
+      notFound(res);
       return;
     }
     res.writeHead(200, {

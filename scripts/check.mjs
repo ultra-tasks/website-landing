@@ -94,6 +94,23 @@ const robots = await readFile("robots.txt", "utf8");
 assert.match(robots, /^Sitemap: https:\/\//m, "robots.txt should list the sitemap");
 assert.ok((await stat("sitemap.xml")).isFile(), "Missing sitemap.xml");
 
+// The 404 page is served at whatever address was mistyped, so every link on it
+// must be root-absolute (or external), and it must stay out of search results.
+const notFound = await readFile("404.html", "utf8");
+assert.match(
+  notFound,
+  /<meta name="robots" content="noindex"/,
+  "Keep the 404 page out of search results",
+);
+assert.doesNotMatch(
+  notFound,
+  /\b(?:src|href)="(?!https:|\/|#)[^"]+"/,
+  "Use root-absolute links on the 404 page",
+);
+for (const [, url] of notFound.matchAll(/\b(?:src|href)="(\/[^"]+)"/g)) {
+  assert.ok((await stat(url.slice(1))).isFile(), `Missing local file: ${url}`);
+}
+
 console.log(
-  `PASS: ${ids.length} unique anchors and icons, ${localFiles.size} local assets, image accessibility, search basics, and no remote scripts.`,
+  `PASS: ${ids.length} unique anchors and icons, ${localFiles.size} local assets, image accessibility, search basics, a safe 404 page, and no remote scripts.`,
 );
