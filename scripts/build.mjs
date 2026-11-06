@@ -1,5 +1,7 @@
-import { cp, mkdir } from "node:fs/promises";
+import { cp, mkdir, rm } from "node:fs/promises";
 
+// Start clean so files removed from the source never linger in a local build.
+await rm("dist", { recursive: true, force: true });
 await mkdir("dist", { recursive: true });
 for (const file of [
   "index.html",
@@ -7,6 +9,7 @@ for (const file of [
   "script.js",
   "assets",
   "robots.txt",
+  "sitemap.xml",
 ]) {
   await cp(file, `dist/${file}`, { recursive: true });
 }

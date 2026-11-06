@@ -3,32 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#075b5e" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Ultra Tasks: free, open-source to-do list, planner &amp; time tracker</title>
     <meta
       name="description"
-      content="Make room for what matters with Ultra Tasks. A calm, open-source to-do list for everyday life, with offline access, private sync, and time to focus."
+      content="A calm, free and open-source to-do list, day planner and time tracker for Windows and macOS. Works offline, with private end-to-end encrypted sync."
     />
+    <link rel="canonical" href="https://ultratasks.app/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ultra Tasks" />
     <meta
       property="og:title"
-      content="Ultra Tasks — A clearer day. A little more you."
+      content="Ultra Tasks: a clearer day. A little more you."
     />
     <meta
       property="og:description"
-      content="Your tasks, your time, your privacy. A thoughtful, open-source place to bring everyday life together."
+      content="A calm, open-source to-do list, planner and time tracker. Offline-first, private by design, free."
     />
     <meta
       property="og:image"
-      content="https://ultratasks.app/assets/app-today.jpg"
+      content="https://ultratasks.app/assets/og-image.png"
     />
-    <meta property="og:image:width" content="1280" />
-    <meta property="og:image:height" content="720" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The Ultra Tasks Today view showing a calm list of everyday tasks."
+    />
     <meta property="og:url" content="https://ultratasks.app/" />
-    <link rel="canonical" href="https://ultratasks.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/fonts/rubik-400.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/rubik-700.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
     <script src="script.js" defer></script>
-    <title>Ultra Tasks — A clearer day. A little more you.</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "Ultra Tasks",
+            "url": "https://ultratasks.app/",
+            "description": "A free, open-source to-do list, day planner and time tracker with offline-first storage and optional end-to-end encrypted sync.",
+            "applicationCategory": "ProductivityApplication",
+            "operatingSystem": "Windows, macOS",
+            "softwareVersion": "0.1.0",
+            "license": "https://opensource.org/license/mit",
+            "downloadUrl": "https://github.com/ultra-tasks/ultra-tasks/releases/latest",
+            "isBasedOn": "https://github.com/super-productivity/super-productivity",
+            "image": "https://ultratasks.app/assets/og-image.png",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "author": { "@type": "Person", "name": "Adrian Chase" }
+          },
+          {
+            "@type": "WebSite",
+            "name": "Ultra Tasks",
+            "url": "https://ultratasks.app/"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <svg
@@ -45,57 +95,10 @@
       <symbol id="check" viewBox="0 0 24 24">
         <path d="m5 12 4 4L19 6" />
       </symbol>
-      <symbol id="lock" viewBox="0 0 24 24">
-        <rect x="5" y="10" width="14" height="11" rx="2" />
-        <path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2" />
-      </symbol>
-      <symbol id="shield" viewBox="0 0 24 24">
-        <path d="M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7l-9-4Z" />
-        <path d="m8 12 3 3 5-6" />
-      </symbol>
-      <symbol id="code" viewBox="0 0 24 24">
-        <path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18" />
-      </symbol>
-      <symbol id="server" viewBox="0 0 24 24">
-        <rect x="3" y="3" width="18" height="7" rx="2" />
-        <rect x="3" y="14" width="18" height="7" rx="2" />
-        <path d="M7 6.5h.01M7 17.5h.01M15 6.5h3M15 17.5h3" />
-      </symbol>
       <symbol id="github" viewBox="0 0 24 24">
         <path
           d="M9 19c-4 1-4-2-6-2m12 5v-4a3.5 3.5 0 0 0-1-2.8c3.3-.4 6.8-1.6 6.8-7.2a5.6 5.6 0 0 0-1.5-3.9A5.2 5.2 0 0 0 19.2 0S18 0 15 1.6a13.6 13.6 0 0 0-6 0C6 0 4.8 0 4.8 0a5.2 5.2 0 0 0-.1 4.1A5.6 5.6 0 0 0 3.2 8c0 5.6 3.5 6.8 6.8 7.2A3.5 3.5 0 0 0 9 18v4"
           transform="translate(1 1) scale(.9)"
-        />
-      </symbol>
-      <symbol id="sun" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="4" />
-        <path
-          d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
-        />
-      </symbol>
-      <symbol id="moon" viewBox="0 0 24 24">
-        <path d="M20.5 13A8.6 8.6 0 0 1 11 3.5 8.8 8.8 0 1 0 20.5 13Z" />
-      </symbol>
-      <symbol id="clock" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v5l3 2" />
-      </symbol>
-      <symbol id="globe" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9" />
-        <ellipse cx="12" cy="12" rx="4" ry="9" />
-        <path d="M3 12h18" />
-      </symbol>
-      <symbol id="desktop" viewBox="0 0 24 24">
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <path d="M8 22h8m-4-5v5" />
-      </symbol>
-      <symbol id="phone" viewBox="0 0 24 24">
-        <rect x="6" y="2" width="12" height="20" rx="3" />
-        <path d="M10 5h4m-3 14h2" />
-      </symbol>
-      <symbol id="spark" viewBox="0 0 80 80">
-        <path
-          d="M40 2 46 28 69 12 53 35 78 40 53 46 69 69 46 53 40 78 34 53 12 69 28 46 2 40 28 34 12 12 34 28Z"
         />
       </symbol>
     </svg>
@@ -104,8 +107,8 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#" aria-label="Ultra Tasks home"
-          ><img src="assets/logo.svg" width="36" height="36" alt="" /><span
-            >ultra tasks<span class="brand-dot">.</span></span
+          ><img src="assets/logo.svg" width="32" height="32" alt="" /><span
+            >Ultra Tasks</span
           ></a
         >
         <button
@@ -114,394 +117,332 @@
           aria-controls="main-navigation"
           hidden
         >
-          <span>Menu</span
-          ><svg class="icon" aria-hidden="true"><use href="#arrow" /></svg>
+          Menu
         </button>
         <nav id="main-navigation" aria-label="Main navigation">
-          <a href="#features">The app</a><a href="#privacy">Privacy</a
-          ><a href="#compare">Compare</a><a href="#mission">Our mission</a>
+          <a href="#how">How it works</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#compare">Compare</a>
+          <a href="#faq">FAQ</a>
           <a
-            class="nav-github"
             href="https://github.com/ultra-tasks/ultra-tasks"
-            aria-label="Ultra Tasks on GitHub"
-            ><svg class="icon" aria-hidden="true"><use href="#github" /></svg
-            ><span>GitHub</span></a
+            class="nav-github"
+            >GitHub</a
           >
-          <a class="button button-small" href="#download"
-            >Get Ultra Tasks
-            <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg
-          ></a>
+          <a class="button button-small" href="#download">Download</a>
         </nav>
       </div>
     </header>
 
     <main id="main">
-      <section class="hero section" aria-labelledby="hero-heading">
-        <div class="container hero-layout">
-          <div class="hero-copy">
-            <p class="eyebrow hero-eyebrow">
-              <span class="status-dot"></span> A little calm for your everyday
-            </p>
-            <h1 id="hero-heading">
-              A clearer day.<br />A little more
-              <span class="you"
-                >you<svg aria-hidden="true" viewBox="0 0 210 14">
-                  <path d="M3 10Q99-3 207 7" /></svg></span
-              >.
-            </h1>
-            <p class="hero-description">
-              A to-do list for your whole life. Bring the everyday things
-              together, find a little focus, and keep your plans private.
-            </p>
-            <ul class="hero-statements">
-              <li>
-                <svg class="icon" aria-hidden="true"><use href="#check" /></svg
-                >Simple enough for your shopping list.
-              </li>
-              <li>
-                <svg class="icon" aria-hidden="true"><use href="#check" /></svg
-                >Thoughtful enough for your bigger plans.
-              </li>
-              <li>
-                <svg class="icon" aria-hidden="true"><use href="#check" /></svg
-                >Private enough for the things that matter.
-              </li>
-            </ul>
-            <div class="hero-actions">
-              <a class="button" href="#download"
-                >Find your focus
-                <svg class="icon" aria-hidden="true">
-                  <use href="#arrow" /></svg></a
-              ><a class="text-link" href="#features"
-                >Meet the app <span aria-hidden="true">↘</span></a
-              >
-            </div>
-            <p class="hero-note">
-              Free & open source <span>·</span> No account needed
-            </p>
-          </div>
-          <div class="hero-snippets" id="app-preview">
-            <p class="snippet-eyebrow">Life happens. Make a little room.</p>
-            <div
-              class="day-snippet"
-              aria-label="Illustrative preview with sample tasks"
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+          <h1 id="hero-heading">
+            A clearer day.<br /><em>A little more you.</em>
+          </h1>
+          <p class="hero-lede">
+            A calm, open-source to-do list, planner and time tracker. It works
+            offline, syncs privately, and keeps your plans yours.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button"
+              href="https://github.com/ultra-tasks/ultra-tasks/releases/latest"
+              ><span>Download for <span data-os-name>Windows &amp; macOS</span></span></a
             >
-              <div class="snippet-heading">
-                <svg class="icon" aria-hidden="true"><use href="#sun" /></svg
-                ><strong>A little clarity for today</strong
-                ><span>3 things</span>
-              </div>
-              <div class="sample-task">
-                <span class="sample-checkbox is-done" aria-hidden="true">✓</span
-                ><span><s>Pick up a few groceries</s><small>Home</small></span
-                ><span class="sample-estimate">20m</span>
-              </div>
-              <div class="sample-task">
-                <span class="sample-checkbox" aria-hidden="true"></span
-                ><span
-                  >Make progress on my project<small
-                    >Work · One step at a time</small
-                  ></span
-                ><span class="sample-estimate">45m</span>
-              </div>
-              <div class="sample-task">
-                <span class="sample-checkbox" aria-hidden="true"></span
-                ><span
-                  >Read a chapter of my book<small
-                    >A little time for me</small
-                  ></span
-                ><span class="sample-estimate">25m</span>
-              </div>
-              <div class="snippet-bottom">
-                <svg class="icon" aria-hidden="true"><use href="#check" /></svg>
-                A small step is still a step.
-              </div>
-            </div>
-            <div class="focus-snippet">
-              <svg class="icon" aria-hidden="true"><use href="#clock" /></svg>
-              <div>
-                <span>A little time to focus</span><strong>25:00</strong>
-              </div>
-              <span class="focus-play" aria-hidden="true">▶</span>
-            </div>
-            <div class="local-snippet">
-              <svg class="icon" aria-hidden="true"><use href="#shield" /></svg>
-              <div>
-                <strong>Your plans stay yours.</strong
-                ><span>On your device. Even offline.</span>
-              </div>
-            </div>
-            <span class="snippet-caption"
-              >Illustrative snippets · Sample tasks</span
-            ><a class="real-app-link" href="assets/app-today.jpg"
-              >See an actual app screenshot
-              <svg class="icon" aria-hidden="true">
-                <use href="#external" /></svg></a
-            ><svg class="snippet-spark" aria-hidden="true">
-              <use href="#spark" />
-            </svg>
+            <a
+              class="button button-quiet"
+              href="https://github.com/ultra-tasks/ultra-tasks"
+              >View on GitHub</a
+            >
           </div>
-        </div>
-      </section>
-
-      <div class="values-strip">
-        <div class="container">
-          <span
-            ><svg class="icon" aria-hidden="true"><use href="#shield" /></svg>
-            Privacy first</span
-          ><span
-            ><svg class="icon" aria-hidden="true"><use href="#lock" /></svg>
-            End-to-end encrypted sync</span
-          ><span
-            ><svg class="icon" aria-hidden="true"><use href="#code" /></svg>
-            Open source</span
-          ><span
-            ><svg class="icon" aria-hidden="true"><use href="#server" /></svg>
-            Self-hostable</span
-          ><a href="#platforms"
-            ><svg class="icon" aria-hidden="true"><use href="#globe" /></svg>
-            Built for every screen <span aria-hidden="true">↗</span></a
-          >
-        </div>
-      </div>
-
-      <section
-        class="section everyday"
-        id="features"
-        aria-labelledby="features-heading"
-      >
-        <div class="container">
-          <div class="section-intro">
-            <div>
-              <p class="eyebrow">For the wonderfully everyday</p>
-              <h2 id="features-heading">
-                Big plans. Small errands.<br />And everything in between.
-              </h2>
-            </div>
-            <p>
-              Life doesn’t fit into a job title. Your to-do list shouldn’t have
-              to, either. Make space for work, study, home, and the things you
-              do just for you.
-            </p>
-          </div>
-          <div class="everyday-grid">
-            <article class="everyday-item">
-              <div
-                class="mini-illustration list-illustration"
-                aria-hidden="true"
-              >
-                <span
-                  ><i class="demo-check checked"></i> Pick up a few groceries
-                  <b>Home</b></span
-                ><span
-                  ><i class="demo-check"></i> Finish that first chapter
-                  <b>Study</b></span
-                ><span
-                  ><i class="demo-check"></i> Make time for a long walk
-                  <b>Me time</b></span
-                >
-              </div>
-              <span class="feature-number">01 / GET IT OUT OF YOUR HEAD</span>
-              <h3>One list. Your whole life.</h3>
-              <p>
-                Capture a thought before it disappears. Give it a project, a
-                tag, or a place in your day. Keep things as simple as you like.
-              </p>
-            </article>
-            <article class="everyday-item">
-              <div
-                class="mini-illustration week-illustration"
-                aria-hidden="true"
-              >
-                <div class="week-day"><span>MON</span><b>12</b><i></i></div>
-                <div class="week-day selected">
-                  <span>TUE</span><b>13</b><i></i>
-                </div>
-                <div class="week-day"><span>WED</span><b>14</b><i></i></div>
-                <div class="week-day"><span>THU</span><b>15</b><i></i></div>
-                <div class="week-day"><span>FRI</span><b>16</b><i></i></div>
-              </div>
-              <span class="feature-number">02 / FIND A LITTLE PERSPECTIVE</span>
-              <h3>A plan with breathing room.</h3>
-              <p>
-                See today clearly and give tomorrow a little thought. Break
-                bigger plans into smaller steps, without turning life into a
-                spreadsheet.
-              </p>
-            </article>
-            <article class="everyday-item">
-              <div
-                class="mini-illustration timer-illustration"
-                aria-hidden="true"
-              >
-                <div class="timer-ring">
-                  <span>25:00<small>one thing at a time</small></span>
-                </div>
-                <svg class="timer-spark"><use href="#spark" /></svg>
-              </div>
-              <span class="feature-number">03 / MAKE ROOM TO FOCUS</span>
-              <h3>Be here. Do your thing.</h3>
-              <p>
-                Built-in time tracking and focus tools help you settle into one
-                task. Take a break, come back, and move at your own pace.
-              </p>
-            </article>
-          </div>
-          <p class="everyone-note">
-            <span aria-hidden="true">✳</span> For students, parents, makers,
-            dreamers—and yes, developers too.
-            <strong>No technical skills required.</strong>
+          <p class="hero-note" data-os-note>
+            Free &amp; open source · No account needed · No tracking
           </p>
         </div>
+
+        <div class="container">
+          <div class="hero-stage">
+            <div class="mode-switch" role="group" aria-label="App theme" hidden>
+              <button type="button" aria-pressed="true" data-mode="light">
+                Light
+              </button>
+              <button type="button" aria-pressed="false" data-mode="dark">
+                Dark
+              </button>
+            </div>
+            <div class="hero-window" data-mode="light">
+              <figure class="window window-flat">
+                <img
+                  class="shot-light"
+                  src="assets/shot-today-light.webp"
+                  alt="The Ultra Tasks Today view in light mode: a short list of everyday tasks with time estimates, and a sidebar of projects."
+                  width="2400"
+                  height="1500"
+                  fetchpriority="high"
+                />
+                <img
+                  class="shot-dark"
+                  src="assets/shot-today-dark.webp"
+                  alt="The Ultra Tasks Today view in dark mode with the same everyday tasks."
+                  width="2400"
+                  height="1500"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section
-        class="privacy-section section"
+        class="section how"
+        id="how"
+        aria-labelledby="how-heading"
+      >
+        <div class="container">
+          <div class="section-head">
+            <h2 id="how-heading">
+              From a full head<br />to a <em>calmer day.</em>
+            </h2>
+            <p>
+              Four simple habits, with the tools to match. Use as much or as
+              little as you like.
+            </p>
+          </div>
+
+          <article class="step">
+            <div class="step-copy">
+              <p class="step-num">01 · Capture</p>
+              <h3>Type it once. It lands in the right place.</h3>
+              <p>
+                Add a task in a few keystrokes. Short, plain shorthand sets the
+                project, tag, estimate and day while you type, so nothing slows
+                you down.
+              </p>
+              <p class="syntax-line" aria-label="Example shorthand">
+                <code>+Home</code> project · <code>#calls</code> tag ·
+                <code>30m</code> estimate · <code>@tomorrow 9am</code> day
+              </p>
+            </div>
+            <div class="step-visual stack stack-top">
+              <figure class="window">
+                <img
+                  src="assets/step-capture.webp"
+                  alt="The Today list with tasks, their projects, tags and time estimates, and a task with subtasks."
+                  width="1600"
+                  height="1032"
+                  loading="lazy"
+                />
+              </figure>
+              <figure class="window stack-over">
+                <img
+                  src="assets/snippet-add-task.webp"
+                  alt="The Add task bar with the text “Book the vet for Luna @tomorrow 9am 30m #calls +Home”, already turned into a project, a time, a tag and an estimate."
+                  width="1440"
+                  height="210"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-copy">
+              <p class="step-num">02 · Plan</p>
+              <h3>See the week, not just today.</h3>
+              <p>
+                Upcoming lines up the days ahead so you can spread the load.
+                Switch to Calendar to give a task a time slot, then get on with
+                your day.
+              </p>
+            </div>
+            <div class="step-visual">
+              <figure class="window">
+                <img
+                  src="assets/step-plan.webp"
+                  alt="The Upcoming view: a column for each of the next days, each listing its tasks, estimates and planned time."
+                  width="1600"
+                  height="1013"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-copy">
+              <p class="step-num">03 · Focus</p>
+              <h3>One task. One timer.<br />No noise.</h3>
+              <p>
+                Start the timer on what you are doing and settle in with Focus
+                mode. Time tracking is built in, so you see where the day went
+                without any extra effort. No streaks, no nagging.
+              </p>
+            </div>
+            <div class="step-visual step-visual-dark">
+              <figure class="window">
+                <img
+                  src="assets/step-focus.webp"
+                  alt="Focus mode: one task, “Read a chapter of my book”, with a countdown timer and nothing else on screen."
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </article>
+
+          <article class="step">
+            <div class="step-copy">
+              <p class="step-num">04 · Organize</p>
+              <h3>Lists, projects and boards that bend to you.</h3>
+              <p>
+                Group tasks by project and tag. Break bigger plans into
+                subtasks and notes. Flip any project to a board to see its
+                sections as columns.
+              </p>
+            </div>
+            <div class="step-visual stack stack-detail">
+              <figure class="window">
+                <img
+                  src="assets/step-board.webp"
+                  alt="The Home project in board layout, with its sections (This week, Soon, Someday) shown as columns of tasks."
+                  width="1600"
+                  height="956"
+                  loading="lazy"
+                />
+              </figure>
+              <figure class="window stack-over">
+                <img
+                  src="assets/snippet-task-detail.webp"
+                  alt="The task detail panel for “Draft the Q4 outline”, listing four subtasks with estimates."
+                  width="626"
+                  height="850"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section details" aria-labelledby="details-heading">
+        <div class="container">
+          <h2 id="details-heading" class="center">
+            And the details<br />you would <em>hope for.</em>
+          </h2>
+          <ul class="detail-grid">
+            <li>
+              <h3>Repeating tasks</h3>
+              <p>Water the plants every Friday. Pay rent on the 15th.</p>
+            </li>
+            <li>
+              <h3>Reminders, only if you ask</h3>
+              <p>Quiet by default. Turn alerts on for the things that need them.</p>
+            </li>
+            <li>
+              <h3>Keyboard first</h3>
+              <p>Shortcuts for capturing, navigating and starting the timer.</p>
+            </li>
+            <li>
+              <h3>Switching is easy</h3>
+              <p>Bring your tasks over from Todoist or TickTick in one pass.</p>
+            </li>
+            <li>
+              <h3>Works with your tools</h3>
+              <p>
+                Optional links to Google Calendar, Jira, GitHub, GitLab, Linear
+                and more.
+              </p>
+            </li>
+            <li>
+              <h3>Offline, always</h3>
+              <p>Everything runs on your device. No connection required.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="section privacy"
         id="privacy"
         aria-labelledby="privacy-heading"
       >
         <div class="container">
-          <div class="privacy-heading">
-            <div>
-              <p class="eyebrow">
-                Your life is personal. Let’s keep it that way.
-              </p>
-              <h2 id="privacy-heading">
-                Your tasks.<br />Your time. <span>Your business.</span>
-              </h2>
+          <div class="privacy-panel">
+            <div class="privacy-top">
+              <div>
+                <h2 id="privacy-heading">
+                  Your tasks. Your time.<br /><em>Your business.</em>
+                </h2>
+                <p class="privacy-lead">
+                  A grocery list can be personal. So can a new idea or the next
+                  chapter of your life. Privacy belongs in the everyday.
+                </p>
+              </div>
+              <figure class="privacy-shot">
+                <img
+                  src="assets/snippet-sync-privacy.webp"
+                  alt="The sync settings with SuperSync selected and the note “Your data is end-to-end encrypted on this device with a password you choose.”"
+                  width="1120"
+                  height="670"
+                  loading="lazy"
+                />
+              </figure>
             </div>
-            <div class="privacy-seal" aria-hidden="true">
-              <svg><use href="#shield" /></svg
-              ><span>PRIVATE<br />BY DESIGN</span>
-            </div>
-          </div>
-          <p class="privacy-lead">
-            A grocery list can be personal. So can a new idea, a health goal, or
-            the next chapter of your life. Privacy belongs in the everyday.
-          </p>
-          <div class="privacy-grid">
-            <article>
-              <svg class="icon" aria-hidden="true"><use href="#lock" /></svg>
-              <h3>Encrypted, end to end.</h3>
-              <p>
-                SuperSync uses end-to-end encryption (E2EE) for your task
-                content. Your encryption password stays on your devices.
-              </p>
-              <span class="small-print"
-                >Technical metadata, such as IDs and timestamps, remains visible
-                to the server.</span
-              >
-            </article>
-            <article>
-              <svg class="icon" aria-hidden="true"><use href="#desktop" /></svg>
-              <h3>At home on your device.</h3>
-              <p>
-                Your tasks live locally. Plan your day and track your time
-                offline, with no account required for the core app.
-              </p>
-            </article>
-            <article>
-              <svg class="icon" aria-hidden="true"><use href="#code" /></svg>
-              <h3>Open for everyone.</h3>
-              <p>
-                The app’s source code is public under the MIT license. Read it,
-                improve it, or just enjoy knowing it’s there.
-              </p>
-            </article>
-            <article>
-              <svg class="icon" aria-hidden="true"><use href="#server" /></svg>
-              <h3>Your server. Your choice.</h3>
-              <p>
-                Choose whether to sync at all. If you do, you can use your own
-                WebDAV storage or self-host the SuperSync server.
-              </p>
-            </article>
-          </div>
-          <div class="privacy-footer">
-            <span>No ads. No analytics. No tracking.</span
-            ><a
-              href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/3.08-Sync-Integration-Comparison.md"
-              >Explore the sync & privacy details
-              <svg class="icon" aria-hidden="true"><use href="#external" /></svg
-            ></a>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="section planner-section"
-        aria-labelledby="planner-heading"
-      >
-        <div class="container planner-layout">
-          <div class="planner-copy">
-            <p class="eyebrow">A gentler kind of productive</p>
-            <h2 id="planner-heading">
-              See the week.<br />Make space for life.
-            </h2>
-            <p>
-              Bring your tasks into the planner and see what’s realistic. The
-              work, the appointments, the little things—give each a place, then
-              get on with your day.
-            </p>
-            <ul class="simple-list">
+            <ul class="privacy-grid">
               <li>
-                <svg class="icon" aria-hidden="true"><use href="#check" /></svg>
-                Everyday lists, projects, and subtasks
+                <h3>Local first</h3>
+                <p>
+                  Your tasks live on your device and work offline. The core app
+                  needs no account.
+                </p>
               </li>
               <li>
-                <svg class="icon" aria-hidden="true"><use href="#check" /></svg>
-                A planner to see the days ahead
+                <h3>Encrypted sync</h3>
+                <p>
+                  SuperSync encrypts your task content end to end. Your
+                  encryption password stays on your devices.<sup>1</sup>
+                </p>
               </li>
               <li>
-                <svg class="icon" aria-hidden="true"><use href="#check" /></svg>
-                Time tracking when you want it
+                <h3>Your storage, your call</h3>
+                <p>
+                  Sync with Nextcloud, WebDAV, Dropbox or a local folder, or
+                  host SuperSync yourself.
+                </p>
+              </li>
+              <li>
+                <h3>Open and untracked</h3>
+                <p>
+                  MIT-licensed source code. No ads, no analytics, no tracking.
+                </p>
               </li>
             </ul>
-            <a class="text-link" href="#download"
-              >Meet your new everyday companion
-              <svg class="icon" aria-hidden="true"><use href="#arrow" /></svg
-            ></a>
-          </div>
-          <figure class="planner-visual">
-            <div class="planner-image-wrap">
-              <img
-                src="assets/app-planner.jpg"
-                alt="The Ultra Tasks planner showing everyday tasks, time estimates, and upcoming days."
-                width="1280"
-                height="720"
-                loading="lazy"
-              />
-            </div>
-            <figcaption>Actual app screenshot · Sample tasks</figcaption>
-            <div class="screenshot-links" aria-label="More app screenshots">
-              <a href="assets/app-today.jpg">Today in light mode ↗</a
-              ><a href="assets/app-dark.jpg">Today in dark mode ↗</a>
-            </div>
-            <span class="planner-sticker" aria-hidden="true"
-              >a plan for the day,<br />space for the unexpected.<svg
-                viewBox="0 0 100 32"
+            <p class="privacy-foot">
+              <sup>1</sup> Technical metadata such as IDs and timestamps stays
+              visible to the server. SuperSync is in beta.
+              <a
+                href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/3.08-Sync-Integration-Comparison.md"
+                >Read the sync and privacy details</a
               >
-                <path d="M3 8q40 35 88 0m-16 0h16v15" /></svg
-            ></span>
-          </figure>
+            </p>
+          </div>
         </div>
       </section>
 
       <section
-        class="section compare-section"
+        class="section compare"
         id="compare"
         aria-labelledby="compare-heading"
       >
         <div class="container">
-          <div class="center-intro">
-            <p class="eyebrow">A few meaningful differences</p>
+          <div class="section-head center-head">
             <h2 id="compare-heading">
-              A good to-do list.<br />With your privacy built in.
+              A good to-do list.<br /><em>Privacy built in.</em>
             </h2>
-            <p>
-              There are plenty of ways to get organized. Here’s how the data
-              choices compare.
-            </p>
+            <p>Here is how the data choices compare.</p>
           </div>
           <div
             class="comparison-scroll"
@@ -516,24 +457,16 @@
               </caption>
               <thead>
                 <tr>
-                  <th scope="col">The things that matter</th>
-                  <th scope="col" class="our-column">
-                    <img src="assets/logo.svg" width="24" height="24" alt="" />
-                    Ultra Tasks
-                  </th>
+                  <th scope="col"><span class="sr-only">Feature</span></th>
+                  <th scope="col" class="our-column">Ultra Tasks</th>
                   <th scope="col">Todoist</th>
                   <th scope="col">TickTick</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">Tasks & projects</th>
-                  <td class="our-column">
-                    <svg class="icon" aria-hidden="true">
-                      <use href="#check" />
-                    </svg>
-                    Built in
-                  </td>
+                  <th scope="row">Tasks &amp; projects</th>
+                  <td class="our-column">Built in</td>
                   <td>Built in</td>
                   <td>Built in</td>
                 </tr>
@@ -542,7 +475,7 @@
                   <td class="our-column">
                     End to end with SuperSync<sup>1</sup>
                   </td>
-                  <td>In transit & at rest<sup>2</sup></td>
+                  <td>In transit &amp; at rest<sup>2</sup></td>
                   <td>At rest<sup>3</sup></td>
                 </tr>
                 <tr>
@@ -553,12 +486,7 @@
                 </tr>
                 <tr>
                   <th scope="row">Bring your own sync server</th>
-                  <td class="our-column">
-                    <svg class="icon" aria-hidden="true">
-                      <use href="#check" />
-                    </svg>
-                    Self-hostable
-                  </td>
+                  <td class="our-column">Self-hostable</td>
                   <td>Provider-hosted</td>
                   <td>Provider-hosted</td>
                 </tr>
@@ -568,7 +496,7 @@
           <div class="comparison-notes">
             <p>
               Based on published security information, reviewed November 2026.
-              See the provider policies for details.
+              Features and policies can change.
             </p>
             <p>
               <sup>1</sup> Task content is encrypted; technical metadata is not.
@@ -581,133 +509,67 @@
               · <sup>2</sup>
               <a href="https://www.todoist.com/security">Todoist security</a> ·
               <sup>3</sup>
-              <a href="https://ticktick.com/security">TickTick security</a>.
-              Features and policies can change.
+              <a href="https://ticktick.com/security">TickTick security</a>
             </p>
           </div>
         </div>
       </section>
 
       <section
-        class="section platforms-section"
+        class="section platforms"
         id="platforms"
         aria-labelledby="platforms-heading"
       >
         <div class="container">
-          <div class="platform-layout">
-            <div>
-              <p class="eyebrow">Your day goes places</p>
-              <h2 id="platforms-heading">
-                Built for every screen.<br />Starting with your desktop.
-              </h2>
-            </div>
+          <div class="section-head center-head">
+            <h2 id="platforms-heading">
+              Starting on your <em>desktop.</em>
+            </h2>
             <p>
-              One calm home for your tasks is the vision—on your desk, in your
-              bag, and wherever life takes you. Windows and macOS downloads are
-              available today.
+              Windows and macOS downloads are available today. More platforms
+              are planned.
             </p>
           </div>
-          <div class="platform-list">
-            <div>
-              <svg class="icon" aria-hidden="true"><use href="#desktop" /></svg
-              ><strong>Windows</strong><span class="available">Available</span>
-            </div>
-            <div>
-              <svg class="icon" aria-hidden="true"><use href="#desktop" /></svg
-              ><strong>macOS</strong><span class="available">Available</span>
-            </div>
-            <div>
-              <svg class="icon" aria-hidden="true"><use href="#desktop" /></svg
-              ><strong>Linux</strong><span>Planned</span>
-            </div>
-            <div>
-              <svg class="icon" aria-hidden="true"><use href="#globe" /></svg
-              ><strong>Web</strong><span>Build from source</span>
-            </div>
-            <div>
-              <svg class="icon" aria-hidden="true"><use href="#phone" /></svg
-              ><strong>Android</strong><span>Planned</span>
-            </div>
-            <div>
-              <svg class="icon" aria-hidden="true"><use href="#phone" /></svg
-              ><strong>iOS</strong><span>Planned</span>
-            </div>
-          </div>
+          <ul class="platform-list">
+            <li class="is-available">
+              <strong>Windows</strong><span>Available</span>
+            </li>
+            <li class="is-available">
+              <strong>macOS</strong><span>Available</span>
+            </li>
+            <li><strong>Linux</strong><span>Planned</span></li>
+            <li><strong>Web</strong><span>Build from source</span></li>
+            <li><strong>Android</strong><span>Planned</span></li>
+            <li><strong>iOS</strong><span>Planned</span></li>
+          </ul>
           <p class="platform-note">
-            Ultra Tasks is in early development. Mobile, Linux, and hosted web
+            Ultra Tasks is in early development. Mobile, Linux and hosted web
             releases are not available yet.
             <a href="https://github.com/ultra-tasks/ultra-tasks/releases"
-              >Follow the releases <span aria-hidden="true">↗</span></a
+              >Follow the releases</a
             >
           </p>
         </div>
       </section>
 
       <section
-        class="section mission-section"
-        id="mission"
-        aria-labelledby="mission-heading"
+        class="section faq"
+        id="faq"
+        aria-labelledby="faq-heading"
       >
-        <div class="container mission-layout">
-          <div class="mission-mark" aria-hidden="true">
-            <svg><use href="#spark" /></svg
-            ><span>More life.<br />Less busy.</span>
-          </div>
-          <div class="mission-copy">
-            <p class="eyebrow">Why we’re here</p>
-            <h2 id="mission-heading">
-              A little less managing life.<br />A little more living it.
-            </h2>
-            <p>
-              We believe a good tool should give you back your attention.
-              Something you can understand, make your own, and trust with the
-              ordinary details of being human.
-            </p>
-            <p>
-              Ultra Tasks builds on the open-source foundation of Super
-              Productivity, with a mission to make everyday planning feel
-              clearer and more welcoming. It’s for anyone with things to do and
-              a life beyond their list.
-            </p>
-            <a
-              class="text-link"
-              href="https://github.com/ultra-tasks/ultra-tasks"
-              >Built in the open. Come be a part of it.
-              <svg class="icon" aria-hidden="true"><use href="#external" /></svg
-            ></a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section faq-section" aria-labelledby="faq-heading">
         <div class="container faq-layout">
           <div>
-            <p class="eyebrow">A few things you might wonder</p>
-            <h2 id="faq-heading">Good questions.<br />Straight answers.</h2>
-            <p>
+            <h2 id="faq-heading">Good questions.<br /><em>Straight answers.</em></h2>
+            <p class="faq-more">
               Still curious?
               <a href="https://github.com/ultra-tasks/ultra-tasks/issues"
-                >Come say hello on GitHub.</a
+                >Say hello on GitHub.</a
               >
             </p>
           </div>
           <div class="faq-list">
             <details>
-              <summary>
-                Do I need to be a developer to use it?<span aria-hidden="true"
-                  >+</span
-                >
-              </summary>
-              <p>
-                No. Download the app, add a task, and you’re on your way. Lists,
-                projects, and the planner work for home, school, creative
-                projects, or your day job. Developer integrations are optional.
-              </p>
-            </details>
-            <details>
-              <summary>
-                Is Ultra Tasks free?<span aria-hidden="true">+</span>
-              </summary>
+              <summary>Is Ultra Tasks free?</summary>
               <p>
                 The app is free and open source under the MIT license. Core
                 tasks and time tracking need no account. If you choose a
@@ -716,12 +578,24 @@
               </p>
             </details>
             <details>
-              <summary>
-                What does end-to-end encryption mean here?<span
-                  aria-hidden="true"
-                  >+</span
-                >
-              </summary>
+              <summary>Do I need to be a developer to use it?</summary>
+              <p>
+                No. Download the app, add a task, and you are on your way.
+                Lists, projects and the planner work for home, school, creative
+                projects or your day job. Developer integrations are optional.
+              </p>
+            </details>
+            <details>
+              <summary>Can I use it completely offline?</summary>
+              <p>
+                Yes. Your tasks are stored locally, and the core list,
+                planning and time-tracking features work without an internet
+                connection. Sync and online integrations need a connection when
+                you use them.
+              </p>
+            </details>
+            <details>
+              <summary>What does end-to-end encryption mean here?</summary>
               <p>
                 SuperSync encrypts your task content on your device using your
                 encryption password before sending it to the server. The server
@@ -732,30 +606,29 @@
               </p>
             </details>
             <details>
-              <summary>
-                Can I use it completely offline?<span aria-hidden="true"
-                  >+</span
-                >
-              </summary>
+              <summary>Can I bring my tasks from Todoist or TickTick?</summary>
               <p>
-                Yes. Your tasks are stored locally, and the core list, planning,
-                and time-tracking features work without an internet connection.
-                Sync and online integrations need a connection when you use
-                them.
+                Yes. Settings has importers for both. They only add projects,
+                tags and tasks and never change or remove what you already have
+                in Ultra Tasks.
               </p>
             </details>
             <details>
-              <summary>
-                How is it related to Super Productivity?<span aria-hidden="true"
-                  >+</span
-                >
-              </summary>
+              <summary>Is there a mobile app?</summary>
+              <p>
+                Not yet. Windows and macOS are available today. Android, iOS
+                and Linux are planned, and the web version can be built from
+                source.
+              </p>
+            </details>
+            <details>
+              <summary>How is it related to Super Productivity?</summary>
               <p>
                 Ultra Tasks is an independent fork of Super Productivity,
                 created by Johannes Millan and its contributors. It builds on
                 that foundation with a focus on a clearer everyday interface.
-                The projects are independently maintained; Ultra Tasks is not an
-                official upstream release.
+                The projects are independently maintained; Ultra Tasks is not
+                an official upstream release.
               </p>
             </details>
           </div>
@@ -763,45 +636,36 @@
       </section>
 
       <section
-        class="download-section"
+        class="section download"
         id="download"
         aria-labelledby="download-heading"
       >
         <div class="container">
-          <svg class="download-spark" aria-hidden="true">
-            <use href="#spark" />
-          </svg>
-          <p class="eyebrow">Your day, with a little more space</p>
-          <h2 id="download-heading">
-            Good things start<br />with a little clarity.
-          </h2>
-          <p>
-            Make room for the things you need to do.<br />And the things you
-            love to do.
-          </p>
-          <div class="download-actions">
-            <a
-              class="button button-white"
-              href="https://github.com/ultra-tasks/ultra-tasks/releases/latest"
-              >Download Ultra Tasks
-              <svg class="icon" aria-hidden="true">
-                <use href="#arrow" /></svg></a
-            ><a
-              class="download-source"
-              href="https://github.com/ultra-tasks/ultra-tasks"
-              ><svg class="icon" aria-hidden="true"><use href="#github" /></svg>
-              Explore the source</a
-            >
+          <div class="download-panel">
+            <h2 id="download-heading">
+              Make room for<br /><em>what matters.</em>
+            </h2>
+            <p>Free, open source, and ready when you are.</p>
+            <div class="hero-actions">
+              <a
+                class="button"
+                href="https://github.com/ultra-tasks/ultra-tasks/releases/latest"
+                ><span>Download for <span data-os-name>Windows &amp; macOS</span></span></a
+              >
+              <a
+                class="button button-quiet"
+                href="https://github.com/ultra-tasks/ultra-tasks"
+                >Explore the source</a
+              >
+            </div>
+            <p class="hero-note">
+              For Windows &amp; macOS · Early development ·
+              <a
+                href="https://github.com/ultra-tasks/ultra-tasks/releases/latest"
+                >Release notes</a
+              >
+            </p>
           </div>
-          <p class="download-note">
-            For Windows & macOS · Free & open source · Early development
-          </p>
-          <a
-            class="release-note"
-            href="https://github.com/ultra-tasks/ultra-tasks/releases/latest"
-            >Check release notes for installation details and current
-            availability <span aria-hidden="true">↗</span></a
-          >
         </div>
       </section>
     </main>
@@ -811,21 +675,22 @@
         <div class="footer-top">
           <div>
             <a class="brand" href="#" aria-label="Ultra Tasks home"
-              ><img src="assets/logo.svg" width="34" height="34" alt="" /><span
-                >ultra tasks<span class="brand-dot">.</span></span
+              ><img src="assets/logo.svg" width="28" height="28" alt="" /><span
+                >Ultra Tasks</span
               ></a
             >
             <p>A little calm for your everyday.</p>
           </div>
-          <div class="footer-links">
-            <a href="#features">The app</a><a href="#privacy">Privacy</a
-            ><a href="#compare">Compare</a
-            ><a href="https://github.com/ultra-tasks/ultra-tasks"
-              >GitHub <span aria-hidden="true">↗</span></a
-            ><a href="https://github.com/ultra-tasks/ultra-tasks/issues"
-              >Say hello <span aria-hidden="true">↗</span></a
+          <nav class="footer-links" aria-label="Footer">
+            <a href="#how">How it works</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#compare">Compare</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://github.com/ultra-tasks/ultra-tasks">GitHub</a>
+            <a href="https://github.com/ultra-tasks/ultra-tasks/issues"
+              >Say hello</a
             >
-          </div>
+          </nav>
         </div>
         <div class="footer-bottom">
           <p>

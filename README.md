@@ -1,9 +1,10 @@
 # Ultra Tasks website
 
 The public Ultra Tasks landing page: a small, responsive static website in plain
-HTML, CSS, and JavaScript. Teal is the primary color, with warm white surfaces
-and terracotta highlights. There are no dependencies, third-party fonts,
-analytics, tracking scripts, cookies, or background API requests.
+HTML, CSS, and JavaScript. Teal is the single accent colour on white and soft
+grey surfaces, set in the rounded typeface Rubik. The font files are served from
+this site, so there are no dependencies, requests to font services, analytics,
+tracking scripts, cookies, or background API requests.
 
 ## Run locally
 
@@ -23,7 +24,8 @@ npm run preview
 ```
 
 `check` validates JavaScript syntax, internal links, unique IDs, local assets,
-image attributes, and the absence of remote scripts. `build` copies the public
+image attributes, the title and description length, the structured data, the
+sitemap, and the absence of remote scripts. `build` copies the public
 files into `dist/`. Deploy the contents of `dist/` to any static host. No server
 runtime, credentials, or build service is required in production. Canonical and
 social URLs currently use the planned `https://ultratasks.app` domain; update
@@ -31,15 +33,20 @@ the metadata in `index.html` if the final domain differs.
 
 ## Content and interaction
 
-- An everyday-life introduction with three clear statements and compact,
-  illustrative task, focus, and privacy snippets. Real light/dark screenshots
-  remain linked, and the planner screenshot appears in the page.
-- A keyboard-accessible mobile menu and native FAQ disclosures. The content,
-  links, snippets, and FAQ remain usable without JavaScript.
-- Privacy, local storage, end-to-end encrypted sync, open source, and self-hosting.
+- A short headline, a download button, and the real Today view with a
+  Light / Dark switch.
+- Four numbered steps (Capture, Plan, Focus, Organize), each with a real
+  screenshot or snippet, then a plain grid of smaller details.
+- Privacy, local storage, end-to-end encrypted sync, open source, and
+  self-hosting, with a snippet of the real sync settings.
 - A sourced comparison with Todoist and TickTick.
-- The mission, download links, GitHub links, and upstream attribution.
 - Explicit platform status, so planned clients are not presented as downloads.
+- A FAQ in native disclosures, download links, GitHub links, and upstream
+  attribution.
+- A keyboard-accessible mobile menu. Content, links and the FAQ remain usable
+  without JavaScript.
+- Search basics: title and description, canonical URL, Open Graph and Twitter
+  tags, JSON-LD for the software, `sitemap.xml`, and `robots.txt`.
 
 Public app links point to <https://github.com/ultra-tasks/ultra-tasks>.
 
@@ -48,13 +55,33 @@ Public app links point to <https://github.com/ultra-tasks/ultra-tasks>.
 `assets/logo.svg` is the app's own Ultra Tasks logo, copied from
 `super-tasks/src/assets/ultra-tasks/logo.svg`.
 
-`assets/app-today.jpg`, `assets/app-dark.jpg`, and `assets/app-planner.jpg` are
-actual screenshots of the locally built Ultra Tasks 0.1.0 web interface, captured
-in a separate browser session with fictional tasks created for this website.
-They contain no personal task data. They show the current development build;
-the released desktop interface may differ. Keep their dimensions and alt text
-in sync when replacing them. The small feature illustrations are HTML/CSS
-illustrations, not app screenshots.
+Every other image in `assets/` is a real capture of the locally built Ultra
+Tasks 0.1.0 web interface, shot with fictional everyday-life tasks (Home, Work,
+Study and Me time projects). They contain no personal data. They show a
+development build, so the released desktop interface may differ. Keep each
+image's `width` and `height` and its alt text in `index.html` in sync when
+replacing it.
+
+| File | Shows | Made from |
+| --- | --- | --- |
+| `shot-today-light.webp`, `shot-today-dark.webp` | Today, light and dark (hero switch) | Full window, 1440×900 at 2x |
+| `step-capture.webp` | Today list (step 1) | Crop of the Today master |
+| `snippet-add-task.webp` | Add task bar with short syntax | Tight crop, rounded corners masked |
+| `step-plan.webp` | Upcoming, three and a half days (step 2) | Crop of the Upcoming master, left rail removed |
+| `step-focus.webp` | Focus mode (step 3) | Centred crop of the Focus master |
+| `step-board.webp` | Home project as a board (step 4) | Crop of the Board master |
+| `snippet-task-detail.webp` | Task detail panel with subtasks | Top part of the panel only |
+| `snippet-sync-privacy.webp` | Sync settings with the encryption note | Top part of the dialog, no token field content |
+| `og-image.png` | 1200×630 social preview | Rendered from the hero shot and the headline, set in Rubik |
+| `fonts/rubik-400.woff`, `fonts/rubik-700.woff` | The site typeface | Latin subset of the installed Rubik 1.100 (made with `fontTools`, no Brotli, so WOFF rather than WOFF2) |
+
+The captures come from the app repository's Playwright screenshot pipeline
+(`e2e/store-screenshots/`) with a seed written for this site. That spec and the
+PNG masters live in the app repository's ignored `.tmp/landing-shots/` folder, so
+they are not part of this repository. `sharp` is not an app dependency: install it
+in a scratch folder to convert the PNG masters to WebP (quality 82). Each capture
+pins the clock to Tuesday 10 November 2026, 09:30, so dates in the images stay
+consistent.
 
 ## Keeping claims current
 
@@ -84,14 +111,36 @@ Ultra Tasks is an independent fork of
 created by Johannes Millan and its contributors. It is not an official upstream
 release.
 
-## Front-page design validation
+## Design notes
 
-The compact static-snippet layout and a manual three-panel carousel were
-compared at desktop and phone widths. Both fit without page overflow and the
-carousel controls worked. Static snippets were selected because tasks, focus,
-and privacy stay visible together without requiring interaction. The hero no
-longer contains a full application-window screenshot. Temporary experiment
-files and comparison captures are kept under the ignored `.tmp/designs/`.
+The page was redesigned in November 2026 to be quieter and to let the real app
+do the talking. It borrows two ideas from sites we admire: a large product
+window directly under a short headline (Ellie), and plain oversized type with
+lots of white space (Ente). Decisions worth keeping:
+
+- One accent colour (teal) and one rounded typeface for everything. Rubik is
+  self-hosted (`assets/fonts/`, SIL Open Font License, text in `OFL.txt`) as two
+  Latin-only WOFF files of about 19 KB each: Regular for the big headlines and
+  body, Bold for buttons and small headings. Rubik Bold has a very narrow space, so
+  bold elements get a little extra `word-spacing` in `styles.css`. No stickers,
+  sparkles or decorative illustrations.
+- The download buttons name the visitor's system ("Download for Windows" or
+  "Download for macOS"). Phones, tablets and Linux keep the generic label plus an
+  honest note, and so does anyone without JavaScript. Both buttons link to the
+  latest release page rather than a file, because asset names carry the version
+  (for example `Ultra-Tasks-0.1.0-Setup.exe`). Direct links would need a
+  version-free asset name in the release pipeline.
+- Every visual is a real screenshot or a crop of one. The first step uses a
+  small snippet floating over the list it belongs to; the last uses the task
+  detail panel over a board.
+- The hero's Light / Dark switch is the only script beyond the mobile menu. With
+  JavaScript off, the switch is hidden and the light screenshot stays.
+- The Calendar view is not shown yet. Its time blocks currently overlap their
+  icons and times, so it is mentioned in the copy only. Re-shoot it once the
+  app is fixed.
+
+Search optimisation notes and a plan for future articles are in
+[`docs/seo-article-plan.md`](docs/seo-article-plan.md).
 
 ## Cloudflare Pages deployment
 

@@ -68,6 +68,32 @@ assert.doesNotMatch(
   /\b(?:fetch|XMLHttpRequest|sendBeacon)\s*\(/,
   "The landing page needs no background network requests",
 );
+
+// Search basics: a sensible title and description, valid structured data,
+// and the crawler files the page advertises.
+const title = html.match(/<title>([^<]+)<\/title>/)?.[1].trim();
+assert.ok(title, "The page needs a <title>");
+assert.ok(title.length <= 70, `Keep the title under 70 characters: ${title.length}`);
+const description = html.match(
+  /<meta\s+name="description"\s+content="([^"]+)"/,
+)?.[1];
+assert.ok(description, "The page needs a meta description");
+assert.ok(
+  description.length >= 70 && description.length <= 160,
+  `Keep the description between 70 and 160 characters: ${description.length}`,
+);
+assert.match(html, /<link rel="canonical" href="https:\/\//, "Set a canonical URL");
+const jsonLd = [
+  ...html.matchAll(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+  ),
+];
+assert.ok(jsonLd.length > 0, "Include structured data");
+for (const [, json] of jsonLd) JSON.parse(json);
+const robots = await readFile("robots.txt", "utf8");
+assert.match(robots, /^Sitemap: https:\/\//m, "robots.txt should list the sitemap");
+assert.ok((await stat("sitemap.xml")).isFile(), "Missing sitemap.xml");
+
 console.log(
-  `PASS: ${ids.length} unique anchors and icons, ${localFiles.size} local assets, image accessibility, and no remote scripts.`,
+  `PASS: ${ids.length} unique anchors and icons, ${localFiles.size} local assets, image accessibility, search basics, and no remote scripts.`,
 );
