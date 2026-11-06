@@ -7,7 +7,7 @@
     <title>Ultra Tasks: free, open-source to-do list, planner &amp; time tracker</title>
     <meta
       name="description"
-      content="A calm, free and open-source to-do list, day planner and time tracker for Windows and macOS. Works offline, with private end-to-end encrypted sync."
+      content="A calm, free and open-source to-do list, planner and time tracker for Windows and macOS. Works offline, with end-to-end encrypted sync coming soon."
     />
     <link rel="canonical" href="https://ultratasks.app/" />
     <meta property="og:type" content="website" />
@@ -60,11 +60,11 @@
             "@type": "SoftwareApplication",
             "name": "Ultra Tasks",
             "url": "https://ultratasks.app/",
-            "description": "A free, open-source to-do list, day planner and time tracker with offline-first storage and optional end-to-end encrypted sync.",
+            "description": "A free, open-source to-do list, day planner and time tracker with offline-first storage and sync you control.",
             "applicationCategory": "ProductivityApplication",
             "operatingSystem": "Windows, macOS",
             "softwareVersion": "0.1.0",
-            "license": "https://opensource.org/license/mit",
+            "license": "https://spdx.org/licenses/AGPL-3.0-only.html",
             "downloadUrl": "https://github.com/ultra-tasks/ultra-tasks/releases/latest",
             "isBasedOn": "https://github.com/super-productivity/super-productivity",
             "image": "https://ultratasks.app/assets/og-image.png",
@@ -381,15 +381,35 @@
                   chapter of your life. Privacy belongs in the everyday.
                 </p>
               </div>
-              <figure class="privacy-shot">
-                <img
-                  src="assets/snippet-sync-privacy.webp"
-                  alt="The sync settings with SuperSync selected and the note “Your data is end-to-end encrypted on this device with a password you choose.”"
-                  width="1120"
-                  height="670"
-                  loading="lazy"
-                />
-              </figure>
+              <aside class="sync-card" aria-labelledby="sync-card-title">
+                <span class="pill">Coming soon</span>
+                <h3 id="sync-card-title">Ultra Tasks sync</h3>
+                <p>
+                  Our own sync service. Keep your tasks in step across your
+                  devices, and work on them together with other people.
+                </p>
+                <ul class="check-list">
+                  <li>
+                    <svg aria-hidden="true"><use href="#check" /></svg>
+                    Always-free plan
+                  </li>
+                  <li>
+                    <svg aria-hidden="true"><use href="#check" /></svg>
+                    Open source and self-hostable
+                  </li>
+                  <li>
+                    <svg aria-hidden="true"><use href="#check" /></svg>
+                    End-to-end encrypted
+                  </li>
+                  <li>
+                    <svg aria-hidden="true"><use href="#check" /></svg>
+                    Built for collaboration
+                  </li>
+                </ul>
+                <p class="fine-print">
+                  Paid plans may follow once the service is robust enough.
+                </p>
+              </aside>
             </div>
             <ul class="privacy-grid">
               <li>
@@ -400,32 +420,38 @@
                 </p>
               </li>
               <li>
-                <h3>Encrypted sync</h3>
+                <h3>Sync on your terms</h3>
                 <p>
-                  SuperSync encrypts your task content end to end. Your
-                  encryption password stays on your devices.<sup>1</sup>
+                  Today you can sync through your own Nextcloud, WebDAV,
+                  Dropbox or a local folder, with optional encryption using a
+                  key that stays on your devices.
                 </p>
               </li>
               <li>
-                <h3>Your storage, your call</h3>
+                <h3>Open source</h3>
                 <p>
-                  Sync with Nextcloud, WebDAV, Dropbox or a local folder, or
-                  host SuperSync yourself.
+                  The source code is licensed under the
+                  <a
+                    href="https://github.com/ultra-tasks/ultra-tasks/blob/main/LICENSE"
+                    >GNU AGPL</a
+                  >: free to read, run and improve.
                 </p>
               </li>
               <li>
-                <h3>Open and untracked</h3>
-                <p>
-                  MIT-licensed source code. No ads, no analytics, no tracking.
-                </p>
+                <h3>Untracked</h3>
+                <p>No ads, no analytics, no tracking.</p>
               </li>
             </ul>
             <p class="privacy-foot">
-              <sup>1</sup> Technical metadata such as IDs and timestamps stays
-              visible to the server. SuperSync is in beta.
+              Ultra Tasks sync is coming soon.
               <a
                 href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/3.08-Sync-Integration-Comparison.md"
-                >Read the sync and privacy details</a
+                >See the sync options available today</a
+              >
+              ·
+              <a
+                href="https://github.com/ultra-tasks/ultra-tasks/blob/main/LICENSING.md"
+                >About the license</a
               >
             </p>
           </div>
@@ -473,7 +499,9 @@
                 <tr>
                   <th scope="row">Sync encryption</th>
                   <td class="our-column">
-                    End to end with SuperSync<sup>1</sup>
+                    Optional encryption today<br />End to end with Ultra Tasks
+                    sync <span class="nowrap">(coming soon)</span
+                    ><sup>1</sup>
                   </td>
                   <td>In transit &amp; at rest<sup>2</sup></td>
                   <td>At rest<sup>3</sup></td>
@@ -486,7 +514,10 @@
                 </tr>
                 <tr>
                   <th scope="row">Bring your own sync server</th>
-                  <td class="our-column">Self-hostable</td>
+                  <td class="our-column">
+                    Nextcloud, WebDAV or a local folder<br />Self-hostable
+                    Ultra Tasks sync <span class="nowrap">(coming soon)</span>
+                  </td>
                   <td>Provider-hosted</td>
                   <td>Provider-hosted</td>
                 </tr>
@@ -499,12 +530,13 @@
               Features and policies can change.
             </p>
             <p>
-              <sup>1</sup> Task content is encrypted; technical metadata is not.
-              Other sync providers offer optional encryption. SuperSync is in
-              beta; cross-client validation is ongoing.
+              <sup>1</sup> Today, sync through Nextcloud, WebDAV, Dropbox or a
+              local folder can be encrypted with a key that stays on your
+              devices. Ultra Tasks sync, coming soon, will be end-to-end
+              encrypted.
               <a
                 href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/3.08-Sync-Integration-Comparison.md"
-                >Ultra Tasks sync details</a
+                >Sync options today</a
               >
               · <sup>2</sup>
               <a href="https://www.todoist.com/security">Todoist security</a> ·
@@ -571,10 +603,27 @@
             <details>
               <summary>Is Ultra Tasks free?</summary>
               <p>
-                The app is free and open source under the MIT license. Core
-                tasks and time tracking need no account. If you choose a
-                third-party sync service or host your own server, that service
-                or infrastructure may have its own costs.
+                Yes. The app is free and open source, licensed under the GNU
+                AGPL, and core tasks and time tracking need no account. Ultra
+                Tasks sync, coming soon, will be open source and self-hostable,
+                with an always-free plan. Paid plans may follow once the service
+                is robust enough. If you choose a third-party sync service or
+                host your own server, that service or infrastructure may have
+                its own costs.
+              </p>
+            </details>
+            <details>
+              <summary>Which license is Ultra Tasks under?</summary>
+              <p>
+                The current source code is licensed under the GNU AGPL-3.0-only.
+                Code inherited from Super Productivity keeps its original MIT
+                rights and notices, and earlier MIT-licensed releases stay
+                MIT-licensed. The
+                <a
+                  href="https://github.com/ultra-tasks/ultra-tasks/blob/main/LICENSING.md"
+                  >licensing notes on GitHub</a
+                >
+                explain how it fits together.
               </p>
             </details>
             <details>
@@ -595,14 +644,21 @@
               </p>
             </details>
             <details>
-              <summary>What does end-to-end encryption mean here?</summary>
+              <summary>Will my synced tasks be end-to-end encrypted?</summary>
               <p>
-                SuperSync encrypts your task content on your device using your
-                encryption password before sending it to the server. The server
-                does not receive that password. Technical metadata, including
-                IDs and timestamps, remains visible. File-based providers offer
-                encryption as an option. Sync is still being validated across
-                clients, and SuperSync is in beta.
+                Ultra Tasks sync, coming soon, will be end-to-end encrypted:
+                your tasks are encrypted on your device before they leave it, so
+                the service cannot read them. Today you can already sync through
+                Nextcloud, WebDAV, Dropbox or a local folder and encrypt the
+                synced files with a key that stays on your devices. Encryption is
+                optional there.
+              </p>
+            </details>
+            <details>
+              <summary>Can I work on tasks with other people?</summary>
+              <p>
+                Collaboration is planned as part of Ultra Tasks sync, which is
+                coming soon. It is not available yet.
               </p>
             </details>
             <details>
@@ -695,7 +751,10 @@
         <div class="footer-bottom">
           <p>
             © <span id="copyright-year">2026</span> Ultra Tasks. Independently
-            maintained by Adrian Chase.
+            maintained by Adrian Chase. Licensed under the
+            <a href="https://github.com/ultra-tasks/ultra-tasks/blob/main/LICENSE"
+              >GNU AGPL</a
+            >.
           </p>
           <p>
             Built on

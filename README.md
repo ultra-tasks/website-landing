@@ -37,8 +37,11 @@ the metadata in `index.html` if the final domain differs.
   Light / Dark switch.
 - Four numbered steps (Capture, Plan, Focus, Organize), each with a real
   screenshot or snippet, then a plain grid of smaller details.
-- Privacy, local storage, end-to-end encrypted sync, open source, and
-  self-hosting, with a snippet of the real sync settings.
+- Privacy, local storage, sync on your own storage, and the GNU AGPL license,
+  with a "Coming soon" card for Ultra Tasks' own sync service (always-free plan,
+  open source and self-hostable, end-to-end encrypted, built for collaboration,
+  paid plans possible later). The card is HTML, not a screenshot, because the
+  service does not exist yet.
 - A sourced comparison with Todoist and TickTick.
 - Explicit platform status, so planned clients are not presented as downloads.
 - A FAQ in native disclosures, download links, GitHub links, and upstream
@@ -71,7 +74,6 @@ replacing it.
 | `step-focus.webp` | Focus mode (step 3) | Centred crop of the Focus master |
 | `step-board.webp` | Home project as a board (step 4) | Crop of the Board master |
 | `snippet-task-detail.webp` | Task detail panel with subtasks | Top part of the panel only |
-| `snippet-sync-privacy.webp` | Sync settings with the encryption note | Top part of the dialog, no token field content |
 | `og-image.png` | 1200×630 social preview | Rendered from the hero shot and the headline, set in Rubik |
 | `fonts/rubik-400.woff`, `fonts/rubik-700.woff` | The site typeface | Latin subset of the installed Rubik 1.100 (made with `fontTools`, no Brotli, so WOFF rather than WOFF2) |
 
@@ -85,19 +87,37 @@ consistent.
 
 ## Keeping claims current
 
-Copy is grounded in the app repository's README, MIT license, sync-provider
-reference, and SuperSync server documentation, reviewed November 2026. The
-canonical GitHub organization was verified separately.
+Copy is grounded in the app repository's README, `LICENSE` and `LICENSING.md`,
+and sync-provider reference, reviewed November 2026. The canonical GitHub
+organization was verified separately (`ac9492/ultra-tasks` only redirects to
+`ultra-tasks/ultra-tasks`).
+
+**License.** The current distribution is GNU AGPL-3.0-only (`package.json`,
+`LICENSE`). Inherited Super Productivity code keeps its MIT rights and notices,
+and earlier MIT-licensed releases stay MIT-licensed. The page says this in its
+license FAQ and links to `LICENSING.md`, so keep that wording in step with the
+file when it changes. The page does not call the whole project "MIT" anywhere.
+
+**Ultra Tasks sync.** The "Coming soon" card, FAQ answers and comparison footnote
+describe a service that does not exist yet. The claims come from the maintainer,
+not from the repository, and were confirmed in November 2026: an always-free
+plan, open source and self-hostable, end-to-end encrypted, built for
+collaboration, and paid plans possible later once the service is robust enough.
+The page therefore never says "completely free" about the sync service, and it
+says plainly that paid plans may follow. This matches the "Ultra Tasks Cloud"
+managed-service subscriptions in `LICENSING.md`. The service is deliberately left
+unnamed for now, so the copy calls it "Ultra Tasks sync" as a description, not a
+product name. Update the card, the FAQ, the table and the meta description
+together when it launches, and remove "coming soon" only then.
 
 The current app README lists Windows and macOS releases. Linux and mobile
 releases are not published, and there is no hosted Ultra Tasks web app linked
 here; the web client can be built from source. Update the platform section and
 download copy together when releases change.
 
-SuperSync requires end-to-end encryption of task content; routing/causal
-metadata such as IDs and timestamps remains visible. Encryption is optional
-with file-based providers. SuperSync is in beta, and cross-client validation
-is still ongoing. Keep these distinctions when editing privacy copy.
+Sync available today (Nextcloud, WebDAV, Dropbox, local folder) offers optional
+client-side encryption. Keep that distinction, and "optional", when editing
+privacy copy. The page deliberately does not advertise SuperSync.
 
 Competitor comparisons describe their published security information, rather
 than an independent audit. Review the primary sources when updating the table:

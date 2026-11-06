@@ -537,15 +537,71 @@ html:not(.js) .shot-dark {
   font-size: 19px;
   color: rgb(255 255 255 / 0.72);
 }
-/* A real settings dialog, faded out at the bottom so only the encryption note shows. */
-.privacy-shot {
-  filter: drop-shadow(0 24px 40px rgb(0 0 0 / 0.35));
+/* A light card on the dark panel. It is a description, not a screenshot: the
+   service does not exist yet, so nothing here pretends to be real app UI. */
+.sync-card {
+  padding: clamp(24px, 3vw, 32px);
+  border-radius: 24px;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 24px 48px -16px rgb(0 0 0 / 0.5);
 }
-.privacy-shot img {
-  width: 100%;
-  height: auto;
-  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent);
-  mask-image: linear-gradient(to bottom, #000 82%, transparent);
+.pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--tint);
+  color: var(--teal);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.sync-card h3 {
+  margin-top: 16px;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  word-spacing: normal;
+}
+.sync-card p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 16px;
+}
+.sync-card .fine-print {
+  margin-top: 20px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.check-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.check-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 17px;
+}
+.check-list svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--tint);
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.privacy-grid a,
+.privacy-foot a {
+  color: #fff;
 }
 .privacy-grid {
   display: grid;
@@ -565,9 +621,6 @@ html:not(.js) .shot-dark {
   font-size: 14px;
   color: rgb(255 255 255 / 0.6);
 }
-.privacy-foot a {
-  color: #fff;
-}
 
 /* Comparison */
 .compare .section-head {
@@ -580,9 +633,21 @@ html:not(.js) .shot-dark {
 }
 table {
   width: 100%;
-  min-width: 640px;
+  min-width: 720px;
   border-collapse: collapse;
+  table-layout: fixed;
   font-size: 16px;
+}
+/* Fixed widths keep the competitor columns steady when our own cells run long. */
+thead th:nth-child(1) {
+  width: 25%;
+}
+thead th:nth-child(2) {
+  width: 33%;
+}
+thead th:nth-child(3),
+thead th:nth-child(4) {
+  width: 21%;
 }
 th,
 td {
@@ -618,6 +683,9 @@ td.our-column {
 }
 sup {
   font-size: 0.7em;
+}
+.nowrap {
+  white-space: nowrap;
 }
 .comparison-notes {
   max-width: 780px;
@@ -838,7 +906,7 @@ sup {
   .privacy-top {
     grid-template-columns: minmax(0, 1fr);
   }
-  .privacy-shot {
+  .sync-card {
     max-width: 460px;
   }
   .platform-list {

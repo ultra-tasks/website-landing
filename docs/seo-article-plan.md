@@ -14,19 +14,25 @@ keyword tool, and favour the topics where Ultra Tasks has a real edge.
 
 The app's differentiators, each taken from its docs and README:
 
-1. Open source (MIT), no ads, no analytics, no telemetry.
+1. Open source under the GNU AGPL-3.0-only (inherited Super Productivity code
+   keeps its MIT notices), no ads, no analytics, no telemetry.
 2. Offline-first: core features need no account and no connection.
-3. Sync you control: SuperSync (end-to-end encrypted, beta), Nextcloud, WebDAV,
-   Dropbox or a local folder, with optional client-side encryption. SuperSync
-   can be self-hosted.
+3. Sync you control: Nextcloud, WebDAV, Dropbox or a local folder, with optional
+   client-side encryption. Ultra Tasks' own sync service is announced as
+   "coming soon" (always-free plan, open source and self-hostable, end-to-end
+   encrypted, built for collaboration, paid plans possible later). Treat it as a
+   promise until it ships, and always mention the paid-plans possibility next to
+   "free".
 4. Planning plus time tracking in one place: Today, Upcoming, Calendar, focus
    mode, estimates, boards.
 5. Built-in importers for Todoist and TickTick.
 6. A deliberately calm interface: no streaks, no constant alerts.
 
 Always keep the honest caveats next to these claims: early development
-(0.1.0), Windows and macOS only, SuperSync in beta, metadata such as IDs and
-timestamps is visible to the sync server, unsigned Windows build.
+(0.1.0), Windows and macOS only, Ultra Tasks sync not launched yet, encryption
+optional with today's file-based sync, unsigned Windows build. Do not publish
+detailed security or collaboration claims about the new service until its design
+is documented.
 
 ## Gaps the search results show
 
@@ -93,13 +99,22 @@ Grouped by intent. "Bottom" means someone is close to choosing a tool.
 - **Is your to-do list private? What Todoist, TickTick and others can see.**
   Cite published security pages only; no speculation.
 - **End-to-end encryption in a task app: what it covers and what it does not.**
-  Explain the metadata caveat plainly. This builds trust and mirrors the
-  site's footnote.
+  Write it as a general explainer plus what is true today (optional client-side
+  encryption for file-based sync). Add a section on Ultra Tasks sync only once
+  its design, including what metadata a server can see, is documented.
 - **Sync your tasks without trusting a cloud:** Nextcloud, WebDAV, Dropbox
   with a client-side encryption password. Step-by-step with screenshots.
-- **Self-hosting SuperSync** (for the r/selfhosted audience). Mark it clearly
-  as beta.
+- **Self-hosting your sync** (for the r/selfhosted audience): a Nextcloud or
+  WebDAV guide now, and a guide for Ultra Tasks sync if it can be self-hosted.
+- **What the AGPL means for a to-do app:** in plain words, what users and
+  self-hosters can do, why it keeps the app and its sync open, and how upstream's
+  MIT code fits. Link to `LICENSING.md` rather than paraphrasing the legal detail.
 - **No account, no tracking: how Ultra Tasks keeps your data local.**
+- **Launch-time pieces for Ultra Tasks sync:** an encrypted, collaborative,
+  open-source and self-hostable task sync with a free plan is a rare combination
+  in search results.
+  Prepare the announcement, a "how sharing works" guide and a comparison for the
+  day it ships, and not before.
 
 ### 3. Offline and platform intent
 
