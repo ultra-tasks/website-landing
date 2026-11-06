@@ -95,7 +95,11 @@ files and comparison captures are kept under the ignored `.tmp/designs/`.
 
 ## Cloudflare Pages deployment
 
-Connect the `ultra-tasks/website-landing` repository to Cloudflare Pages:
+Cloudflare Pages project `ultra-tasks` is connected to
+[`ultra-tasks/website-landing`](https://github.com/ultra-tasks/website-landing):
+
+- Production domain: <https://ultratasks.app>
+- Pages hostname: <https://ultra-tasks-2no.pages.dev>
 
 - Production branch: `main`
 - Framework preset: None
@@ -106,7 +110,12 @@ Connect the `ultra-tasks/website-landing` repository to Cloudflare Pages:
 
 Cloudflare's Git integration deploys new commits pushed to `main` and creates
 preview deployments for other branches. The build includes validation before
-publishing. No deployment token or GitHub Actions secret is needed. Attach
-`ultratasks.app` in the project's Custom domains settings; Cloudflare manages
-the Pages DNS record and HTTPS certificate after activation. Do not deploy the
-repository root: only `dist/` contains the public site files.
+publishing. No deployment token or GitHub Actions secret is needed.
+
+To publish an update, commit and push it to `main`. Cloudflare validates the
+source, builds `dist/`, and publishes the successful build automatically. View
+build logs and deployment history in Workers & Pages → `ultra-tasks`.
+
+`ultratasks.app` is attached in the project's Custom domains settings. The apex
+CNAME points to `ultra-tasks-2no.pages.dev`; Cloudflare manages DNS and HTTPS.
+Do not deploy the repository root: only `dist/` contains the public site files.
