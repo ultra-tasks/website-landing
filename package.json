@@ -1,0 +1,16 @@
+{
+  "name": "ultra-tasks-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The public website for Ultra Tasks.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node --check script.js && node scripts/check.mjs",
+    "preview": "node scripts/serve.mjs dist"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
