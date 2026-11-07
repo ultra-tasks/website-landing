@@ -303,7 +303,7 @@ code {
   margin-bottom: 20px;
 }
 .footer-bottom.footer-solo {
-  margin-top: 0;
+  margin-top: 28px;
   padding-top: 0;
   border-top: 0;
 }
@@ -843,6 +843,16 @@ sup {
 }
 .footer-links a:hover {
   color: var(--ink);
+}
+.footer-note {
+  max-width: 760px;
+  margin-top: 36px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.footer-note a {
+  color: inherit;
 }
 .footer-bottom {
   display: flex;

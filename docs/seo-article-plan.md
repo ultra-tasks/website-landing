@@ -1,8 +1,9 @@
 # SEO and article plan
 
 Working notes for growing organic search traffic to ultratasks.app without
-breaking the site's promises (no analytics, no trackers, no cookies). Written
-November 2026.
+breaking the site's promises: no cookies, no tracking or analytics in the app,
+and an honest footer note about the one visit counter the website has
+(Cloudflare Web Analytics, see the README). Written November 2026.
 
 **How reliable this is.** The keyword ideas below come from spot-checking live
 search results in November 2026, not from volume data. No keyword tool was
@@ -15,7 +16,7 @@ keyword tool, and favour the topics where Ultra Tasks has a real edge.
 The app's differentiators, each taken from its docs and README:
 
 1. Open source under the GNU AGPL-3.0-only (inherited Super Productivity code
-   keeps its MIT notices), no ads, no analytics, no telemetry.
+   keeps its MIT notices), and no ads, analytics or telemetry in the app.
 2. Offline-first: core features need no account and no connection.
 3. Sync you control: Nextcloud, WebDAV, Dropbox or a local folder, with optional
    client-side encryption. Ultra Tasks' own sync service is announced as
@@ -196,10 +197,11 @@ Each ends with the feature that makes the method easy, not a hard sell.
   download; the landing page links to the guides in the footer.
 - Comparison pages must cite primary sources and show a review date, as the
   existing table does. See "Keeping claims current" in the repository README.
-- Keep the privacy promise: no analytics scripts. Measure with Search
-  Console, Bing Webmaster Tools, GitHub release download counts and stars.
-  Cloudflare's edge-level analytics need no script, but check that they match
-  the "no analytics" wording before relying on them.
+- Keep the privacy promise honest: add no analytics script of your own. The
+  site already counts visits through Cloudflare Web Analytics, which Cloudflare
+  injects and the footer discloses. Pair it with Search Console, Bing Webmaster
+  Tools, GitHub release download counts and stars. Any new tracking must be
+  disclosed in the same footer note before it ships.
 
 ## Distribution (cheap, repeatable)
 

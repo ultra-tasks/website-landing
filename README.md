@@ -3,8 +3,10 @@
 The public Ultra Tasks landing page: a small, responsive static website in plain
 HTML, CSS, and JavaScript. Teal is the single accent colour on white and soft
 grey surfaces, set in the rounded typeface Rubik. The font files are served from
-this site, so there are no dependencies, requests to font services, analytics,
-tracking scripts, cookies, or background API requests.
+this site, and the source has no dependencies, remote scripts, cookies or
+background API requests. One thing comes from the hosting, not the source:
+Cloudflare Pages adds its Web Analytics script to the pages (see
+[Analytics](#analytics)), and the site says so in its footer.
 
 ## Run locally
 
@@ -207,3 +209,31 @@ status. With it, unknown addresses get a real 404, which search engines expect.
 The 404 page is marked `noindex` and uses only root-absolute links, because it is
 served at whatever address was mistyped. `npm run check` enforces both, and the
 local preview serves it the same way.
+
+### Analytics
+
+Cloudflare injects its Web Analytics beacon (`static.cloudflareinsights.com`) into
+the live HTML, including the 404 page. It is not in this repository or in `dist/`,
+so `npm run check` cannot see it, and a plain `curl` does not show it. Only a
+browser-like request does (send a browser `User-Agent` and `Accept: text/html`).
+Found in November 2026; I could not tell when it was switched on. In a test
+browser it set no cookies and made one request to Cloudflare per page view.
+
+The maintainer decided to keep it, so the site says so:
+
+- The footer note on both pages ("About this website", anchor `#site-analytics`)
+  explains that the site counts visits with Cloudflare Web Analytics, links to
+  <https://www.cloudflare.com/web-analytics/>, and says the app has no analytics.
+- Every "no tracking" claim is scoped to the app ("No tracking in the app",
+  "The app has no ads, no analytics and no tracking"), never to the website.
+- The footer states only what Cloudflare publishes on that page: no cookies or
+  localStorage, and no fingerprinting for analytics. Cloudflare's page does not
+  say how IP addresses are handled, so the site makes no claim about that.
+  Cloudflare's FAQ adds that unsampled data is kept for 7 days and that query
+  strings are not logged.
+
+To remove it, turn off Web Analytics for the Pages project and for the
+`ultratasks.app` zone in the Cloudflare dashboard (it can be enabled in either
+place), then delete the footer notes and restore the unscoped wording. To check
+what is live, fetch the page with a browser `User-Agent` and look for
+`cloudflareinsights`.
