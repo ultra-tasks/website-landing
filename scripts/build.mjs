@@ -1,3 +1,4 @@
+import { configureAccountLinks } from "./account-links.mjs";
 import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 
@@ -47,3 +48,5 @@ for (const [page, expected] of [
 console.log(
   `Built static website in dist/ (styles.css?v=${hashes["styles.css"]}, script.js?v=${hashes["script.js"]})`,
 );
+
+await configureAccountLinks("dist", process.env.PUBLIC_ACCOUNT_URL);
