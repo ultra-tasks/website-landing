@@ -18,22 +18,40 @@ The app's differentiators, each taken from its docs and README:
 1. Open source under the GNU AGPL-3.0-only (inherited Super Productivity code
    keeps its MIT notices), and no ads, analytics or telemetry in the app.
 2. Offline-first: core features need no account and no connection.
-3. Sync you control: Nextcloud, WebDAV, Dropbox or a local folder, with optional
-   client-side encryption. Ultra Tasks' own sync service is announced as
-   "coming soon" (always-free plan, open source and self-hostable, end-to-end
-   encrypted, built for collaboration, paid plans possible later). Treat it as a
-   promise until it ships, and always mention the paid-plans possibility next to
-   "free".
+3. UltraSync (beta since 0.3.0): private, end-to-end encrypted account sync,
+   open source and self-hostable (Docker), with an account dashboard (two-factor,
+   passkeys, recovery keys). The official service has closed sign-ups for now;
+   the always-free plan and possible paid plans are the maintainer's promise,
+   not a live offer, so keep them in the future tense and always mention the
+   paid-plans possibility next to "free". WebDAV and OneDrive remain as basic
+   alternatives.
 4. Planning plus time tracking in one place: Today, Upcoming, Calendar, focus
    mode, estimates, boards.
 5. Built-in importers for Todoist and TickTick.
 6. A deliberately calm interface: no streaks, no constant alerts.
 
 Always keep the honest caveats next to these claims: early development
-(0.1.0), Windows and macOS only, Ultra Tasks sync not launched yet, encryption
-optional with today's file-based sync, unsigned Windows build. Do not publish
-detailed security or collaboration claims about the new service until its design
-is documented.
+(beta), Windows, macOS, Linux x64 and Android only (iOS and hosted web are "coming
+soon"), UltraSync in beta with closed sign-ups and no independent cryptographic
+review yet, collaboration not available, unsigned Windows builds and macOS
+builds that are not notarized, and no app-store listings. Do not publish
+detailed security or collaboration claims about UltraSync beyond what its
+published design documents and release notes say.
+
+## Status (6 November 2026)
+
+Done (also 8 November 2026): a `/download/` page with per-platform direct
+downloads, release notes snippet, Docker image and checksums, driven by
+`data/release.json` (see "Downloads and releases" in the README), and a Sign in
+link for UltraSync. Done: the on-page basics below, a static `/guides/` section (see "Guides" in
+the README for how to add a page), the first guide ("Move from Todoist to Ultra
+Tasks"), a sitemap that `npm run check` keeps complete, `sameAs` and
+`screenshot` in the structured data, and `max-image-preview:large`.
+
+Not done, and not possible from this repository: verifying the site in Google
+Search Console and Bing Webmaster Tools, a `www` DNS record and redirect, a
+redirect or noindex for the `pages.dev` copy of the site, GitHub topics and the
+stale "planned website" line in the app README, and directory listings.
 
 ## Gaps the search results show
 
@@ -74,12 +92,11 @@ is documented.
 
 Still to do on-page:
 
-- Ship `assets/og-image.png` (1200x630); the page already points at it.
 - Add the site to Google Search Console and Bing Webmaster Tools by DNS
   verification. This adds no script to the pages.
 - Once the domain is final, confirm every canonical and sitemap URL.
-- Add a `/guides/` section (below). One long page cannot rank for many
-  intents.
+- Keep adding guides under `/guides/` (below). One long page cannot rank for
+  many intents.
 
 ## Article avenues
 
@@ -100,22 +117,23 @@ Grouped by intent. "Bottom" means someone is close to choosing a tool.
 - **Is your to-do list private? What Todoist, TickTick and others can see.**
   Cite published security pages only; no speculation.
 - **End-to-end encryption in a task app: what it covers and what it does not.**
-  Write it as a general explainer plus what is true today (optional client-side
-  encryption for file-based sync). Add a section on Ultra Tasks sync only once
-  its design, including what metadata a server can see, is documented.
-- **Sync your tasks without trusting a cloud:** Nextcloud, WebDAV, Dropbox
-  with a client-side encryption password. Step-by-step with screenshots.
-- **Self-hosting your sync** (for the r/selfhosted audience): a Nextcloud or
-  WebDAV guide now, and a guide for Ultra Tasks sync if it can be self-hosted.
+  Write it as a general explainer plus what is true today (UltraSync's
+  end-to-end encryption in beta). Describe UltraSync only as far as its
+  documented design goes, including what metadata a server can see.
+- **Sync your tasks without trusting a cloud:** UltraSync on your own server, or
+  WebDAV. Step-by-step with screenshots.
+- **Self-hosting UltraSync** (for the r/selfhosted audience): a guide that
+  follows `ultra-tasks-server/deploy/README.md`, once someone has run the
+  published image end to end. The download page already links the image and the
+  setup guide.
 - **What the AGPL means for a to-do app:** in plain words, what users and
   self-hosters can do, why it keeps the app and its sync open, and how upstream's
   MIT code fits. Link to `LICENSING.md` rather than paraphrasing the legal detail.
 - **No account, no tracking: how Ultra Tasks keeps your data local.**
-- **Launch-time pieces for Ultra Tasks sync:** an encrypted, collaborative,
-  open-source and self-hostable task sync with a free plan is a rare combination
-  in search results.
-  Prepare the announcement, a "how sharing works" guide and a comparison for the
-  day it ships, and not before.
+- **Pieces for UltraSync's wider launch:** an encrypted, open-source and
+  self-hostable task sync with a free plan is a rare combination in search
+  results. Prepare the announcement (sign-ups opening) and a comparison for that
+  day. Write the collaboration guide only when collaboration ships.
 
 ### 3. Offline and platform intent
 
@@ -147,9 +165,13 @@ Each ends with the feature that makes the method easy, not a hard sell.
 
 ### 5. Switching guides (high intent, low competition)
 
-- **Move from Todoist to Ultra Tasks in five minutes** (API token importer;
-  what carries over, what does not, such as priorities and recurrence rules).
-- **Move from TickTick to Ultra Tasks** (CSV backup importer).
+- **Move from Todoist to Ultra Tasks** (published: built-in CSV importer in
+  Settings, no API token; what carries over and what does not, such as
+  recurrence rules, reminders and completed tasks). Do not promise a time like
+  "five minutes".
+- **Move from TickTick to Ultra Tasks** (built-in importer for the TickTick
+  backup CSV; the app's wiki page 2.22 lists what carries over, including due
+  times and next due dates of recurring tasks).
 - A short "what does not carry over" box on each, because honesty here earns
   links and saves support time.
 
@@ -173,6 +195,8 @@ Each ends with the feature that makes the method easy, not a hard sell.
 ## Suggested first six (about 90 days)
 
 1. **Move from Todoist to Ultra Tasks**: easiest win; features exist now.
+   Published 6 November 2026. Next: run a real Todoist export through the app
+   and tighten the date section.
 2. **End-to-end encryption in a task app: what it covers and what it does
    not**: owns the open lane and doubles as the privacy reference.
 3. **Ultra Tasks vs Super Productivity**: resolves the most obvious trust
@@ -186,10 +210,11 @@ Each ends with the feature that makes the method easy, not a hard sell.
 
 ## Publishing mechanics
 
-- Keep it a static site. Add `guides/<slug>/index.html` pages that share
-  `styles.css`, with the same header and footer. Extend `scripts/check.mjs` and
-  `scripts/build.mjs` to cover every page, and list each page in
-  `sitemap.xml`.
+- Keep it a static site. Guides are `guides/<slug>/index.html` pages that share
+  `styles.css`, with the same header and footer. `scripts/check.mjs` and
+  `scripts/build.mjs` already cover every page, and `check` fails when a page is
+  missing from `sitemap.xml`. When there are many guides, consider a small
+  build-time template so the header and footer live in one place.
 - Use `Article` structured data and a visible author and "last reviewed"
   date. Do not add `FAQPage`/`HowTo` markup unless the page really has that
   content; the redesign keeps visible FAQ text and no extra markup for it.

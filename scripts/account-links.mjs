@@ -1,6 +1,15 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
+// The official UltraSync account dashboard (published with Ultra Tasks 0.3.0).
+export const OFFICIAL_ACCOUNT_URL = "https://app.ultratasks.app";
+
+// PUBLIC_ACCOUNT_URL unset: link to the official dashboard. Set to an empty
+// string: hide the sign-in links. Set to an origin: link to that server.
+export function resolveAccountUrl(value) {
+  return value === undefined ? OFFICIAL_ACCOUNT_URL : value;
+}
+
 export function accountOrigin(value) {
   if (!value) return null;
   const url = new URL(value);

@@ -2,8 +2,14 @@ import { createServer } from "node:http";
 import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
+import { loadManifest, redirectRules } from "./release.mjs";
 
 const root = resolve(process.argv[2] || ".");
+// Like Cloudflare Pages' `_redirects`: /download/windows and friends redirect to
+// the files on the current release. The rules come from data/release.json.
+const redirects = new Map(
+  redirectRules(await loadManifest()).map((rule) => [rule.from, rule.to]),
+);
 const port = Number(process.env.PORT || 4321);
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -37,14 +43,28 @@ createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://localhost");
     const pathname = decodeURIComponent(url.pathname);
-    let file = resolve(root, `.${pathname === "/" ? "/index.html" : pathname}`);
-    if (!file.startsWith(root + sep)) {
+    if (redirects.has(pathname)) {
+      res.writeHead(302, { Location: redirects.get(pathname) }).end();
+      return;
+    }
+    let file = resolve(root, `.${pathname}`);
+    if (file !== root && !file.startsWith(root + sep)) {
       res.writeHead(403).end("Forbidden");
       return;
     }
     let info;
     try {
       info = await stat(file);
+      // Like Cloudflare Pages: a folder serves its index.html, and the folder
+      // address without a trailing slash redirects to the one with it.
+      if (info.isDirectory()) {
+        if (!pathname.endsWith("/")) {
+          res.writeHead(308, { Location: `${pathname}/${url.search}` }).end();
+          return;
+        }
+        file = resolve(file, "index.html");
+        info = await stat(file);
+      }
     } catch {
       if (!extname(file) && process.env.SPA === "1") {
         file = resolve(root, "index.html");

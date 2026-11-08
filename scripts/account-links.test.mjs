@@ -3,7 +3,19 @@ import assert from "node:assert/strict";
 import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, dirname, resolve } from "node:path";
-import { accountOrigin, configureAccountLinks } from "./account-links.mjs";
+import {
+  OFFICIAL_ACCOUNT_URL,
+  accountOrigin,
+  configureAccountLinks,
+  resolveAccountUrl,
+} from "./account-links.mjs";
+
+test("sign-in links the official dashboard unless the build says otherwise", () => {
+  assert.equal(resolveAccountUrl(undefined), OFFICIAL_ACCOUNT_URL);
+  assert.equal(resolveAccountUrl(""), "");
+  assert.equal(resolveAccountUrl("http://localhost:1900"), "http://localhost:1900");
+  assert.equal(accountOrigin(OFFICIAL_ACCOUNT_URL), "https://app.ultratasks.app");
+});
 
 test("account links accept a configured HTTPS origin and reject credentials or unsafe redirects", () => {
   assert.equal(accountOrigin("https://accounts.example.com"), "https://accounts.example.com");

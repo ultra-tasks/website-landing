@@ -48,7 +48,7 @@ if (modeSwitch && heroWindow) {
 }
 
 // Name the visitor's system on the download buttons. Without JavaScript, or on a
-// system we do not ship for, they keep the generic "Windows & macOS" label.
+// system we do not ship for, they keep the generic "desktop" label.
 function detectPlatform() {
   const ua = navigator.userAgent || "";
   const hint = navigator.userAgentData?.platform || "";
@@ -65,13 +65,14 @@ function detectPlatform() {
   return "other";
 }
 
-const platformNames = { windows: "Windows", macos: "macOS" };
+const platformNames = {
+  windows: "Windows",
+  macos: "macOS",
+  linux: "Linux",
+  android: "Android",
+};
 const platformNotes = {
-  android:
-    "Ultra Tasks is a desktop app for now. Open this page on your Windows or Mac computer to download it.",
-  ios: "Ultra Tasks is a desktop app for now. Open this page on your Windows or Mac computer to download it.",
-  linux:
-    "Ultra Tasks is available for Windows and macOS. A Linux version is planned.",
+  ios: "Ultra Tasks for iPhone and iPad is coming soon. You can download it for your computer or Android now.",
 };
 const platform = detectPlatform();
 document.documentElement.dataset.os = platform;
@@ -85,5 +86,35 @@ if (platformNote && platformNotes[platform]) {
   platformNote.textContent = platformNotes[platform];
 }
 
-document.querySelector("#copyright-year").textContent =
-  new Date().getFullYear();
+// Download page: mark the card that fits the visitor's system. Platforms that
+// are not published yet have no badge, so they are never marked.
+const yourCard = document.querySelector(`.dl-card[data-platform="${platform}"]`);
+const yourBadge = yourCard?.querySelector(".dl-badge");
+if (yourCard && yourBadge) {
+  yourCard.classList.add("is-yours");
+  yourBadge.hidden = false;
+}
+
+// Copy buttons (hidden without JavaScript, where the text can still be selected).
+for (const button of document.querySelectorAll("button[data-copy]")) {
+  const target = document.querySelector(button.dataset.copy);
+  if (!target || !navigator.clipboard) continue;
+  button.hidden = false;
+  button.addEventListener("click", async () => {
+    try {
+      // The "docker pull" prefix is a command, so copy the whole line.
+      await navigator.clipboard.writeText(target.textContent.trim());
+      button.textContent = "Copied";
+    } catch {
+      button.textContent = "Press Ctrl+C";
+      const selection = getSelection();
+      selection.selectAllChildren(target);
+    }
+    setTimeout(() => {
+      button.textContent = "Copy";
+    }, 2000);
+  });
+}
+
+const copyrightYear = document.querySelector("#copyright-year");
+if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();

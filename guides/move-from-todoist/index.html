@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Move from Todoist to Ultra Tasks: a step-by-step import guide</title>
+    <meta
+      name="description"
+      content="Export each Todoist project as a CSV and import it into Ultra Tasks from Settings. See what carries over, what doesn't, and how to check the result."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link
+      rel="canonical"
+      href="https://ultratasks.app/guides/move-from-todoist/"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Ultra Tasks" />
+    <meta property="og:title" content="Move from Todoist to Ultra Tasks" />
+    <meta
+      property="og:description"
+      content="A step-by-step guide to exporting your Todoist projects and importing them into Ultra Tasks, with an honest list of what carries over."
+    />
+    <meta
+      property="og:image"
+      content="https://ultratasks.app/assets/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The Ultra Tasks Today view showing a calm list of everyday tasks."
+    />
+    <meta
+      property="og:url"
+      content="https://ultratasks.app/guides/move-from-todoist/"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/assets/fonts/rubik-400.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/rubik-700.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <script src="/script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Article",
+            "headline": "Move from Todoist to Ultra Tasks",
+            "description": "How to export Todoist projects as CSV files and import them into Ultra Tasks, and what carries over.",
+            "datePublished": "2026-11-06",
+            "dateModified": "2026-11-06",
+            "inLanguage": "en",
+            "mainEntityOfPage": "https://ultratasks.app/guides/move-from-todoist/",
+            "image": "https://ultratasks.app/assets/og-image.png",
+            "author": { "@type": "Person", "name": "Adrian Chase" },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Ultra Tasks",
+              "url": "https://ultratasks.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Ultra Tasks",
+                "item": "https://ultratasks.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Guides",
+                "item": "https://ultratasks.app/guides/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Move from Todoist to Ultra Tasks"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Ultra Tasks home"
+          ><img src="/assets/logo.svg" width="32" height="32" alt="" /><span
+            >Ultra Tasks</span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-navigation"
+          hidden
+        >
+          Menu
+        </button>
+        <nav id="main-navigation" aria-label="Main navigation">
+          <a href="/#how">How it works</a>
+          <a href="/#privacy">Privacy</a>
+          <a href="/#compare">Compare</a>
+          <a href="/#faq">FAQ</a>
+          <a href="/guides/" aria-current="page">Guides</a>
+          <a
+            href="https://github.com/ultra-tasks/ultra-tasks"
+            class="nav-github"
+            >GitHub</a
+          >
+          <a href="https://app.ultratasks.app/account?view=login" data-account-link="login" hidden>Sign in</a>
+          <a class="button button-small" href="/download/">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <article class="guide">
+        <header class="guide-head narrow">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/guides/">Guides</a></li>
+              <li aria-current="page">Move from Todoist</li>
+            </ol>
+          </nav>
+          <h1>Move from Todoist<br /><em>to Ultra Tasks.</em></h1>
+          <p class="guide-lede">
+            Export each Todoist project as a CSV file, then import it from
+            Settings. Your tasks arrive as a new project, and nothing in
+            Todoist or in your existing Ultra Tasks data is touched.
+          </p>
+          <p class="guide-meta">
+            By Adrian Chase · Updated
+            <time datetime="2026-11-06">6 November 2026</time> · Checked against
+            Ultra Tasks 0.2.0
+          </p>
+        </header>
+
+        <div class="prose narrow">
+          <div class="callout">
+            <p><strong>In short</strong></p>
+            <ul>
+              <li>
+                It is a one-time import from a file, not a live sync with
+                Todoist.
+              </li>
+              <li>
+                The app reads the file on your computer. It needs no Todoist
+                login and no API token.
+              </li>
+              <li>
+                It only adds a project. To undo it, delete that project.
+              </li>
+              <li>
+                Dates, repeating tasks and completed tasks need a look
+                afterwards. The lists below say exactly what to check.
+              </li>
+            </ul>
+          </div>
+
+          <h2 id="before">Before you start</h2>
+          <ul>
+            <li>
+              Install
+              <a href="/download/">Ultra Tasks 0.2.0 or newer</a>. The
+              built-in file importers arrived in that release.
+            </li>
+            <li>
+              Have your Todoist projects open in the web or desktop app, where
+              Todoist’s help describes the export.
+            </li>
+            <li>
+              Decide on the project names you want. The name of each CSV file
+              becomes the name of the new project in Ultra Tasks.
+            </li>
+          </ul>
+
+          <h2 id="export">Step 1. Export a project from Todoist</h2>
+          <ol>
+            <li>Open the project in Todoist.</li>
+            <li>Select the three-dot menu at the top right.</li>
+            <li>
+              Choose <strong>Import &amp; export</strong>, then
+              <strong>Export to CSV</strong>.
+            </li>
+            <li>
+              Repeat for every project you want to move. Todoist exports one
+              project per file.
+            </li>
+          </ol>
+          <p>
+            Todoist leaves completed tasks out of CSV exports, so they will not
+            come across. Todoist’s own page,
+            <a
+              href="https://www.todoist.com/help/account-and-billing/security/import-or-export-a-project-as-a-csv-file-in-todoist-YC8YvN"
+              >Import or export a project as a CSV file</a
+            >, has the current menu wording. Rename each file now if you want a
+            different project name, for example <code>Groceries.csv</code>
+            becomes a project called Groceries.
+          </p>
+
+          <h2 id="import">Step 2. Import the file into Ultra Tasks</h2>
+          <ol>
+            <li>
+              Open <strong>Settings</strong>, then
+              <strong>Import &amp; export</strong>.
+            </li>
+            <li>
+              In <strong>Import from</strong>, choose
+              <strong>Todoist</strong>. The export steps appear below it.
+            </li>
+            <li>
+              Choose the CSV file. Ultra Tasks shows a preview with the project
+              and task counts. Nothing is written yet.
+            </li>
+            <li>
+              Check the counts, then select <strong>Import tasks</strong>.
+            </li>
+            <li>
+              Look at the new project before you import the next file. Import
+              one file at a time.
+            </li>
+          </ol>
+
+          <h2 id="check">Step 3. Check the result</h2>
+          <p>A two-minute look catches almost everything:</p>
+          <ul>
+            <li>
+              The task count matches the preview, and subtasks sit under the
+              right parents.
+            </li>
+            <li>
+              Your labels appear as tags, and priorities as <code>p1</code> to
+              <code>p3</code> tags.
+            </li>
+            <li>
+              Open a few tasks that had dates. If a date is missing from the
+              schedule, search the task’s notes for a line starting with
+              <code>DATE:</code>. That is where the importer keeps dates it
+              could not read exactly. Set them again with
+              <strong>Planned for</strong>.
+            </li>
+            <li>
+              Recreate any repeating tasks you rely on. See
+              <a
+                href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/2.06-Manage-Repeating-Tasks.md"
+                >how repeating tasks work</a
+              >.
+            </li>
+          </ul>
+
+          <h2 id="carries-over">What carries over</h2>
+          <div class="comparison-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">In Todoist</th>
+                  <th scope="col">In Ultra Tasks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Tasks and subtasks</th>
+                  <td>
+                    Tasks and subtasks. Anything nested deeper than two levels
+                    becomes a direct subtask of its top-level task.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Descriptions and comments</th>
+                  <td>Task notes.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sections</th>
+                  <td>
+                    The section name is kept in the notes of each task in it.
+                    Sections are not recreated.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Labels</th>
+                  <td>Tags, on top-level tasks.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Priorities</th>
+                  <td>
+                    <code>p1</code>, <code>p2</code> and <code>p3</code> tags on
+                    top-level tasks. Todoist’s p4, which means no priority,
+                    stays untagged.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Duration</th>
+                  <td>A time estimate, when the duration is in minutes.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Exact due dates</th>
+                  <td>
+                    A scheduled date, when the file holds a calendar date
+                    written as <code>YYYY-MM-DD</code>, such as
+                    <code>2026-12-15</code>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="needs-a-look">What does not carry over</h2>
+          <ul>
+            <li>
+              <strong>Completed tasks.</strong> Todoist does not include them
+              in project CSV files.
+            </li>
+            <li>
+              <strong>Repeating tasks and dates written in words</strong>, such
+              as “every Friday”. The importer does not guess. It keeps the
+              original text in the task’s notes after <code>DATE:</code>, and
+              you set the schedule again.
+            </li>
+            <li>
+              <strong>Time zones, deadlines and assignee names.</strong> They
+              are kept as text in the notes. Ultra Tasks does not recreate
+              deadlines or assignees from them.
+            </li>
+            <li>
+              <strong>Reminders and attached files.</strong> They are not
+              recreated.
+            </li>
+            <li>
+              <strong>Labels and priorities on subtasks.</strong> Only
+              top-level tasks get tags.
+            </li>
+          </ul>
+          <p>
+            Dates are the part to read carefully. Before importing, you can open
+            the CSV in a spreadsheet and look at the <code>DATE</code> column.
+            Values written as <code>YYYY-MM-DD</code> will be scheduled. Others
+            will land in the notes.
+          </p>
+
+          <h2 id="problems">If something goes wrong</h2>
+          <ul>
+            <li>
+              <strong>To undo an import,</strong> delete the project it created.
+            </li>
+            <li>
+              <strong>Importing the same file twice</strong> creates duplicates.
+              Delete the extra project.
+            </li>
+            <li>
+              <strong>If an import stops partway,</strong> check the project
+              named in the message and any projects already imported from that
+              file. Delete those copies before you try the file again.
+            </li>
+          </ul>
+
+          <h2 id="questions">Questions</h2>
+          <div class="faq-list">
+            <details>
+              <summary>Do I need a Todoist API token?</summary>
+              <p>
+                No. Ultra Tasks reads the CSV file you exported. It never signs
+                in to Todoist.
+              </p>
+            </details>
+            <details>
+              <summary>Will this change anything in my Todoist account?</summary>
+              <p>
+                No. The importer only reads the file. Keep your Todoist account
+                and the CSV files until you are happy with the result.
+              </p>
+            </details>
+            <details>
+              <summary>Will the two apps stay in sync?</summary>
+              <p>
+                No. The import is one-way and happens once. Changes you make in
+                Todoist afterwards do not appear in Ultra Tasks.
+              </p>
+            </details>
+            <details>
+              <summary>Can I import all my projects at once?</summary>
+              <p>
+                Not in one step. Todoist exports a project per file, and Ultra
+                Tasks imports one file at a time, so repeat steps 1 and 2 for
+                each project.
+              </p>
+            </details>
+            <details>
+              <summary>Is there an importer for TickTick too?</summary>
+              <p>
+                Yes. It is in the same place in Settings. Read the
+                <a
+                  href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/2.22-Import-from-TickTick.md"
+                  >TickTick import reference</a
+                >
+                for what it brings across.
+              </p>
+            </details>
+          </div>
+
+          <p class="guide-sources">
+            This guide follows the
+            <a
+              href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/2.20-Import-from-Todoist.md"
+              >Ultra Tasks import reference</a
+            >
+            and the importer in version 0.2.0. How your dates look depends on
+            how Todoist wrote your file, so trust the preview and the notes
+            check above over any general rule.
+          </p>
+
+          <div class="download-panel guide-cta">
+            <h2 id="try">Ready to try it?</h2>
+            <p>Free, open source, and no account needed.</p>
+            <div class="hero-actions">
+              <a class="button" href="/download/"
+                ><span>Download for <span data-os-name>desktop</span></span></a
+              >
+              <a class="button button-quiet" href="/">About Ultra Tasks</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <a class="brand" href="/" aria-label="Ultra Tasks home"
+              ><img src="/assets/logo.svg" width="28" height="28" alt="" /><span
+                >Ultra Tasks</span
+              ></a
+            >
+            <p>A little calm for your everyday.</p>
+          </div>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/#how">How it works</a>
+            <a href="/#privacy">Privacy</a>
+            <a href="/#compare">Compare</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/download/">Download</a>
+            <a href="/guides/">Guides</a>
+            <a href="https://github.com/ultra-tasks/ultra-tasks">GitHub</a>
+            <a href="https://github.com/ultra-tasks/ultra-tasks/issues"
+              >Say hello</a
+            >
+          </nav>
+        </div>
+        <p class="footer-note" id="site-analytics">
+          <strong>About this website.</strong> It uses
+          <a href="https://www.cloudflare.com/web-analytics/"
+            >Cloudflare Web Analytics</a
+          >
+          to count visits: your browser loads a small script from Cloudflare and
+          reports each page view. Cloudflare says it uses no cookies or
+          localStorage and does not fingerprint visitors for analytics. The
+          Ultra Tasks app itself has no analytics.
+        </p>
+        <div class="footer-bottom">
+          <p>
+            © <span id="copyright-year">2026</span> Ultra Tasks. Independently
+            maintained by Adrian Chase. Licensed under the
+            <a href="https://github.com/ultra-tasks/ultra-tasks/blob/main/LICENSE"
+              >GNU AGPL</a
+            >.
+          </p>
+          <p>
+            Built on
+            <a href="https://github.com/super-productivity/super-productivity"
+              >Super Productivity</a
+            >. Made possible by open source.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

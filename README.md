@@ -21,17 +21,26 @@ variable if needed. The preview binds only to loopback. Reload after edits.
 
 ```sh
 npm run check
+npm test
 npm run build
 npm run preview
 ```
 
-`check` validates JavaScript syntax, internal links, unique IDs, local assets,
-image attributes, the title and description length, the structured data, the
-sitemap, and the absence of remote scripts. `build` copies the public
-files into `dist/`. Deploy the contents of `dist/` to any static host. No server
-runtime, credentials, or build service is required in production. Canonical and
-social URLs currently use the planned `https://ultratasks.app` domain; update
-the metadata in `index.html` if the final domain differs.
+`check` validates JavaScript syntax and, for every page (home, download, 404 and
+each guide), internal links and anchors, unique IDs, local assets, image
+attributes, unique titles, title and description length, canonical URLs,
+structured data, the identical analytics footer note, and the absence of remote
+scripts. It also checks that `sitemap.xml` lists every indexable page and
+nothing else, that the download page matches `data/release.json`, that every
+`/download/...` link has a target, and that each navigation bar has the Sign in
+link and the Download button. `npm test` runs the unit tests for the release
+tooling and the sign-in links. `build` copies the public files into `dist/`,
+writes the `_redirects` file for the download addresses, and sets the sign-in
+links. Deploy the contents of `dist/` to any static host that understands
+Cloudflare-style `_redirects` (or recreate those redirects). No server runtime,
+credentials, or build service is required in production. Canonical and social
+URLs use the `https://ultratasks.app` domain; update the metadata in the pages
+if the final domain differs.
 
 ## Content and interaction
 
@@ -39,15 +48,17 @@ the metadata in `index.html` if the final domain differs.
   Light / Dark switch.
 - Four numbered steps (Capture, Plan, Focus, Organize), each with a real
   screenshot or snippet, then a plain grid of smaller details.
-- Privacy, local storage, sync on your own storage, and the GNU AGPL license,
-  with a "Coming soon" card for Ultra Tasks' own sync service (always-free plan,
-  open source and self-hostable, end-to-end encrypted, built for collaboration,
-  paid plans possible later). The card is HTML, not a screenshot, because the
-  service does not exist yet.
+- Privacy, local storage, sync, and the GNU AGPL license, with a "Beta" card for
+  UltraSync (end-to-end encrypted, open source and self-hostable, with a Sign in
+  link). The card is HTML, not a screenshot.
 - A sourced comparison with Todoist and TickTick.
-- Explicit platform status, so planned clients are not presented as downloads.
+- Explicit platform status, so unpublished clients (iOS, hosted web) say
+  "Coming soon" instead of looking like downloads.
+- A dedicated `/download/` page (see [Downloads and releases](#downloads-and-releases)).
 - A FAQ in native disclosures, download links, GitHub links, and upstream
   attribution.
+- A `/guides/` section for search: one folder per guide, starting with a
+  step-by-step guide to moving from Todoist (see [Guides](#guides)).
 - A keyboard-accessible mobile menu. Content, links and the FAQ remain usable
   without JavaScript.
 - Search basics: title and description, canonical URL, Open Graph and Twitter
@@ -100,26 +111,34 @@ and earlier MIT-licensed releases stay MIT-licensed. The page says this in its
 license FAQ and links to `LICENSING.md`, so keep that wording in step with the
 file when it changes. The page does not call the whole project "MIT" anywhere.
 
-**Ultra Tasks sync.** The "Coming soon" card, FAQ answers and comparison footnote
-describe a service that does not exist yet. The claims come from the maintainer,
-not from the repository, and were confirmed in November 2026: an always-free
-plan, open source and self-hostable, end-to-end encrypted, built for
-collaboration, and paid plans possible later once the service is robust enough.
-The page therefore never says "completely free" about the sync service, and it
-says plainly that paid plans may follow. This matches the "Ultra Tasks Cloud"
-managed-service subscriptions in `LICENSING.md`. The service is deliberately left
-unnamed for now, so the copy calls it "Ultra Tasks sync" as a description, not a
-product name. Update the card, the FAQ, the table and the meta description
-together when it launches, and remove "coming soon" only then.
+**UltraSync.** Release 0.3.0 (8 November 2026) shipped UltraSync, the private,
+end-to-end encrypted account sync with an account dashboard at
+`app.ultratasks.app/account` and a self-hostable server (the
+`ultra-tasks-server` repository). The copy follows the release notes: it is a
+beta, new sign-ups on the official service are closed, collaboration and the
+hosted web app come later, and an independent cryptographic review is pending.
+The always-free plan and the possibility of paid plans later come from the
+maintainer (confirmed November 2026) and are stated in the future tense, because
+there is no plan to sign up for yet. The page never says "completely free" about
+the service. **When sign-ups open or the review is done, update the sync card,
+the FAQ, the comparison footnote, the self-hosting section of the download page,
+and this paragraph together.** The page does not advertise SuperSync.
 
-The current app README lists Windows and macOS releases. Linux and mobile
-releases are not published, and there is no hosted Ultra Tasks web app linked
-here; the web client can be built from source. Update the platform section and
-download copy together when releases change.
+**Platforms and version.** The current release lives in `data/release.json`
+(see [Downloads and releases](#downloads-and-releases)): Windows (Setup and
+Portable, x64 and ARM64), macOS (Apple Silicon, Intel and Universal), Linux x64
+(AppImage, DEB, RPM) and Android (signed APKs, with and without Google Play
+services), plus `SHA256SUMS.txt`. Windows builds are unsigned, macOS builds are
+not notarized, and nothing is in an app store. iOS and a hosted web app are
+"Coming soon". When a release changes this, update together: the platform
+section of the home page, the FAQ, the meta description, `operatingSystem` in
+the structured data, the download page cards, the download button labels in
+`script.js`, and any guide that names a version. `softwareVersion` follows the
+manifest automatically.
 
-Sync available today (Nextcloud, WebDAV, Dropbox, local folder) offers optional
-client-side encryption. Keep that distinction, and "optional", when editing
-privacy copy. The page deliberately does not advertise SuperSync.
+Sync options other than UltraSync (WebDAV and OneDrive) are described only as
+"also available"; saved Dropbox, Nextcloud and local-file connections still work
+in the app as deprecated connections, but the page does not promote them.
 
 Competitor comparisons describe their published security information, rather
 than an independent audit. Review the primary sources when updating the table:
@@ -146,12 +165,11 @@ lots of white space (Ente). Decisions worth keeping:
   body, Bold for buttons and small headings. Rubik Bold has a very narrow space, so
   bold elements get a little extra `word-spacing` in `styles.css`. No stickers,
   sparkles or decorative illustrations.
-- The download buttons name the visitor's system ("Download for Windows" or
-  "Download for macOS"). Phones, tablets and Linux keep the generic label plus an
-  honest note, and so does anyone without JavaScript. Both buttons link to the
-  latest release page rather than a file, because asset names carry the version
-  (for example `Ultra-Tasks-0.1.0-Setup.exe`). Direct links would need a
-  version-free asset name in the release pipeline.
+- The download buttons name the visitor's system ("Download for Windows",
+  "macOS", "Linux" or "Android") and open the download page, where that
+  system's card is marked "For your device". iPhones, iPads and unrecognised
+  systems keep the generic "Download for desktop" label (iOS with an honest
+  note), and so does anyone without JavaScript.
 - Every visual is a real screenshot or a crop of one. The first step uses a
   small snippet floating over the list it belongs to; the last uses the task
   detail panel over a board.
@@ -163,6 +181,92 @@ lots of white space (Ente). Decisions worth keeping:
 
 Search optimisation notes and a plan for future articles are in
 [`docs/seo-article-plan.md`](docs/seo-article-plan.md).
+
+## Downloads and releases
+
+`/download/` lists every platform, the Docker image for self-hosting UltraSync,
+a snippet of the latest release notes and the SHA-256 checksums. File links go
+through stable addresses on this site, such as `/download/windows`,
+`/download/macos`, `/download/linux-appimage` and `/download/android`. Each one
+is a temporary redirect (Cloudflare Pages `_redirects`, generated at build time)
+to the matching file on the current GitHub release, which GitHub serves as an
+attachment, so the browser starts the download without opening a GitHub page.
+Two addresses deliberately do open GitHub pages: `/download/release-notes` and
+`/download/server-release-notes`. The pages never link to a GitHub release file
+directly, and `npm run check` enforces that.
+
+Everything that changes per release lives in **`data/release.json`**: tag,
+date, file sizes and SHA-256 digests, the "What's new" lines, and the server's
+pinned Docker image and digest. The blocks of `download/index.html` between
+`<!-- release:name -->` markers, and `softwareVersion` on the home page, are
+generated from it. Nothing is fetched in a visitor's browser.
+
+To publish a new release on the website:
+
+```sh
+npm run release:update    # reads the latest GitHub releases, rewrites the manifest and pages
+git diff                  # read the "What's new" lines; edit highlights in data/release.json
+npm run release:render    # after editing the manifest by hand
+npm run release:verify    # HEAD-checks every download and the Docker image (needs network)
+npm run check && npm test && npm run build
+```
+
+`release:update` takes the latest app release (`/releases/latest`) and the newest
+`server-v*` release of `ultra-tasks-server`, whose notes must contain the pinned
+`ghcr.io/ultra-tasks/ultra-tasks-server:sha-<commit>` tag and `Registry digest`
+line. Pass `--tag ultra-tasks-v0.3.0` or `--server-tag server-v0.1.0-beta.1` to
+choose a release, and set `GITHUB_TOKEN` if GitHub rate-limits you. It keeps
+hand-edited highlights while the release tag is unchanged. A new kind of release
+asset makes it stop until you list it in `scripts/release.mjs`, so no file
+appears on GitHub without a decision about the website.
+
+The static copy around the generated blocks (platform descriptions, install
+notes, the self-hosting text, "sign-ups are closed") is hand-written. Re-read it
+for each release: the Android build descriptions come from `android/app/build.gradle`
+(`play` uses Google Play services, `fdroid` does not), and the unsigned or
+not-notarized warnings come from the release notes.
+
+### Sign in link
+
+The header on every page has a **Sign in** link to UltraSync's account dashboard
+(`https://app.ultratasks.app/account?view=login`), and the home page's UltraSync
+card and the self-hosting section repeat it. The markup is
+`<a data-account-link="login" hidden>`; the build removes `hidden` and sets the
+address. Leave `PUBLIC_ACCOUNT_URL` unset to use the official dashboard, set it
+to an empty value to remove the links, or set it to another HTTPS origin for a
+self-hosted account server (see `.env.example` and
+`docs/account-integration.md`). There is deliberately no "Sign up" link while
+sign-ups on the official service are closed.
+
+## Guides
+
+Guides are plain static pages at `guides/<slug>/index.html`, served at
+`/guides/<slug>/`. The index is `guides/index.html`. To add one:
+
+1. Copy an existing guide folder. Keep the header, the footer and the
+   "About this website" note exactly as they are; `npm run check` fails if the
+   note differs from the home page.
+2. Use root-absolute links and assets (`/styles.css`, `/assets/...`, `/#faq`,
+   `/guides/other/` with a trailing slash). Relative links break in a folder.
+3. Give it its own title (70 characters at most), description (70 to 160), the
+   canonical and `og:url` for its own address, `Article` and `BreadcrumbList`
+   structured data, and a visible author and "Updated" date.
+4. Add it to `sitemap.xml` and to the list on `guides/index.html`.
+5. Run `npm run check && npm run build`.
+
+Cloudflare Pages answers `/guides` with a redirect to `/guides/`, and the local
+preview does the same.
+
+**Sourcing.** State which Ultra Tasks version a guide was checked against, link
+the app's own wiki page and the competitor's own help page, and say what does
+not carry over. The Todoist guide follows `docs/wiki/2.20-Import-from-Todoist.md`
+in the app repository and the importer's code and tests, checked November 2026.
+It was not run against a real Todoist export, and Todoist does not publish what
+its CSV `DATE` column looks like. The importer only schedules exact
+`YYYY-MM-DD` dates and keeps anything else in the task notes, so the guide
+describes that behaviour and tells readers to check their own file. Run one real
+export through the app before you promote the guide, and tighten the date
+section if the result differs.
 
 ## Cloudflare Pages deployment
 

@@ -7,8 +7,9 @@
     <title>Ultra Tasks: free, open-source to-do list, planner &amp; time tracker</title>
     <meta
       name="description"
-      content="A calm, free and open-source to-do list, planner and time tracker for Windows and macOS. Works offline, with end-to-end encrypted sync coming soon."
+      content="A calm, free and open-source to-do list, planner and time tracker for desktop and Android. Works offline, with end-to-end encrypted UltraSync in beta."
     />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://ultratasks.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ultra Tasks" />
@@ -62,19 +63,22 @@
             "url": "https://ultratasks.app/",
             "description": "A free, open-source to-do list, day planner and time tracker with offline-first storage and sync you control.",
             "applicationCategory": "ProductivityApplication",
-            "operatingSystem": "Windows, macOS",
-            "softwareVersion": "0.1.0",
+            "operatingSystem": "Windows, macOS, Linux, Android",
+            "softwareVersion": "0.3.0",
             "license": "https://spdx.org/licenses/AGPL-3.0-only.html",
-            "downloadUrl": "https://github.com/ultra-tasks/ultra-tasks/releases/latest",
+            "downloadUrl": "https://ultratasks.app/download/",
             "isBasedOn": "https://github.com/super-productivity/super-productivity",
             "image": "https://ultratasks.app/assets/og-image.png",
+            "screenshot": "https://ultratasks.app/assets/shot-today-light.webp",
+            "sameAs": ["https://github.com/ultra-tasks/ultra-tasks"],
             "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
             "author": { "@type": "Person", "name": "Adrian Chase" }
           },
           {
             "@type": "WebSite",
             "name": "Ultra Tasks",
-            "url": "https://ultratasks.app/"
+            "url": "https://ultratasks.app/",
+            "inLanguage": "en"
           }
         ]
       }
@@ -124,13 +128,14 @@
           <a href="#privacy">Privacy</a>
           <a href="#compare">Compare</a>
           <a href="#faq">FAQ</a>
+          <a href="/guides/">Guides</a>
           <a
             href="https://github.com/ultra-tasks/ultra-tasks"
             class="nav-github"
             >GitHub</a
           >
-          <a href="https://ultratasks.app/account" data-account-link="login" hidden>Sign in</a>
-          <a class="button button-small" href="#download">Download</a>
+          <a href="https://app.ultratasks.app/account?view=login" data-account-link="login" hidden>Sign in</a>
+          <a class="button button-small" href="/download/">Download</a>
         </nav>
       </div>
     </header>
@@ -146,10 +151,8 @@
             offline, syncs privately, and keeps your plans yours.
           </p>
           <div class="hero-actions">
-            <a
-              class="button"
-              href="https://github.com/ultra-tasks/ultra-tasks/releases/latest"
-              ><span>Download for <span data-os-name>Windows &amp; macOS</span></span></a
+            <a class="button" href="/download/"
+              ><span>Download for <span data-os-name>desktop</span></span></a
             >
             <a
               class="button button-quiet"
@@ -354,12 +357,33 @@
               <h3>Works with your tools</h3>
               <p>
                 Optional links to Google Calendar, Jira, GitHub, GitLab, Linear
-                and more.
+                and more, set up in one integrations workspace.
               </p>
             </li>
             <li>
               <h3>Offline, always</h3>
               <p>Everything runs on your device. No connection required.</p>
+            </li>
+            <li>
+              <h3>Private sync</h3>
+              <p>
+                UltraSync is end-to-end encrypted. Use the official service or
+                run your own server.
+              </p>
+            </li>
+            <li>
+              <h3>Backups you control</h3>
+              <p>
+                Export a password-encrypted backup, and browse the recovery
+                points saved on your device.
+              </p>
+            </li>
+            <li>
+              <h3>Desktop and Android</h3>
+              <p>
+                Windows, macOS, Linux and Android downloads, free and open
+                source.
+              </p>
             </li>
           </ul>
         </div>
@@ -383,16 +407,17 @@
                 </p>
               </div>
               <aside class="sync-card" aria-labelledby="sync-card-title">
-                <span class="pill">Coming soon</span>
-                <h3 id="sync-card-title">Ultra Tasks sync</h3>
+                <span class="pill">Beta</span>
+                <h3 id="sync-card-title">UltraSync</h3>
                 <p>
-                  Our own sync service. Keep your tasks in step across your
-                  devices, and work on them together with other people.
+                  Private sync across your devices. Your tasks are encrypted on
+                  your device before they leave it, so the server cannot read
+                  them.
                 </p>
                 <ul class="check-list">
                   <li>
                     <svg aria-hidden="true"><use href="#check" /></svg>
-                    Always-free plan
+                    End-to-end encrypted
                   </li>
                   <li>
                     <svg aria-hidden="true"><use href="#check" /></svg>
@@ -400,15 +425,19 @@
                   </li>
                   <li>
                     <svg aria-hidden="true"><use href="#check" /></svg>
-                    End-to-end encrypted
-                  </li>
-                  <li>
-                    <svg aria-hidden="true"><use href="#check" /></svg>
-                    Built for collaboration
+                    Two-factor sign-in, passkeys and recovery keys
                   </li>
                 </ul>
+                <div class="sync-actions">
+                  <a class="button button-small" href="https://app.ultratasks.app/account?view=login" data-account-link="login" hidden>Sign in</a>
+                  <a class="button button-small button-quiet" href="/download/#self-host">Self-host it</a>
+                </div>
                 <p class="fine-print">
-                  Paid plans may follow once the service is robust enough.
+                  In beta. New sign-ups on the official service are closed for
+                  now, collaboration comes later, and an independent
+                  cryptographic review is still pending. There will be an
+                  always-free plan, and paid plans may follow once the service
+                  is robust enough.
                 </p>
               </aside>
             </div>
@@ -423,9 +452,9 @@
               <li>
                 <h3>Sync on your terms</h3>
                 <p>
-                  Today you can sync through your own Nextcloud, WebDAV,
-                  Dropbox or a local folder, with optional encryption using a
-                  key that stays on your devices.
+                  Sync with UltraSync, on our service or your own server.
+                  WebDAV and OneDrive work too, and you can export a
+                  password-encrypted backup at any time.
                 </p>
               </li>
               <li>
@@ -448,10 +477,10 @@
               </li>
             </ul>
             <p class="privacy-foot">
-              Ultra Tasks sync is coming soon.
+              UltraSync is in beta.
               <a
                 href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/3.08-Sync-Integration-Comparison.md"
-                >See the sync options available today</a
+                >Compare the sync options</a
               >
               ·
               <a
@@ -504,9 +533,8 @@
                 <tr>
                   <th scope="row">Sync encryption</th>
                   <td class="our-column">
-                    Optional encryption today<br />End to end with Ultra Tasks
-                    sync <span class="nowrap">(coming soon)</span
-                    ><sup>1</sup>
+                    End to end with UltraSync
+                    <span class="nowrap">(beta)</span><sup>1</sup>
                   </td>
                   <td>In transit &amp; at rest<sup>2</sup></td>
                   <td>At rest<sup>3</sup></td>
@@ -520,8 +548,7 @@
                 <tr>
                   <th scope="row">Bring your own sync server</th>
                   <td class="our-column">
-                    Nextcloud, WebDAV or a local folder<br />Self-hostable
-                    Ultra Tasks sync <span class="nowrap">(coming soon)</span>
+                    Self-hostable UltraSync server<br />WebDAV
                   </td>
                   <td>Provider-hosted</td>
                   <td>Provider-hosted</td>
@@ -535,13 +562,12 @@
               Features and policies can change.
             </p>
             <p>
-              <sup>1</sup> Today, sync through Nextcloud, WebDAV, Dropbox or a
-              local folder can be encrypted with a key that stays on your
-              devices. Ultra Tasks sync, coming soon, will be end-to-end
-              encrypted.
+              <sup>1</sup> UltraSync encrypts your tasks on your device before
+              they are uploaded, so the server cannot read them. It is in beta
+              and an independent cryptographic review is still pending.
               <a
                 href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/3.08-Sync-Integration-Comparison.md"
-                >Sync options today</a
+                >Sync options</a
               >
               · <sup>2</sup>
               <a href="https://www.todoist.com/security">Todoist security</a> ·
@@ -560,11 +586,11 @@
         <div class="container">
           <div class="section-head center-head">
             <h2 id="platforms-heading">
-              Starting on your <em>desktop.</em>
+              On your desktop <em>and Android.</em>
             </h2>
             <p>
-              Windows and macOS downloads are available today. More platforms
-              are planned.
+              Windows, macOS, Linux and Android downloads are available today.
+              iOS and the hosted web app are coming soon.
             </p>
           </div>
           <ul class="platform-list">
@@ -574,17 +600,19 @@
             <li class="is-available">
               <strong>macOS</strong><span>Available</span>
             </li>
-            <li><strong>Linux</strong><span>Planned</span></li>
-            <li><strong>Web</strong><span>Build from source</span></li>
-            <li><strong>Android</strong><span>Planned</span></li>
-            <li><strong>iOS</strong><span>Planned</span></li>
+            <li class="is-available">
+              <strong>Linux</strong><span>Available</span>
+            </li>
+            <li class="is-available">
+              <strong>Android</strong><span>Available</span>
+            </li>
+            <li><strong>iOS</strong><span>Coming soon</span></li>
+            <li><strong>Web</strong><span>Coming soon</span></li>
           </ul>
           <p class="platform-note">
-            Ultra Tasks is in early development. Mobile, Linux and hosted web
-            releases are not available yet.
-            <a href="https://github.com/ultra-tasks/ultra-tasks/releases"
-              >Follow the releases</a
-            >
+            Ultra Tasks is in beta. Android is a direct download for now, not
+            an app store listing.
+            <a href="/download/">See every download</a>
           </p>
         </div>
       </section>
@@ -609,12 +637,12 @@
               <summary>Is Ultra Tasks free?</summary>
               <p>
                 Yes. The app is free and open source, licensed under the GNU
-                AGPL, and core tasks and time tracking need no account. Ultra
-                Tasks sync, coming soon, will be open source and self-hostable,
-                with an always-free plan. Paid plans may follow once the service
-                is robust enough. If you choose a third-party sync service or
-                host your own server, that service or infrastructure may have
-                its own costs.
+                AGPL, and core tasks and time tracking need no account.
+                UltraSync, the sync service, is in beta. Its server is open
+                source and self-hostable, and there will be an always-free
+                plan. Paid plans may follow once the service is robust enough.
+                If you host your own server or choose another sync service,
+                that may have its own costs.
               </p>
             </details>
             <details>
@@ -651,19 +679,33 @@
             <details>
               <summary>Will my synced tasks be end-to-end encrypted?</summary>
               <p>
-                Ultra Tasks sync, coming soon, will be end-to-end encrypted:
-                your tasks are encrypted on your device before they leave it, so
-                the service cannot read them. Today you can already sync through
-                Nextcloud, WebDAV, Dropbox or a local folder and encrypt the
-                synced files with a key that stays on your devices. Encryption is
-                optional there.
+                Yes, with UltraSync. Your tasks are encrypted on your device
+                before they leave it, so the server cannot read them. Keep your
+                recovery key and a backup somewhere safe. UltraSync is in beta
+                and has not had an independent cryptographic review yet. Other
+                options, such as WebDAV and OneDrive, work differently; the
+                <a
+                  href="https://github.com/ultra-tasks/ultra-tasks/blob/main/docs/wiki/3.08-Sync-Integration-Comparison.md"
+                  >sync comparison</a
+                >
+                explains each one.
               </p>
             </details>
             <details>
               <summary>Can I work on tasks with other people?</summary>
               <p>
-                Collaboration is planned as part of Ultra Tasks sync, which is
-                coming soon. It is not available yet.
+                Not yet. UltraSync is for private sync across your own
+                devices. Collaboration is planned for a later release.
+              </p>
+            </details>
+            <details>
+              <summary>Can I use UltraSync today?</summary>
+              <p>
+                UltraSync is in beta. New sign-ups on the official service are
+                closed while email delivery and the privacy notice are
+                finished, but you can run your own server now. The Docker image
+                and a setup guide are on the
+                <a href="/download/#self-host">download page</a>.
               </p>
             </details>
             <details>
@@ -671,15 +713,18 @@
               <p>
                 Yes. Settings has importers for both. They only add projects,
                 tags and tasks and never change or remove what you already have
-                in Ultra Tasks.
+                in Ultra Tasks. Start with the
+                <a href="/guides/move-from-todoist/"
+                  >step-by-step guide for moving from Todoist</a
+                >.
               </p>
             </details>
             <details>
               <summary>Is there a mobile app?</summary>
               <p>
-                Not yet. Windows and macOS are available today. Android, iOS
-                and Linux are planned, and the web version can be built from
-                source.
+                On Android, yes. Download the signed APK from the
+                <a href="/download/#android">download page</a>; it is not in an
+                app store yet. iOS and a hosted web app are coming soon.
               </p>
             </details>
             <details>
@@ -708,10 +753,8 @@
             </h2>
             <p>Free, open source, and ready when you are.</p>
             <div class="hero-actions">
-              <a
-                class="button"
-                href="https://github.com/ultra-tasks/ultra-tasks/releases/latest"
-                ><span>Download for <span data-os-name>Windows &amp; macOS</span></span></a
+              <a class="button" href="/download/"
+                ><span>Download for <span data-os-name>desktop</span></span></a
               >
               <a
                 class="button button-quiet"
@@ -720,11 +763,8 @@
               >
             </div>
             <p class="hero-note">
-              For Windows &amp; macOS · Early development ·
-              <a
-                href="https://github.com/ultra-tasks/ultra-tasks/releases/latest"
-                >Release notes</a
-              >
+              For Windows, macOS, Linux &amp; Android · Beta ·
+              <a href="/download/release-notes">Release notes</a>
             </p>
           </div>
         </div>
@@ -747,6 +787,8 @@
             <a href="#privacy">Privacy</a>
             <a href="#compare">Compare</a>
             <a href="#faq">FAQ</a>
+            <a href="/download/">Download</a>
+            <a href="/guides/">Guides</a>
             <a href="https://github.com/ultra-tasks/ultra-tasks">GitHub</a>
             <a href="https://github.com/ultra-tasks/ultra-tasks/issues"
               >Say hello</a
