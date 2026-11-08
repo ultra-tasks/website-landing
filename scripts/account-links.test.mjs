@@ -10,6 +10,29 @@ import {
   resolveAccountUrl,
 } from "./account-links.mjs";
 
+test("an invalid account address is ignored with a warning, never printed, and never fails the build", () => {
+  for (const bad of [
+    "https://app.ultratasks.app/account",
+    "https://app.ultratasks.app/account?view=login",
+    "app.ultratasks.app",
+    "https://user:secret@example.com",
+    "javascript:alert(1)",
+    "http://remote.example",
+  ]) {
+    const warnings = [];
+    assert.equal(resolveAccountUrl(bad, (message) => warnings.push(message)), OFFICIAL_ACCOUNT_URL);
+    assert.equal(warnings.length, 1);
+    assert.doesNotMatch(warnings[0], /secret|remote\.example|javascript/);
+  }
+  const quiet = [];
+  assert.equal(
+    resolveAccountUrl("  https://accounts.example.com \n", (message) => quiet.push(message)),
+    "https://accounts.example.com",
+  );
+  assert.equal(resolveAccountUrl("   ", (message) => quiet.push(message)), "");
+  assert.deepEqual(quiet, []);
+});
+
 test("sign-in links the official dashboard unless the build says otherwise", () => {
   assert.equal(resolveAccountUrl(undefined), OFFICIAL_ACCOUNT_URL);
   assert.equal(resolveAccountUrl(""), "");

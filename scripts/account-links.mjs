@@ -6,8 +6,23 @@ export const OFFICIAL_ACCOUNT_URL = "https://app.ultratasks.app";
 
 // PUBLIC_ACCOUNT_URL unset: link to the official dashboard. Set to an empty
 // string: hide the sign-in links. Set to an origin: link to that server.
-export function resolveAccountUrl(value) {
-  return value === undefined ? OFFICIAL_ACCOUNT_URL : value;
+// A value that is not a valid origin (a path, credentials, no scheme) must not
+// fail the whole deployment of the website, so it is ignored with a warning and
+// the official dashboard is used. The warning never repeats the value, because
+// build logs are readable and the value may contain credentials.
+export function resolveAccountUrl(value, warn = console.warn) {
+  if (value === undefined) return OFFICIAL_ACCOUNT_URL;
+  const trimmed = value.trim();
+  if (trimmed === "") return "";
+  try {
+    accountOrigin(trimmed);
+    return trimmed;
+  } catch {
+    warn(
+      "WARNING: PUBLIC_ACCOUNT_URL is not an HTTPS account-server origin (for example https://app.ultratasks.app), so it was ignored and the official dashboard is used. Fix or remove the variable.",
+    );
+    return OFFICIAL_ACCOUNT_URL;
+  }
 }
 
 export function accountOrigin(value) {
