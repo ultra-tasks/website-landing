@@ -268,6 +268,59 @@ describes that behaviour and tells readers to check their own file. Run one real
 export through the app before you promote the guide, and tighten the date
 section if the result differs.
 
+## Privacy policy
+
+`privacy-policy/index.html`, served at `/privacy-policy/`, is one policy for the website, the
+downloadable apps and UltraSync. Every page footer links to it, and the home
+page, the download page and the sitemap do too. `npm run check` fails if the page
+stops making its core statements (no analytics in the apps, Cloudflare Web
+Analytics as the website's only counter, "we cannot view your tasks, nor any data
+you choose to sync with us", what UltraSync stores, the update check, store data,
+deletion, contact) or if a footer loses the link.
+
+The maintainer's brief was: analytics on the website only; none in the apps
+beyond what the stores collect; no personal data except an email address and
+encrypted account data for people who sign up; and an explicit statement that the
+operator cannot see tasks or synced data. Facts the page adds to that brief, and
+where they come from (re-check them when these change):
+
+- **Desktop update check.** `src/app/core/update-check/update-check.service.ts` in
+  the app repository asks `api.github.com` for the latest release 30 seconds after
+  start and then daily, on by default (`misc.isCheckForUpdates`). It is skipped on
+  the Microsoft Store, Mac App Store and Snap builds and never runs on mobile or
+  the web.
+- **What UltraSync stores beyond email and ciphertext.** The server repository's
+  `docs/v1-sync-model.md` says end-to-end encryption does not hide the account
+  email, device and session metadata, record sizes, timing or routing metadata.
+  The migrations add a display name or username, a device name per session, a
+  terms-accepted timestamp, second-factor details and hashed recovery codes.
+  Account deletion (`apps/server/src/ultra-account/account-deletion.ts`) removes
+  the personal scope, sessions and factors in one transaction.
+- **IP addresses and logs.** The reference Docker Compose file rotates container
+  logs by size (10 MB, three files). The page does not promise a number of days.
+
+Decisions the maintainer made for the page (November 2026):
+
+- **Contact:** `hi@ultratasks.app` and GitHub issues, both listed. Requests are
+  answered only after the sender is verified (for an account, through the email
+  address on it).
+- **Providers:** the service runs on Oracle Cloud, and Purelymail delivers the
+  account emails. Update the page if either changes. `scripts/check.mjs` expects
+  both names.
+- **Lost credentials:** the page says plainly that the operator cannot recover
+  login credentials (password or recovery key). Account recovery needs the
+  recovery key, plus the second factor if one is enrolled.
+- **Backups:** retention is deliberately left unstated. The page says only that
+  backups can hold older copies until they rotate. Do not add a number unless the
+  maintainer sets one.
+
+Still open: whether to state a legal basis and jurisdiction. The account server
+serves its own operator `privacy.html` (see `deploy/legal/README.md` in the server
+repository) and requires acceptance at sign-up, so keep that document consistent
+with this page. Also re-read the page whenever sign-ups open, a store listing
+appears, iOS or the hosted web app ships, or an app starts contacting a new
+service.
+
 ## Cloudflare Pages deployment
 
 Cloudflare Pages project `ultra-tasks` is connected to

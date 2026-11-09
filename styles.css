@@ -988,6 +988,9 @@ sup {
 .callout ul {
   margin-top: 12px;
 }
+.callout p + p {
+  margin-top: 10px;
+}
 .prose .comparison-scroll {
   margin-top: 24px;
 }

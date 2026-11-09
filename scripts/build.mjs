@@ -14,6 +14,7 @@ for (const file of [
   "assets",
   "download",
   "guides",
+  "privacy-policy",
   "robots.txt",
   "sitemap.xml",
 ]) {

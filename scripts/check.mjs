@@ -5,6 +5,8 @@ import { OFFICIAL_ACCOUNT_URL } from "./account-links.mjs";
 import { REGIONS, applyRegions, loadManifest, redirectRules, regionNames } from "./release.mjs";
 
 const SITE = "https://ultratasks.app";
+// The one address the privacy policy gives for questions and data requests.
+const CONTACT_LINK = "mailto:hi@ultratasks.app";
 const isFile = async (file) => (await stat(file).catch(() => null))?.isFile() ?? false;
 
 // The site is the home page, the download page, the 404 page, and every guide
@@ -24,6 +26,7 @@ assert.deepEqual(
 const pages = [
   { file: "index.html", url: "/", indexable: true },
   { file: "download/index.html", url: "/download/", indexable: true },
+  { file: "privacy-policy/index.html", url: "/privacy-policy/", indexable: true },
   { file: "404.html", url: null, indexable: false },
   ...guideEntries
     .filter((entry) => entry.endsWith("index.html"))
@@ -91,7 +94,7 @@ for (const page of pages) {
     }
     if (/^[a-z]+:/i.test(url)) {
       assert.ok(
-        url.startsWith("https://"),
+        url.startsWith("https://") || url === CONTACT_LINK,
         `Use HTTPS for external links: ${url}${where}`,
       );
       continue;
@@ -248,6 +251,50 @@ for (const page of pages.filter((candidate) => candidate.html.includes('id="main
     `The Download button must open the download page (${page.file})`,
   );
 }
+
+// The privacy policy. It makes promises (no analytics in the apps, nothing
+// readable on the sync server, the website's one visit counter), so the page
+// must keep making them, and every footer with links must reach it.
+const privacyPage = pages.find((page) => page.file === "privacy-policy/index.html");
+const privacyText = privacyPage.html
+  .replace(/<script[\s\S]*?<\/script>/g, " ")
+  .replace(/<[^>]+>/g, " ")
+  .replace(/&amp;/g, "&")
+  .replace(/\s+/g, " ");
+for (const [claim, pattern] of [
+  ["the apps have no analytics", /apps have no analytics/i],
+  ["the website's only analytics is Cloudflare Web Analytics", /only analytics we (?:use|run)/i],
+  ["we cannot view tasks or synced data", /cannot view your tasks, nor any data you choose to sync with us/i],
+  ["we hold no keys", /do not have your keys/i],
+  ["the email address and encrypted data we store", /Your email address[\s\S]*Your encrypted account data/i],
+  ["what encryption does not hide", /What encryption does not hide/i],
+  ["the desktop update check", /update check[\s\S]*GitHub/i],
+  ["stores collect their own data", /store collects its own information/i],
+  ["account deletion", /delete your account yourself/i],
+  ["we cannot recover login credentials", /cannot recover your login credentials/i],
+  ["requests are verified before we act", /verified that the request really comes from you/i],
+  ["the hosting and email providers", /Oracle Cloud[\s\S]*Purelymail/],
+  ["how to get in touch", /\bContact\b[\s\S]*hi@ultratasks\.app[\s\S]*GitHub/],
+]) {
+  assert.match(privacyText, pattern, `The privacy policy must still state: ${claim}`);
+}
+for (const page of pages.filter((candidate) => candidate.html.includes('class="footer-links"'))) {
+  assert.match(
+    page.html,
+    /<a href="\/privacy-policy\/"[^>]*>Privacy policy<\/a>/,
+    `The footer needs a Privacy policy link (${page.file})`,
+  );
+}
+assert.match(
+  downloadPage.html,
+  /href="\/privacy-policy\/"/,
+  "The download page must link to the privacy policy",
+);
+assert.match(
+  privacyPage.html,
+  /<a href="mailto:hi@ultratasks\.app">hi@ultratasks\.app<\/a>/,
+  "The privacy policy must link its contact address",
+);
 
 // Files the home page script refers to.
 for (const [, url] of script.matchAll(/['"](assets\/[^'"]+)['"]/g)) {
