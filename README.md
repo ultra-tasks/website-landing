@@ -314,12 +314,18 @@ Decisions the maintainer made for the page (November 2026):
   backups can hold older copies until they rotate. Do not add a number unless the
   maintainer sets one.
 
-Still open: whether to state a legal basis and jurisdiction. The account server
-serves its own operator `privacy.html` (see `deploy/legal/README.md` in the server
-repository) and requires acceptance at sign-up, so keep that document consistent
-with this page. Also re-read the page whenever sign-ups open, a store listing
-appears, iOS or the hosted web app ships, or an app starts contacting a new
-service.
+**One policy, one place.** The account server requires acceptance at sign-up and
+links the consent box to its own `/privacy.html`. With `ULTRA_PRIVACY_URL` set
+(see `deploy/legal/README.md` in the `ultra-tasks-server` repository), that
+address redirects to the policy instead of serving a second copy. The official
+server's `deploy/.env` must contain
+`ULTRA_PRIVACY_URL=https://ultratasks.app/privacy-policy/` before sign-ups open;
+without it (and without a `privacy.html` file) the server refuses to open
+registration. If this page's address ever changes, change that value in step.
+
+Still open: whether to state a legal basis and jurisdiction. Re-read the page
+whenever sign-ups open, a store listing appears, iOS or the hosted web app ships,
+or an app starts contacting a new service.
 
 ## Cloudflare Pages deployment
 
