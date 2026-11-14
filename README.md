@@ -238,6 +238,30 @@ self-hosted account server (see `.env.example` and
 `docs/account-integration.md`). There is deliberately no "Sign up" link while
 sign-ups on the official service are closed.
 
+### Sign-in hand-off for the mobile apps (`/oauth-callback/`)
+
+Some providers only accept `https` redirect addresses (Trello OAuth 2.0 rejects
+custom schemes such as the apps' own `app.ultratasks:`). The Ultra Tasks mobile
+apps can register `https://ultratasks.app/oauth-callback/` with such a provider.
+After the user approves, the provider sends the browser to that address with
+`?code=…&state=…` (or `?error=…`). The page's inline script then:
+
+1. keeps only `code`, `state`, `error` and `error_description`,
+2. removes the query and fragment from the address bar (`history.replaceState`),
+3. opens `app.ultratasks:/plugin-oauth-callback?…`, the address the apps already
+   handle for plugin sign-ins, and shows an **Open Ultra Tasks** button in case
+   the browser blocks an automatic jump to another app.
+
+The page makes no network request, stores nothing, sends no referrer and is
+`noindex`. It is not in the sitemap, and it has no `script.js`. Cloudflare's
+analytics beacon still loads on it like on every page; Cloudflare states that it
+does not log query strings, and the script removes the query before the beacon
+runs. `npm run check` enforces the safeguards and `scripts/oauth-callback.test.mjs`
+runs the script against a fake browser. Desktop sign-ins do not use this page
+(they use a loopback address), and neither do the web build or providers that
+accept the custom scheme. Whether Android and iOS browsers open the app
+automatically has not been tested on a device.
+
 ## Guides
 
 Guides are plain static pages at `guides/<slug>/index.html`, served at

@@ -14,6 +14,7 @@ for (const file of [
   "assets",
   "download",
   "guides",
+  "oauth-callback",
   "privacy-policy",
   "robots.txt",
   "sitemap.xml",
@@ -46,8 +47,12 @@ for (const page of pages) {
       html = html.replaceAll(reference, `="${reference.slice(2, -1)}?v=${hash}"`);
     }
   }
-  // The 404 page has no script. Every other page needs both files.
-  const expected = page === "404.html" ? ["styles.css"] : ["styles.css", "script.js"];
+  // The 404 page and the sign-in hand-off page (oauth-callback/) have no
+  // script.js; the hand-off page carries its own inline script. Every other
+  // page needs both files.
+  const expected = ["404.html", "oauth-callback/index.html"].includes(page)
+    ? ["styles.css"]
+    : ["styles.css", "script.js"];
   for (const file of expected) {
     if (!html.includes(`${file}?v=${hashes[file]}`)) {
       throw new Error(`${page} does not reference ${file}, so it cannot be versioned.`);

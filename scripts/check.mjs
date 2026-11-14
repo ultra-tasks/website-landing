@@ -28,6 +28,8 @@ const pages = [
   { file: "download/index.html", url: "/download/", indexable: true },
   { file: "privacy-policy/index.html", url: "/privacy-policy/", indexable: true },
   { file: "404.html", url: null, indexable: false },
+  // The sign-in hand-off for the mobile apps. Never indexed or listed.
+  { file: "oauth-callback/index.html", url: null, indexable: false },
   ...guideEntries
     .filter((entry) => entry.endsWith("index.html"))
     .map((entry) => ({
@@ -294,6 +296,31 @@ assert.match(
   privacyPage.html,
   /<a href="mailto:hi@ultratasks\.app">hi@ultratasks\.app<\/a>/,
   "The privacy policy must link its contact address",
+);
+
+// The sign-in hand-off page receives a one-time authorization code in its
+// address. It must keep the code private: no referrer, an address bar that is
+// cleaned first, and no network requests of its own.
+const handoff = pages.find((page) => page.file === "oauth-callback/index.html");
+assert.match(
+  handoff.html,
+  /<meta name="referrer" content="no-referrer"/,
+  "The sign-in hand-off page must send no referrer",
+);
+assert.match(
+  handoff.html,
+  /history\.replaceState\(/,
+  "The sign-in hand-off page must remove the code from the address bar",
+);
+assert.doesNotMatch(
+  handoff.html,
+  /\b(?:fetch|XMLHttpRequest|sendBeacon)\s*\(/,
+  "The sign-in hand-off page must make no network requests",
+);
+assert.match(
+  handoff.html,
+  /app\.ultratasks:\/plugin-oauth-callback/,
+  "The sign-in hand-off page must open the app's plugin sign-in callback",
 );
 
 // Files the home page script refers to.

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Finish signing in · Ultra Tasks</title>
+    <meta
+      name="description"
+      content="Returns you to the Ultra Tasks mobile app after you sign in to a connected service such as Trello."
+    />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script>
+      // Sign-in hand-off for the Ultra Tasks mobile apps. A provider that only
+      // accepts https redirect addresses (Trello OAuth 2.0) sends the browser
+      // here with ?code=...&state=... and this page passes exactly those values
+      // to the app through its own link scheme. Nothing is stored or sent
+      // anywhere else, and the address bar is cleaned before anything else runs.
+      (function () {
+        var APP_CALLBACK = "app.ultratasks:/plugin-oauth-callback";
+        var FORWARDED = ["code", "state", "error", "error_description"];
+        var params = new URLSearchParams(window.location.search);
+        var forward = new URLSearchParams();
+        FORWARDED.forEach(function (key) {
+          var value = params.get(key);
+          if (value !== null) forward.set(key, value);
+        });
+        // The code is single use, but keep it out of history and screenshots.
+        if (window.location.search || window.location.hash) {
+          window.history.replaceState(null, "", window.location.pathname);
+        }
+        if (!forward.has("code") && !forward.has("error")) return;
+
+        var target = APP_CALLBACK + "?" + forward.toString();
+        window.location.replace(target);
+        document.addEventListener("DOMContentLoaded", function () {
+          document.getElementById("callback-default").hidden = true;
+          document.getElementById("callback-opening").hidden = false;
+          var button = document.getElementById("open-app");
+          button.hidden = false;
+          button.addEventListener("click", function () {
+            window.location.href = target;
+          });
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="Ultra Tasks home"
+          ><img src="/assets/logo.svg" width="32" height="32" alt="" /><span
+            >Ultra Tasks</span
+          ></a
+        >
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero not-found" aria-labelledby="callback-heading">
+        <div class="container">
+          <h1 id="callback-heading">Finish signing in</h1>
+          <p class="hero-lede" id="callback-default">
+            This page sends you back to the Ultra Tasks app after you sign in to
+            a connected service. If you reached it by mistake, open Ultra Tasks
+            and start from the Integrations page.
+          </p>
+          <p class="hero-lede" id="callback-opening" hidden>
+            Opening Ultra Tasks. If nothing happens, make sure the app is
+            installed on this device and tap the button.
+          </p>
+          <div class="hero-actions">
+            <button type="button" class="button" id="open-app" hidden>
+              Open Ultra Tasks
+            </button>
+            <a class="button button-quiet" href="/">Back to the website</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="footer-note" id="site-analytics">
+          <strong>About this website.</strong> It uses
+          <a href="https://www.cloudflare.com/web-analytics/"
+            >Cloudflare Web Analytics</a
+          >
+          to count visits: your browser loads a small script from Cloudflare and
+          reports each page view. Cloudflare says it uses no cookies or
+          localStorage and does not fingerprint visitors for analytics. The
+          Ultra Tasks app itself has no analytics.
+        </p>
+        <div class="footer-bottom footer-solo">
+          <p>© Ultra Tasks. Independently maintained by Adrian Chase.</p>
+          <p>
+            Built on
+            <a href="https://github.com/super-productivity/super-productivity"
+              >Super Productivity</a
+            >. Made possible by open source.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
