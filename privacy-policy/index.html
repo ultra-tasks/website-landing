@@ -59,7 +59,7 @@
             "name": "Ultra Tasks privacy policy",
             "url": "https://ultratasks.app/privacy-policy/",
             "inLanguage": "en",
-            "dateModified": "2026-11-08",
+            "dateModified": "2026-11-14",
             "isPartOf": { "@type": "WebSite", "url": "https://ultratasks.app/" },
             "about": {
               "@type": "SoftwareApplication",
@@ -139,7 +139,7 @@
           </p>
           <p class="guide-meta">
             By Adrian Chase · Updated
-            <time datetime="2026-11-08">8 November 2026</time>
+            <time datetime="2026-11-14">14 November 2026</time>
           </p>
         </header>
 
@@ -263,7 +263,8 @@
               <strong>Integrations and plugins you set up.</strong> They contact
               the service you point them at, such as an issue tracker or a
               calendar, using the details you enter. We are not a party to those
-              connections.
+              connections. Google Calendar has its own section,
+              <a href="#google">below</a>.
             </li>
             <li>
               <strong>App stores.</strong> If you install from a store, the
@@ -279,6 +280,97 @@
               build does not include them.
             </li>
           </ul>
+
+          <h2 id="google">Google Calendar and Google user data (optional)</h2>
+          <p>
+            You can connect your Google account so Ultra Tasks can show your
+            Google Calendar events next to your plan. This is optional, and the
+            apps work fully without it. You sign in on Google’s own page, and
+            Google asks you to approve each permission.
+          </p>
+
+          <h3 id="google-access">What the app asks Google for</h3>
+          <ul>
+            <li>
+              <strong>Calendar events</strong>
+              (<code>calendar.events</code>): to read events from the calendars
+              you choose and show them, and, only if you turn on a feature that
+              writes to a calendar, such as time blocks, to create or update
+              events on the calendar you pick.
+            </li>
+            <li>
+              <strong>Your list of calendars</strong>
+              (<code>calendar.calendarlist.readonly</code>): so you can choose
+              which calendars to show.
+            </li>
+          </ul>
+
+          <h3 id="google-use">Where Google data goes</h3>
+          <ul>
+            <li>
+              Your device talks to Google directly. Event data and the
+              permission Google gives the app are never sent to us, and we run
+              no server that receives them.
+            </li>
+            <li>
+              The sign-in token stays on your device. It is not part of the
+              data you sync.
+            </li>
+            <li>
+              If you add an event as a task, it becomes an ordinary task. Like
+              any task, it is stored on your device and goes wherever you choose
+              to sync your tasks. With UltraSync that is encrypted on your
+              device first, as described <a href="#ultrasync">below</a>.
+            </li>
+          </ul>
+
+          <h3 id="google-limited-use">Limited use of Google user data</h3>
+          <p>
+            Ultra Tasks’ use and transfer to any other app of information
+            received from Google APIs will adhere to the
+            <a
+              href="https://developers.google.com/terms/api-services-user-data-policy"
+              >Google API Services User Data Policy</a
+            >, including its Limited Use requirements. In plain terms:
+          </p>
+          <ul>
+            <li>
+              We use Google user data only to provide the calendar features you
+              see in the app, and we do not use it for anything else.
+            </li>
+            <li>
+              We do not sell it, and we do not use or transfer it for
+              advertising, including personalized, retargeted or
+              interest-based advertising.
+            </li>
+            <li>
+              We do not use it to develop, improve or train generalized
+              artificial intelligence or machine learning models.
+            </li>
+            <li>
+              We do not transfer it to others, except as you direct by adding
+              events to tasks you sync yourself, as needed to comply with the
+              law, or as part of a merger or sale of the app.
+            </li>
+            <li>
+              Nobody on our side reads it. It never reaches us, so there is
+              nothing for a person to read.
+            </li>
+          </ul>
+
+          <h3 id="google-revoke">Disconnecting and deleting</h3>
+          <p>
+            In the app, open Integrations, edit your Google Calendar
+            connection and choose Disconnect, or delete the connection. Either
+            removes the sign-in token from your device. That does not tell
+            Google, so to also withdraw the app’s access, remove it on your
+            <a href="https://myaccount.google.com/permissions"
+              >Google Account permissions</a
+            >
+            page. Tasks you created from events stay until you delete them.
+            Events the app wrote to your calendar stay in Google Calendar until
+            you delete them there.
+          </p>
 
           <h2 id="ultrasync">UltraSync accounts (optional)</h2>
           <p>
