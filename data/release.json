@@ -93,24 +93,24 @@
     ]
   },
   "server": {
-    "tag": "server-v0.1.0-beta.2",
-    "publishedAt": "2026-11-12T20:21:44Z",
-    "url": "https://github.com/ultra-tasks/ultra-tasks-server/releases/tag/server-v0.1.0-beta.2",
+    "tag": "server-v0.1.0-beta.3",
+    "publishedAt": "2026-11-17T05:29:08Z",
+    "url": "https://github.com/ultra-tasks/ultra-tasks-server/releases/tag/server-v0.1.0-beta.3",
     "assets": [
       {
-        "name": "ultra-tasks-server-compose-e7f087b1a26169b71e88ed629a774d8a3e02a8e1.tar.gz",
-        "size": 40419,
-        "sha256": "9daa62cf0f272d3324219a7c21a2db07818f188d6a387a94b9bd7a5e5d0970c3"
+        "name": "ultra-tasks-server-compose-aabcb2b2ad702ca54e8d6ee36634802040a897f1.tar.gz",
+        "size": 45250,
+        "sha256": "b8a1e06ffdf7614e6e2ee9c3cbce75328f7dd7a8dcf6d7afc789874e4eeaadb9"
       },
       {
-        "name": "ultra-tasks-server-compose-e7f087b1a26169b71e88ed629a774d8a3e02a8e1.tar.gz.sha256",
-        "size": 141,
-        "sha256": "b5a4eeda0de92b66b58621ec01053883e2ec2a47b95efb94ae40dfd78cfee051"
+        "name": "ultra-tasks-server-compose-aabcb2b2ad702ca54e8d6ee36634802040a897f1.tar.gz.sha256",
+        "size": 142,
+        "sha256": "fbd3d18d13ab39e8a2df89f4ea85bfc456899422861dc1f3aad6a0f0df6039a7"
       }
     ],
-    "version": "0.1.0-beta.2",
+    "version": "0.1.0-beta.3",
     "prerelease": true,
-    "image": "ghcr.io/ultra-tasks/ultra-tasks-server:sha-e7f087b1a26169b71e88ed629a774d8a3e02a8e1",
-    "imageDigest": "sha256:c48cd8241a5cbc974dd9d7187f6bdb0b93ddd7a9ef84fdf4bb2e7d8cc1584a94"
+    "image": "ghcr.io/ultra-tasks/ultra-tasks-server:sha-aabcb2b2ad702ca54e8d6ee36634802040a897f1",
+    "imageDigest": "sha256:ce3917e7cb1e4e59c1e9c68ccec15b42ab1781999b1fc984b4e46002b17ca11d"
   }
 }

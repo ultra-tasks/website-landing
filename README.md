@@ -123,6 +123,12 @@ later, and an independent cryptographic review is pending. The hosted web app is
 live (15 November 2026) as a local-only build: no account, no sync, tasks kept in
 the browser. Browser sync is planned for a later release, so the copy must not
 promise it.
+Server 0.1.0-beta.3 and the hosted 0.4.0-beta.1 web bundle are live
+(17 November 2026). Optional public calendar feeds are enabled on the official
+server: consented event exports are readable by the server and anyone with the
+secret link, unlike encrypted task sync. The privacy policy explains the
+default busy titles, optional task titles, rotation, revocation and backup
+retention; notes are excluded and future recurring projections are deferred.
 The always-free plan and the possibility of paid plans later come from the
 maintainer (confirmed November 2026) and are stated in the future tense, because
 there is no plan to sign up for yet. The page never says "completely free" about
@@ -307,15 +313,17 @@ section if the result differs.
 downloadable apps and UltraSync. Every page footer links to it, and the home
 page, the download page and the sitemap do too. `npm run check` fails if the page
 stops making its core statements (no analytics in the apps, Cloudflare Web
-Analytics as the website's only counter, "we cannot view your tasks, nor any data
-you choose to sync with us", what UltraSync stores, the update check, store data,
-deletion, contact) or if a footer loses the link.
+Analytics as the website's only counter, encrypted sync confidentiality and the
+readable public calendar export exception, what UltraSync stores, the update
+check, store data, deletion, contact) or if a footer loses the link.
 
 The maintainer's brief was: analytics on the website only; none in the apps
 beyond what the stores collect; no personal data except an email address and
 encrypted account data for people who sign up; and an explicit statement that the
-operator cannot see tasks or synced data. Facts the page adds to that brief, and
-where they come from (re-check them when these change):
+operator cannot decrypt task sync data. Public calendar exports were separately
+authorized for the 0.4.0 beta and require an explicit privacy exception.
+Facts the page adds to that brief, and where they come from (re-check them when
+these change):
 
 - **Desktop update check.** `src/app/core/update-check/update-check.service.ts` in
   the app repository asks `api.github.com` for the latest release 30 seconds after

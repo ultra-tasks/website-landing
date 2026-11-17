@@ -59,7 +59,7 @@
             "name": "Ultra Tasks privacy policy",
             "url": "https://ultratasks.app/privacy-policy/",
             "inLanguage": "en",
-            "dateModified": "2026-11-15",
+            "dateModified": "2026-11-17",
             "isPartOf": { "@type": "WebSite", "url": "https://ultratasks.app/" },
             "about": {
               "@type": "SoftwareApplication",
@@ -140,7 +140,7 @@
           </p>
           <p class="guide-meta">
             By Adrian Chase · Updated
-            <time datetime="2026-11-15">15 November 2026</time>
+            <time datetime="2026-11-17">17 November 2026</time>
           </p>
         </header>
 
@@ -158,17 +158,23 @@
               </li>
               <li>
                 If you choose to create an UltraSync account, we store your
-                email address and your encrypted account data. Nothing else
-                personal.
+                email address, encrypted account data and the account and
+                security details listed below. Optional public calendar feeds
+                are a separate, readable export.
               </li>
               <li>
                 <strong
-                  >We cannot view your tasks, or any data you choose to sync
-                  with us.</strong
+                  >We cannot read your encrypted task sync data.</strong
                 >
                 It is encrypted on your device before it leaves, and we never
                 hold the keys. That also means we cannot recover your login
                 credentials, so keep your recovery key safe.
+              </li>
+              <li>
+                If you publish a calendar feed, its event data is readable by
+                the server and anyone with its secret link. This is optional
+                and requires your consent; see
+                <a href="#calendar-feeds">Public calendar feeds</a>.
               </li>
               <li>
                 App stores, GitHub and the services you connect yourself have
@@ -404,6 +410,11 @@
               that we cannot read.
             </li>
             <li>
+              <strong>Public calendar feed exports, if you enable them</strong>:
+              readable event data and the details needed to serve and revoke
+              each feed, as explained below.
+            </li>
+            <li>
               <strong>Sign-in and security details</strong>: a cryptographic
               record that lets the server check your password without ever
               receiving it, the details needed to check your second factor or
@@ -429,18 +440,18 @@
           <div class="callout">
             <p>
               <strong
-                >We cannot view your tasks, nor any data you choose to sync with
-                us.</strong
+                >We cannot read your encrypted task sync data.</strong
               >
             </p>
             <p>
-              Everything you sync, including tasks, projects, notes, tags and
+              Your task sync data, including tasks, projects, notes, tags and
               settings, is encrypted on your device before it is sent, with keys
-              that are created and kept on your devices. The server only ever
-              receives encrypted data. We do not have your keys, we keep no copy
-              of them, and no support tool, backup or request could open your
-              data for us. Your password and your recovery key are never sent to
-              us in readable form.
+              that are created and kept on your devices. We do not have those
+              keys, and no support tool or backup lets us decrypt that data.
+              If you separately publish a public calendar feed, the event export
+              is readable as described below; it does not give the server your
+              encryption keys. Your password and your recovery key are never
+              sent to us in readable form.
             </p>
           </div>
           <p>
@@ -480,14 +491,44 @@
             </li>
           </ul>
 
+          <h3 id="calendar-feeds">Public calendar feeds</h3>
+          <p>
+            Publishing a calendar feed is optional and requires your consent.
+            The app sends a readable iCalendar export to the server so calendar
+            apps can subscribe without signing in. This export is outside the
+            end-to-end encrypted task sync. By default, events use a generic
+            busy title. You can choose to include task titles; task notes are
+            not included. The 0.4.0 beta exports existing task instances, without
+            projecting future recurring occurrences.
+          </p>
+          <p>
+            Anyone with the secret feed link can read the export, including a
+            calendar provider you give it to. Treat the link as a password.
+            Rotating it disables the previous link; revoking or deleting the
+            feed stops future requests. Calendar apps and providers may retain
+            copies they already downloaded, so these actions cannot erase
+            those copies. Their own privacy policies apply.
+          </p>
+          <p>
+            The official service uses HTTPS, excludes feed URL paths from
+            access and error logs, and prevents shared caching of feed
+            responses. The server operator can read the exported events, and
+            disaster-recovery backups can retain them until the backup rotation
+            removes them. Publishing a feed does not make the rest of your
+            encrypted task data readable.
+          </p>
+
           <h3 id="use">How we use it</h3>
           <p>
             Only to run your account: to let you sign in, to verify your email
             address, to keep your encrypted data available on your devices, to
             send you verification, recovery and security messages, to protect the
-            service from abuse, and to tell you about important changes to it.
+            service from abuse, to serve calendar feeds you publish, and to
+            tell you about important changes to it.
             We do not sell or rent your email address, we do not use it for
-            advertising, and we do not analyse your data. We cannot read it.
+            advertising, and we do not analyse your task data. We cannot read
+            your encrypted sync data; published calendar exports are readable
+            as explained above.
           </p>
 
           <h3 id="processors">Who else handles it</h3>
@@ -497,8 +538,9 @@
             account emails we send you, such as verification, recovery and
             security messages, so it handles your email address and the
             content of those messages. Each handles that data only to provide
-            its service to us. We share nothing else with anyone unless the law
-            requires it.
+            its service to us. A calendar feed you publish is also available to
+            anyone with its link. Otherwise, we share nothing else with anyone
+            unless the law requires it.
           </p>
 
           <h3 id="deleting">Keeping and deleting</h3>
@@ -510,13 +552,14 @@
             <li>
               You can delete your account yourself from the account dashboard.
               That removes your account record, device sessions, second-factor
-              details and encrypted data from the live service right away.
+              details, encrypted data and public calendar feeds from the live
+              service right away.
             </li>
             <li>
               Backups kept for disaster recovery can hold older copies until
               they are replaced in the normal rotation. They contain the same
-              kinds of data as above, and the encrypted part stays unreadable to
-              us.
+              kinds of data as above. Encrypted task sync data stays unreadable
+              to us; published calendar exports remain readable in backups.
             </li>
           </ul>
 

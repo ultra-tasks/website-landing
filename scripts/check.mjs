@@ -269,9 +269,9 @@ for (const page of pages.filter((candidate) => candidate.html.includes('id="main
   );
 }
 
-// The privacy policy. It makes promises (no analytics in the apps, nothing
-// readable on the sync server, the website's one visit counter), so the page
-// must keep making them, and every footer with links must reach it.
+// The privacy policy preserves encrypted sync confidentiality, discloses
+// readable public calendar exports and the website's visit counter, and rules
+// out app analytics. Every footer with links must reach it.
 const privacyPage = pages.find((page) => page.file === "privacy-policy/index.html");
 const privacyText = privacyPage.html
   .replace(/<script[\s\S]*?<\/script>/g, " ")
@@ -281,8 +281,13 @@ const privacyText = privacyPage.html
 for (const [claim, pattern] of [
   ["the apps have no analytics", /apps have no analytics/i],
   ["the website's only analytics is Cloudflare Web Analytics", /only analytics we (?:use|run)/i],
-  ["we cannot view tasks or synced data", /cannot view your tasks, nor any data you choose to sync with us/i],
-  ["we hold no keys", /do not have your keys/i],
+  ["we cannot read encrypted task sync data", /cannot read your encrypted task sync data/i],
+  ["we hold no encryption keys", /do not have those keys/i],
+  ["public calendar exports are readable", /Public calendar feeds[\s\S]*outside the end-to-end encrypted task sync/i],
+  ["feed links grant access", /Anyone with the secret feed link can read the export/i],
+  ["feed rotation and revocation", /Rotating it disables the previous link; revoking or deleting the feed stops future requests/i],
+  ["downloaded calendar copies can remain", /Calendar apps and providers may retain copies/i],
+  ["calendar exports remain readable in backups", /published calendar exports remain readable in backups/i],
   ["the email address and encrypted data we store", /Your email address[\s\S]*Your encrypted account data/i],
   ["what encryption does not hide", /What encryption does not hide/i],
   ["the desktop update check", /update check[\s\S]*GitHub/i],
