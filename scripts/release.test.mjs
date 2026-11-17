@@ -91,6 +91,20 @@ test("a new kind of release asset stops the update until the website lists it", 
   assert.throws(() => validateManifest(extra), /does not list yet: Ultra-Tasks-9.9.9-mystery\.bin/);
 });
 
+test("a beta release lists its optional standalone web bundle and checksum", () => {
+  const manifest = sample();
+  manifest.app.tag = "ultra-tasks-v0.4.0-beta.1";
+  manifest.app.version = "0.4.0-beta.1";
+  manifest.app.url = `https://github.com/ultra-tasks/ultra-tasks/releases/tag/${manifest.app.tag}`;
+  manifest.app.assets.push(asset("ultra-tasks-web-0.4.0-beta.1.tar.gz"), asset("ultra-tasks-web-0.4.0-beta.1.tar.gz.sha256"));
+  validateManifest(manifest);
+  const rules = redirectRules(manifest);
+  assert.equal(rules.find((rule) => rule.id === "web-bundle").from, "/download/web-bundle");
+  assert.match(rules.find((rule) => rule.id === "web-bundle-checksum").to, /\.tar\.gz\.sha256$/);
+  manifest.app.assets.push(asset("ultra-tasks-web-duplicate.tar.gz"));
+  assert.throws(() => validateManifest(manifest), /exactly one asset for "web-bundle"/);
+});
+
 test("a missing download, a bad checksum or an unpinned image is rejected", () => {
   const missing = sample();
   missing.app.assets = missing.app.assets.filter((item) => !item.name.endsWith("Setup.exe"));

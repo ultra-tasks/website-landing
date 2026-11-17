@@ -36,6 +36,8 @@ export const APP_FILES = [
   { id: "linux-rpm", platform: "linux", pattern: /\.rpm$/, label: "Fedora, openSUSE", kind: ".rpm" },
   { id: "android", platform: "android", pattern: /-Android\.apk$/, primary: true, button: "Download APK", label: "Standard", kind: ".apk" },
   { id: "android-fdroid", platform: "android", pattern: /-Android-FDroid\.apk$/, label: "Without Google Play services", kind: ".apk" },
+  { id: "web-bundle", platform: "web", pattern: /^ultra-tasks-web-.*\.tar\.gz$/, optional: true, primary: true, button: "Download web bundle", label: "Self-hosted web bundle", kind: ".tar.gz" },
+  { id: "web-bundle-checksum", platform: "web", pattern: /^ultra-tasks-web-.*\.tar\.gz\.sha256$/, optional: true, label: "Web bundle checksum", kind: ".sha256" },
   { id: "checksums", platform: null, pattern: /^SHA256SUMS\.txt$/, label: "SHA256SUMS.txt", kind: ".txt" },
 ];
 export const SERVER_FILES = [
@@ -54,6 +56,7 @@ export const REGIONS = [
   "files-macos",
   "files-linux",
   "files-android",
+  "files-web",
   "server",
   "checksums",
 ];
@@ -71,6 +74,7 @@ function matchFiles(release, definitions, label) {
   const claimed = new Set();
   const files = definitions.map((definition) => {
     const matches = release.assets.filter((asset) => definition.pattern.test(asset.name));
+    if (definition.optional && matches.length === 0) return null;
     if (matches.length !== 1) {
       throw new Error(
         `${label}: expected exactly one asset for "${definition.id}", found ${matches.length}`,
@@ -78,7 +82,7 @@ function matchFiles(release, definitions, label) {
     }
     claimed.add(matches[0].name);
     return { ...definition, asset: matches[0] };
-  });
+  }).filter(Boolean);
   // Two definitions must never claim one file, and no file may go unclaimed.
   const names = files.map((file) => file.asset.name);
   if (new Set(names).size !== names.length) {
@@ -143,7 +147,7 @@ export function validateManifest(manifest) {
   };
   const { app, server } = manifest ?? {};
   if (!app || !server) fail('needs "app" and "server"');
-  if (!/^ultra-tasks-v\d+\.\d+\.\d+$/.test(app.tag ?? "")) fail(`unexpected app tag "${app.tag}"`);
+  if (!/^ultra-tasks-v\d+\.\d+\.\d+(?:-[0-9A-Za-z]+(?:\.[0-9A-Za-z]+)*)?$/.test(app.tag ?? "")) fail(`unexpected app tag "${app.tag}"`);
   if (app.version !== app.tag.replace("ultra-tasks-v", "")) fail("app.version must match app.tag");
   if (app.url !== `https://github.com/${APP_REPO}/releases/tag/${app.tag}`) fail("app.url must be the release page");
   if (!/^server-v\d/.test(server.tag ?? "")) fail(`unexpected server tag "${server.tag}"`);
@@ -224,6 +228,7 @@ const sizeOf = (file) => formatSize(file.asset.size);
 function renderFiles(manifest, platform) {
   const files = appFiles(manifest).filter((file) => file.platform === platform);
   const primary = files.find((file) => file.primary);
+  if (!primary) return "";
   const others = files.filter((file) => file !== primary);
   const lines = [
     `<a class="button" href="${primary.path}"><span>${escapeHtml(primary.button)}</span><span class="dl-size">${sizeOf(primary)}</span></a>`,
@@ -249,6 +254,7 @@ const RENDERERS = {
   "files-macos": (manifest) => renderFiles(manifest, "macos"),
   "files-linux": (manifest) => renderFiles(manifest, "linux"),
   "files-android": (manifest) => renderFiles(manifest, "android"),
+  "files-web": (manifest) => renderFiles(manifest, "web"),
   server: (manifest) => {
     const [bundle, checksum] = serverFiles(manifest);
     const { server } = manifest;

@@ -72,7 +72,7 @@ const platformNames = {
   android: "Android",
 };
 const platformNotes = {
-  ios: "Ultra Tasks for iPhone and iPad is coming soon. You can download it for your computer or Android now.",
+  ios: "The iPhone and iPad TestFlight beta is awaiting Apple’s Beta App Review. You can try the web app in your browser now, or download it for your computer or Android.",
 };
 const platform = detectPlatform();
 document.documentElement.dataset.os = platform;

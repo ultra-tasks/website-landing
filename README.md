@@ -52,8 +52,11 @@ if the final domain differs.
   UltraSync (end-to-end encrypted, open source and self-hostable, with a Sign in
   link). The card is HTML, not a screenshot.
 - A sourced comparison with Todoist and TickTick.
-- Explicit platform status, so unpublished clients (iOS, hosted web) say
-  "Coming soon" instead of looking like downloads.
+- A "Try it right now" section and hero button that open the hosted web app at
+  `https://app.ultratasks.app/` (no account, no install). The copy always says
+  that the web version keeps tasks in the browser only and does not sync yet.
+- Explicit platform status, including the iOS beta's pending Apple review,
+  so unavailable clients do not look like installable downloads.
 - A dedicated `/download/` page (see [Downloads and releases](#downloads-and-releases)).
 - A FAQ in native disclosures, download links, GitHub links, and upstream
   attribution.
@@ -115,8 +118,11 @@ file when it changes. The page does not call the whole project "MIT" anywhere.
 end-to-end encrypted account sync with an account dashboard at
 `app.ultratasks.app/account` and a self-hostable server (the
 `ultra-tasks-server` repository). The copy follows the release notes: it is a
-beta, new sign-ups on the official service are closed, collaboration and the
-hosted web app come later, and an independent cryptographic review is pending.
+beta, new sign-ups on the official service are closed, collaboration comes
+later, and an independent cryptographic review is pending. The hosted web app is
+live (15 November 2026) as a local-only build: no account, no sync, tasks kept in
+the browser. Browser sync is planned for a later release, so the copy must not
+promise it.
 The always-free plan and the possibility of paid plans later come from the
 maintainer (confirmed November 2026) and are stated in the future tense, because
 there is no plan to sign up for yet. The page never says "completely free" about
@@ -128,9 +134,12 @@ and this paragraph together.** The page does not advertise SuperSync.
 (see [Downloads and releases](#downloads-and-releases)): Windows (Setup and
 Portable, x64 and ARM64), macOS (Apple Silicon, Intel and Universal), Linux x64
 (AppImage, DEB, RPM) and Android (signed APKs, with and without Google Play
-services), plus `SHA256SUMS.txt`. Windows builds are unsigned, macOS builds are
-not notarized, and nothing is in an app store. iOS and a hosted web app are
-"Coming soon". When a release changes this, update together: the platform
+services), plus a standalone web bundle and `SHA256SUMS.txt`. Windows builds are unsigned;
+macOS builds are Developer ID signed, notarized and stapled. The iOS beta is
+uploaded to TestFlight and awaiting Beta App Review for invited external testers.
+Android has not been submitted for store approval. The hosted
+web app is "Available" and is served from
+`app.ultratasks.app` and updated separately. When a release changes this, update together: the platform
 section of the home page, the FAQ, the meta description, `operatingSystem` in
 the structured data, the download page cards, the download button labels in
 `script.js`, and any guide that names a version. `softwareVersion` follows the
@@ -348,8 +357,8 @@ without it (and without a `privacy.html` file) the server refuses to open
 registration. If this page's address ever changes, change that value in step.
 
 Still open: whether to state a legal basis and jurisdiction. Re-read the page
-whenever sign-ups open, a store listing appears, iOS or the hosted web app ships,
-or an app starts contacting a new service.
+whenever sign-ups open, a store listing appears, iOS ships, browser sync is
+added to the web app, or an app starts contacting a new service.
 
 ## Cloudflare Pages deployment
 

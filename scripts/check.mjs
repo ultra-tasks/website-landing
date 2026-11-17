@@ -222,16 +222,31 @@ assert.equal(
   "The home page's softwareVersion must match data/release.json. Run: npm run release:render",
 );
 assert.deepEqual(
-  [...new Set(home.html.match(/\b\d+\.\d+\.\d+\b/g) ?? [])],
+  [...new Set(home.html.match(/\b\d+\.\d+\.\d+(?:-[0-9A-Za-z]+(?:\.[0-9A-Za-z]+)*)?\b/g) ?? [])],
   [manifest.app.version],
   "The home page mentions a version other than the current release",
 );
 // Platforms that are not published say so, instead of offering a dead button.
-for (const platform of ["ios", "web"]) {
+assert.match(
+  downloadPage.html,
+  /id="ios"[\s\S]*?awaiting[\s\S]*?Beta App Review/,
+  'The ios card must state that TestFlight awaits Beta App Review',
+);
+// The hosted web app is live at the official origin. Its card links there, and
+// both pages say plainly that it keeps tasks in the browser and does not sync.
+const WEB_APP_URL = "https://app.ultratasks.app/";
+const webCard = downloadPage.html.match(/id="web"[\s\S]*?<\/article>/)?.[0] ?? "";
+assert.ok(webCard.includes(`href="${WEB_APP_URL}"`), "The web card must open the web app");
+assert.doesNotMatch(webCard, /Coming soon/, "The web card must not say Coming soon");
+for (const page of [home, downloadPage]) {
+  assert.ok(
+    page.html.includes(`href="${WEB_APP_URL}"`),
+    `${page.file} must link to the web app`,
+  );
   assert.match(
-    downloadPage.html,
-    new RegExp(`id="${platform}"[\\s\\S]*?Coming soon`),
-    `The ${platform} card must say "Coming soon"`,
+    page.html.replace(/\s+/g, " "),
+    /does not sync/,
+    `${page.file} must say the web version does not sync`,
   );
 }
 

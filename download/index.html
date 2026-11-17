@@ -111,6 +111,7 @@
             class="nav-github"
             >GitHub</a
           >
+          <a href="https://app.ultratasks.app/">Try in browser</a>
           <a href="https://app.ultratasks.app/account?view=login" data-account-link="login" hidden>Sign in</a>
           <a class="button button-small" href="/download/" aria-current="page">Download</a>
         </nav>
@@ -136,24 +137,28 @@
               <span class="pill">Beta</span>
               <span>
                 <!-- release:version -->
-                Version <strong>0.3.0</strong> · 8 November 2026
+                Version <strong>0.4.0-beta.1</strong> · 17 November 2026
                 <!-- /release:version -->
               </span>
             </p>
             <p class="dl-fine">
+              This is a testing release. Export a backup before upgrading.
               These are direct downloads from the project’s GitHub release.
-              Ultra Tasks is not in an app store yet.
+              Ultra Tasks is not in an app store yet. Not ready to install?
+              <a href="https://app.ultratasks.app/">Try it in your browser</a>
+              with no account.
             </p>
           </div>
           <aside class="dl-notes" aria-labelledby="dl-notes-title">
             <h2 id="dl-notes-title">What’s new</h2>
             <ul class="dl-highlights">
               <!-- release:highlights -->
-              <li>UltraSync: private, end-to-end encrypted account sync across your devices, with a server you can host yourself.</li>
-              <li>Sign in from the app or your browser, with two-factor authentication, passkeys and recovery keys.</li>
-              <li>Changes sync automatically while your account is unlocked.</li>
-              <li>A new integrations workspace with guided setup, project links and field policies.</li>
-              <li>Android APKs, signed with the project’s release key.</li>
+              <li>A calmer interface across desktop and mobile, with compact navigation and clearer planning.</li>
+              <li>Improved Android keyboard, system bar and back navigation behavior.</li>
+              <li>Task planning Undo preserves later task edits.</li>
+              <li>GitHub, GitLab, Linear and Trello connections with explicit field directions; real-account acceptance remains beta testing work.</li>
+              <li>Opt-in calendar feeds publish existing scheduled instances when enabled on a compatible server.</li>
+              <li>Developer ID signed and Apple-notarized Mac downloads.</li>
               <!-- /release:highlights -->
             </ul>
             <p class="dl-notes-link">
@@ -185,9 +190,9 @@
             </p>
             <div class="dl-downloads">
               <!-- release:files-windows -->
-              <a class="button" href="/download/windows"><span>Download installer</span><span class="dl-size">263 MB</span></a>
+              <a class="button" href="/download/windows"><span>Download installer</span><span class="dl-size">264 MB</span></a>
               <ul class="dl-files">
-                <li><a href="/download/windows-portable">Portable app <span class="dl-kind">.exe</span></a><span class="dl-size">263 MB</span></li>
+                <li><a href="/download/windows-portable">Portable app <span class="dl-kind">.exe</span></a><span class="dl-size">264 MB</span></li>
               </ul>
               <!-- /release:files-windows -->
             </div>
@@ -214,17 +219,17 @@
             </p>
             <div class="dl-downloads">
               <!-- release:files-macos -->
-              <a class="button" href="/download/macos"><span>Download for Mac</span><span class="dl-size">242 MB</span></a>
+              <a class="button" href="/download/macos"><span>Download for Mac</span><span class="dl-size">243 MB</span></a>
               <ul class="dl-files">
-                <li><a href="/download/macos-apple-silicon">Apple Silicon <span class="dl-kind">.dmg</span></a><span class="dl-size">138 MB</span></li>
-                <li><a href="/download/macos-intel">Intel <span class="dl-kind">.dmg</span></a><span class="dl-size">144 MB</span></li>
+                <li><a href="/download/macos-apple-silicon">Apple Silicon <span class="dl-kind">.dmg</span></a><span class="dl-size">139 MB</span></li>
+                <li><a href="/download/macos-intel">Intel <span class="dl-kind">.dmg</span></a><span class="dl-size">145 MB</span></li>
                 <li><a href="/download/macos-apple-silicon-zip">Apple Silicon <span class="dl-kind">.zip</span></a><span class="dl-size">134 MB</span></li>
                 <li><a href="/download/macos-intel-zip">Intel <span class="dl-kind">.zip</span></a><span class="dl-size">140 MB</span></li>
               </ul>
               <!-- /release:files-macos -->
             </div>
             <p class="dl-note">
-              Not notarized by Apple, so macOS may ask you to confirm.
+              Signed with Developer ID, notarized by Apple and stapled.
               <a href="#before-you-run">What to expect</a>
             </p>
           </article>
@@ -276,7 +281,7 @@
             </p>
             <div class="dl-downloads">
               <!-- release:files-android -->
-              <a class="button" href="/download/android"><span>Download APK</span><span class="dl-size">24 MB</span></a>
+              <a class="button" href="/download/android"><span>Download APK</span><span class="dl-size">25 MB</span></a>
               <ul class="dl-files">
                 <li><a href="/download/android-fdroid">Without Google Play services <span class="dl-kind">.apk</span></a><span class="dl-size">24 MB</span></li>
               </ul>
@@ -296,12 +301,12 @@
           >
             <div class="dl-card-top">
               <h3 id="ios-title">iPhone &amp; iPad</h3>
-              <span class="pill">Coming soon</span>
+              <span class="pill">Beta review</span>
             </div>
             <p class="dl-spec">iOS</p>
             <p>
-              There is no iOS build to download yet. Follow the releases to
-              hear when it arrives.
+              The iOS beta has been uploaded to TestFlight and is awaiting
+              Apple’s Beta App Review. Invited testers can install it after approval.
             </p>
             <div class="dl-downloads">
               <a
@@ -313,27 +318,36 @@
           </article>
 
           <article
-            class="dl-card is-soon"
+            class="dl-card"
             id="web"
             data-platform="web"
             aria-labelledby="web-title"
           >
             <div class="dl-card-top">
               <h3 id="web-title">Web</h3>
-              <span class="pill">Coming soon</span>
+              <span class="pill">Beta</span>
             </div>
-            <p class="dl-spec">In your browser</p>
+            <p class="dl-spec">In your browser, nothing to install</p>
             <p>
-              A hosted web app is planned for a later release. For now, use the
-              desktop or Android app.
+              Open Ultra Tasks in your browser, with no account and no sign-up.
+              Your tasks are saved in that browser on your device.
             </p>
             <div class="dl-downloads">
-              <a
-                class="button button-quiet"
-                href="https://github.com/ultra-tasks/ultra-tasks"
-                >View the source</a
+              <a class="button" href="https://app.ultratasks.app/"
+                ><span>Open the web app</span></a
               >
+              <!-- release:files-web -->
+              <a class="button" href="/download/web-bundle"><span>Download web bundle</span><span class="dl-size">9 MB</span></a>
+              <ul class="dl-files">
+                <li><a href="/download/web-bundle-checksum">Web bundle checksum <span class="dl-kind">.sha256</span></a><span class="dl-size">1 KB</span></li>
+              </ul>
+              <!-- /release:files-web -->
             </div>
+            <p class="dl-note">
+              The web version does not sync between devices yet, and clearing
+              the site’s data erases your tasks, so export a backup from
+              Settings now and then.
+            </p>
           </article>
         </div>
       </section>
@@ -403,11 +417,11 @@
             </p>
             <!-- release:server -->
             <p class="dl-label">Image · Linux AMD64 and ARM64</p>
-            <div class="dl-code"><pre><code id="server-image-command">docker pull ghcr.io/ultra-tasks/ultra-tasks-server:sha-6c903b5974cf1f9697361fea9b2e47e65e76f934</code></pre><button class="dl-copy" type="button" data-copy="#server-image-command" hidden>Copy</button></div>
-            <p class="dl-meta">Digest <code>sha256:5b9c8093c191abbbf4e92418d8d88ebe07295706fc0fbdf48723f51e82d0a761</code></p>
-            <p class="dl-meta">Server 0.1.0-beta.1 · 8 November 2026</p>
+            <div class="dl-code"><pre><code id="server-image-command">docker pull ghcr.io/ultra-tasks/ultra-tasks-server:sha-e7f087b1a26169b71e88ed629a774d8a3e02a8e1</code></pre><button class="dl-copy" type="button" data-copy="#server-image-command" hidden>Copy</button></div>
+            <p class="dl-meta">Digest <code>sha256:c48cd8241a5cbc974dd9d7187f6bdb0b93ddd7a9ef84fdf4bb2e7d8cc1584a94</code></p>
+            <p class="dl-meta">Server 0.1.0-beta.2 · 12 November 2026</p>
             <div class="dl-actions">
-              <a class="button" href="/download/server-compose"><span>Download Compose bundle</span><span class="dl-size">34 KB</span></a>
+              <a class="button" href="/download/server-compose"><span>Download Compose bundle</span><span class="dl-size">40 KB</span></a>
               <a class="button button-quiet" href="/download/server-compose-checksum">Checksum</a>
             </div>
             <!-- /release:server -->
@@ -423,9 +437,9 @@
         <div class="section-head">
           <h2 id="verify-title">Before you <em>run it.</em></h2>
           <p>
-            Windows downloads are unsigned and macOS downloads are not
-            notarized by Apple, so your system may ask for confirmation the
-            first time. Checking the SHA-256 checksum shows you have the file
+            Windows downloads are unsigned, so Windows may ask for confirmation.
+            macOS downloads are signed and notarized by Apple.
+            Checking the SHA-256 checksum shows you have the file
             we published.
           </p>
           <p>
@@ -445,9 +459,9 @@
           <li>
             <h3>macOS</h3>
             <p>
-              If macOS blocks the app, open <strong>System Settings</strong>,
-              go to <strong>Privacy &amp; Security</strong> and choose
-              <strong>Open Anyway</strong>.
+              macOS verifies the Developer ID signature and Apple notarization
+              when you open the app. If verification fails, download a fresh copy
+              and compare its checksum before continuing.
             </p>
           </li>
           <li>
@@ -485,18 +499,20 @@
                 </caption>
                 <!-- release:checksums -->
                 <tbody>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-Setup.exe</th><td><code>1816099f5a854c97bcbac785eff9e6609476820420600546cc62032c4199de4f</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-Portable.exe</th><td><code>e690bc9b726274de2e3d5a8415caf193fb19cdb744fb64d8b02fe82b2eed62d8</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-universal.dmg</th><td><code>29e7d6f5a48ecd04074950a1624a8a9fbb100ec0bae62e487c413a8288c42409</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-arm64.dmg</th><td><code>baf20a4cac902691396f787fcbe713410c5412fcaf0bb774d9bc19a4012a61f8</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-x64.dmg</th><td><code>2697cb5f4127f71ec0225f16b047d92ca9c26bf4a986ae4649e7b6eb84f85bb6</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-arm64.zip</th><td><code>e397237c7e5e1e84de3d0fbb8c0b4a53b6c5b56a665f5b4c789c79310465b967</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-x64.zip</th><td><code>41470eef4ab9c2b2f6a536654fcb2bd25389c540f1aa5b871e2f467aabd3cc60</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-x86_64.AppImage</th><td><code>5b6a117f6844fc26cf5ba7acafecf39506dadc344c3a3b13f764aef5f2fb0d4f</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-amd64.deb</th><td><code>9394833f135845653202f9343c97d124ef92d3f99e31161df7a2b5c81aecae3f</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-x86_64.rpm</th><td><code>bf757babec8f27e687e49c341722dcb433470552630cbc89b065077f04bc1f75</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-Android.apk</th><td><code>ec5a5a7a8b508792f37a18852b13b7e7de5756dee49d8b57392f878fe838e189</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.3.0-Android-FDroid.apk</th><td><code>6a4f8aebf71114c01bdb6051fd5f173458ceb41a7c743fc24f81f7dc94d0a18a</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-Setup.exe</th><td><code>eb5f98823068c841bdba64008014c9d57582e8a0b09651d56e61a54c55c74642</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-Portable.exe</th><td><code>9617b944807ad3f7aff3d042bd738d117a9c23c930eba6021348e3be95d7fbab</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-universal.dmg</th><td><code>122351ee40c81c601cb53270e3bad51bf885c0f92e8d4231a441e3358820b2cd</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-arm64.dmg</th><td><code>2ccc1aabc5cc9cbf0db7349cc8bb6c42f82dd8743567647c354dde0a5ece883c</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-x64.dmg</th><td><code>70d7e6ce5cbf2dc85b846715b1039ce4d7ac11bd3237a6e8dd069d229a74670b</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-arm64.zip</th><td><code>616dbb1070d4f613557db1759c58d7fde81b2c81d29ca1f6ebd6d60af5f8aa2f</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-x64.zip</th><td><code>5cf0853cf51cb55ba80339e1d3855f646febc5d59253f15d1fa8eec24343b5f1</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-x86_64.AppImage</th><td><code>ba1dec1436a56eaafb2b3c61086b8b3c31ef240367b57cc1039ce390b635b027</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-amd64.deb</th><td><code>af34126dca7249c9eee81cc34644b75e099c2c2533664a3facea7cea9a88ac13</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-x86_64.rpm</th><td><code>6e9f9cd8af782fb3595ae423a6b6ad8e5574087b37599df19985ba70cf34b985</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-Android.apk</th><td><code>1976a1c5510ab7e74104b31f6b26050ec1d11cea02d330ba33e93bb13d8d662d</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-Android-FDroid.apk</th><td><code>b40c3d3ee6bc2b0088346e68759524d31590c464e8157b3a80c62193f369079c</code></td></tr>
+                  <tr><th scope="row">ultra-tasks-web-0.4.0-beta.1.tar.gz</th><td><code>0a90072457071e418561273488bdc14a7e46265d9468a36a5a877c0b856f6f56</code></td></tr>
+                  <tr><th scope="row">ultra-tasks-web-0.4.0-beta.1.tar.gz.sha256</th><td><code>53dd356e3f54fa47733c208bb23adb19bda5817994538d0bafd1693841ae706c</code></td></tr>
                 </tbody>
                 <!-- /release:checksums -->
               </table>

@@ -410,6 +410,48 @@ html:not(.js) .shot-dark {
   text-align: center;
 }
 
+/* Try it in the browser */
+.try {
+  padding-top: clamp(24px, 4vw, 56px);
+  padding-bottom: clamp(24px, 4vw, 56px);
+}
+.try-panel {
+  padding: clamp(36px, 6vw, 72px) clamp(24px, 5vw, 64px);
+  border-radius: calc(var(--radius) + 8px);
+  background: var(--tint);
+  box-shadow: inset 0 0 0 1px #c3ddd8;
+  text-align: center;
+}
+.try-lead {
+  max-width: 34em;
+  margin: 20px auto 0;
+  font-size: 19px;
+  color: var(--muted);
+  text-wrap: balance;
+}
+.try-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+  margin-top: clamp(36px, 5vw, 56px);
+  text-align: left;
+}
+.try-points li {
+  padding-top: 20px;
+  border-top: 1px solid #b7d4cf;
+}
+.try-points p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 16px;
+}
+.try-note {
+  max-width: 44em;
+  margin: clamp(28px, 4vw, 40px) auto 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
 /* How it works */
 .how .section-head {
   margin-bottom: clamp(48px, 7vw, 88px);
@@ -1649,7 +1691,8 @@ sup {
     justify-self: center;
   }
   .detail-grid,
-  .privacy-grid {
+  .privacy-grid,
+  .try-points {
     grid-template-columns: minmax(0, 1fr);
   }
   .platform-list {

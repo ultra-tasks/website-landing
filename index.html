@@ -7,7 +7,7 @@
     <title>Ultra Tasks: free, open-source to-do list, planner &amp; time tracker</title>
     <meta
       name="description"
-      content="A calm, free and open-source to-do list, planner and time tracker for desktop and Android. Works offline, with end-to-end encrypted UltraSync in beta."
+      content="A calm, free and open-source to-do list, planner and time tracker. Try it in your browser with no account, or download it for desktop and Android."
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://ultratasks.app/" />
@@ -19,7 +19,7 @@
     />
     <meta
       property="og:description"
-      content="A calm, open-source to-do list, planner and time tracker. Offline-first, private by design, free."
+      content="A calm, open-source to-do list, planner and time tracker. Try it in your browser, no account needed. Private by design, free."
     />
     <meta
       property="og:image"
@@ -63,8 +63,8 @@
             "url": "https://ultratasks.app/",
             "description": "A free, open-source to-do list, day planner and time tracker with offline-first storage and sync you control.",
             "applicationCategory": "ProductivityApplication",
-            "operatingSystem": "Windows, macOS, Linux, Android",
-            "softwareVersion": "0.3.0",
+            "operatingSystem": "Windows, macOS, Linux, Android, Web",
+            "softwareVersion": "0.4.0-beta.1",
             "license": "https://spdx.org/licenses/AGPL-3.0-only.html",
             "downloadUrl": "https://ultratasks.app/download/",
             "isBasedOn": "https://github.com/super-productivity/super-productivity",
@@ -134,6 +134,7 @@
             class="nav-github"
             >GitHub</a
           >
+          <a href="https://app.ultratasks.app/">Try in browser</a>
           <a href="https://app.ultratasks.app/account?view=login" data-account-link="login" hidden>Sign in</a>
           <a class="button button-small" href="/download/">Download</a>
         </nav>
@@ -147,17 +148,15 @@
             A clearer day.<br /><em>A little more you.</em>
           </h1>
           <p class="hero-lede">
-            A calm, open-source to-do list, planner and time tracker. It works
-            offline, syncs privately, and keeps your plans yours.
+            A calm, open-source to-do list, planner and time tracker. Try it in
+            your browser in seconds, or download it. It keeps your plans yours.
           </p>
           <div class="hero-actions">
-            <a class="button" href="/download/"
-              ><span>Download for <span data-os-name>desktop</span></span></a
+            <a class="button" href="https://app.ultratasks.app/"
+              ><span>Try it in your browser</span></a
             >
-            <a
-              class="button button-quiet"
-              href="https://github.com/ultra-tasks/ultra-tasks"
-              >View on GitHub</a
+            <a class="button button-quiet" href="/download/"
+              ><span>Download for <span data-os-name>desktop</span></span></a
             >
           </div>
           <p class="hero-note" data-os-note>
@@ -195,6 +194,57 @@
                 />
               </figure>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section try" id="try" aria-labelledby="try-heading">
+        <div class="container">
+          <div class="try-panel">
+            <h2 id="try-heading">
+              Try it right now.<br /><em>No account. No install.</em>
+            </h2>
+            <p class="try-lead">
+              Open Ultra Tasks in your browser and add your first task in
+              seconds. There is nothing to sign up for and nothing to
+              download.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="https://app.ultratasks.app/"
+                ><span>Open the web app</span></a
+              >
+              <a class="button button-quiet" href="/download/"
+                ><span>Get the desktop or Android app</span></a
+              >
+            </div>
+            <ul class="try-points">
+              <li>
+                <h3>Straight in</h3>
+                <p>
+                  No sign-up, no email, no form. You land on your Today list.
+                </p>
+              </li>
+              <li>
+                <h3>Stays in your browser</h3>
+                <p>
+                  Your tasks are saved on your device, in this browser. The web
+                  app does not send them to us.
+                </p>
+              </li>
+              <li>
+                <h3>The same calm interface</h3>
+                <p>
+                  Plan your day, track your time and organize projects, as you
+                  would in the apps.
+                </p>
+              </li>
+            </ul>
+            <p class="try-note">
+              The web version keeps your tasks in this browser only and does
+              not sync between devices yet. Clearing the site’s data erases
+              them, so export a backup from Settings now and then. For private
+              sync, use the desktop or Android app with UltraSync (beta).
+            </p>
           </div>
         </div>
       </section>
@@ -588,11 +638,11 @@
         <div class="container">
           <div class="section-head center-head">
             <h2 id="platforms-heading">
-              On your desktop <em>and Android.</em>
+              On your desktop, Android <em>and the web.</em>
             </h2>
             <p>
-              Windows, macOS, Linux and Android downloads are available today.
-              iOS and the hosted web app are coming soon.
+              Windows, macOS, Linux and Android downloads are available today,
+              and the web app opens in your browser. The iOS TestFlight beta is awaiting Apple’s Beta App Review.
             </p>
           </div>
           <ul class="platform-list">
@@ -608,12 +658,15 @@
             <li class="is-available">
               <strong>Android</strong><span>Available</span>
             </li>
-            <li><strong>iOS</strong><span>Coming soon</span></li>
-            <li><strong>Web</strong><span>Coming soon</span></li>
+            <li class="is-available">
+              <strong>Web</strong><span>Available</span>
+            </li>
+            <li><strong>iOS</strong><span>TestFlight beta awaiting review</span></li>
           </ul>
           <p class="platform-note">
             Ultra Tasks is in beta. Android is a direct download for now, not
-            an app store listing.
+            an app store listing, and the web version does not sync yet.
+            <a href="https://app.ultratasks.app/">Open the web app</a> ·
             <a href="/download/">See every download</a>
           </p>
         </div>
@@ -664,7 +717,8 @@
             <details>
               <summary>Do I need to be a developer to use it?</summary>
               <p>
-                No. Download the app, add a task, and you are on your way.
+                No. Open the web app or download the app, add a task, and you
+                are on your way.
                 Lists, projects and the planner work for home, school, creative
                 projects or your day job. Developer integrations are optional.
               </p>
@@ -722,11 +776,25 @@
               </p>
             </details>
             <details>
+              <summary>Can I try it without installing or signing up?</summary>
+              <p>
+                Yes. Open the
+                <a href="https://app.ultratasks.app/">web app</a> in your
+                browser. There is no account and no sign-up. Your tasks are
+                saved in that browser on your device and are not sent to us.
+                The web version does not sync between devices yet, and clearing
+                the site’s data erases your tasks, so export a backup from
+                Settings now and then.
+              </p>
+            </details>
+            <details>
               <summary>Is there a mobile app?</summary>
               <p>
                 On Android, yes. Download the signed APK from the
                 <a href="/download/#android">download page</a>; it is not in an
-                app store yet. iOS and a hosted web app are coming soon.
+                app store yet. The iOS TestFlight beta is awaiting Apple’s Beta App Review. You can also open the
+                <a href="https://app.ultratasks.app/">web app</a> in your
+                phone’s browser.
               </p>
             </details>
             <details>
@@ -758,6 +826,9 @@
               <a class="button" href="/download/"
                 ><span>Download for <span data-os-name>desktop</span></span></a
               >
+              <a class="button button-quiet" href="https://app.ultratasks.app/"
+                >Try it in your browser</a
+              >
               <a
                 class="button button-quiet"
                 href="https://github.com/ultra-tasks/ultra-tasks"
@@ -765,7 +836,7 @@
               >
             </div>
             <p class="hero-note">
-              For Windows, macOS, Linux &amp; Android · Beta ·
+              For Windows, macOS, Linux, Android &amp; the web · Beta ·
               <a href="/download/release-notes">Release notes</a>
             </p>
           </div>
@@ -790,6 +861,7 @@
             <a href="#compare">Compare</a>
             <a href="#faq">FAQ</a>
             <a href="/download/">Download</a>
+            <a href="https://app.ultratasks.app/">Web app</a>
             <a href="/guides/">Guides</a>
             <a href="https://github.com/ultra-tasks/ultra-tasks">GitHub</a>
             <a href="https://github.com/ultra-tasks/ultra-tasks/issues"

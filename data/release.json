@@ -1,105 +1,116 @@
 {
   "app": {
-    "tag": "ultra-tasks-v0.3.0",
-    "publishedAt": "2026-11-08T18:57:48Z",
-    "url": "https://github.com/ultra-tasks/ultra-tasks/releases/tag/ultra-tasks-v0.3.0",
+    "tag": "ultra-tasks-v0.4.0-beta.1",
+    "publishedAt": "2026-11-17T03:51:35Z",
+    "url": "https://github.com/ultra-tasks/ultra-tasks/releases/tag/ultra-tasks-v0.4.0-beta.1",
     "assets": [
       {
         "name": "SHA256SUMS.txt",
-        "size": 1149,
-        "sha256": "deef286547c793d24a82b2e0fc97badc32f8c38426485140c5d6d4305f24a051"
+        "size": 1444,
+        "sha256": "70ad388ee3eb26b081cbe32f5daa9e8b6e3b99ed000025ca9ee87192d5d34fbb"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-amd64.deb",
-        "size": 116502308,
-        "sha256": "9394833f135845653202f9343c97d124ef92d3f99e31161df7a2b5c81aecae3f"
+        "name": "Ultra-Tasks-0.4.0-beta.1-amd64.deb",
+        "size": 116745420,
+        "sha256": "af34126dca7249c9eee81cc34644b75e099c2c2533664a3facea7cea9a88ac13"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-Android-FDroid.apk",
-        "size": 23708675,
-        "sha256": "6a4f8aebf71114c01bdb6051fd5f173458ceb41a7c743fc24f81f7dc94d0a18a"
+        "name": "Ultra-Tasks-0.4.0-beta.1-Android-FDroid.apk",
+        "size": 24050275,
+        "sha256": "b40c3d3ee6bc2b0088346e68759524d31590c464e8157b3a80c62193f369079c"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-Android.apk",
-        "size": 24263822,
-        "sha256": "ec5a5a7a8b508792f37a18852b13b7e7de5756dee49d8b57392f878fe838e189"
+        "name": "Ultra-Tasks-0.4.0-beta.1-Android.apk",
+        "size": 24604998,
+        "sha256": "1976a1c5510ab7e74104b31f6b26050ec1d11cea02d330ba33e93bb13d8d662d"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-arm64.dmg",
-        "size": 137975605,
-        "sha256": "baf20a4cac902691396f787fcbe713410c5412fcaf0bb774d9bc19a4012a61f8"
+        "name": "Ultra-Tasks-0.4.0-beta.1-arm64.dmg",
+        "size": 138890107,
+        "sha256": "2ccc1aabc5cc9cbf0db7349cc8bb6c42f82dd8743567647c354dde0a5ece883c"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-arm64.zip",
-        "size": 133862374,
-        "sha256": "e397237c7e5e1e84de3d0fbb8c0b4a53b6c5b56a665f5b4c789c79310465b967"
+        "name": "Ultra-Tasks-0.4.0-beta.1-arm64.zip",
+        "size": 134218941,
+        "sha256": "616dbb1070d4f613557db1759c58d7fde81b2c81d29ca1f6ebd6d60af5f8aa2f"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-Portable.exe",
-        "size": 263145638,
-        "sha256": "e690bc9b726274de2e3d5a8415caf193fb19cdb744fb64d8b02fe82b2eed62d8"
+        "name": "Ultra-Tasks-0.4.0-beta.1-Portable.exe",
+        "size": 263801300,
+        "sha256": "9617b944807ad3f7aff3d042bd738d117a9c23c930eba6021348e3be95d7fbab"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-Setup.exe",
-        "size": 263360413,
-        "sha256": "1816099f5a854c97bcbac785eff9e6609476820420600546cc62032c4199de4f"
+        "name": "Ultra-Tasks-0.4.0-beta.1-Setup.exe",
+        "size": 264016205,
+        "sha256": "eb5f98823068c841bdba64008014c9d57582e8a0b09651d56e61a54c55c74642"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-universal.dmg",
-        "size": 241913369,
-        "sha256": "29e7d6f5a48ecd04074950a1624a8a9fbb100ec0bae62e487c413a8288c42409"
+        "name": "Ultra-Tasks-0.4.0-beta.1-universal.dmg",
+        "size": 242897506,
+        "sha256": "122351ee40c81c601cb53270e3bad51bf885c0f92e8d4231a441e3358820b2cd"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-x64.dmg",
-        "size": 143700777,
-        "sha256": "2697cb5f4127f71ec0225f16b047d92ca9c26bf4a986ae4649e7b6eb84f85bb6"
+        "name": "Ultra-Tasks-0.4.0-beta.1-x64.dmg",
+        "size": 144628581,
+        "sha256": "70d7e6ce5cbf2dc85b846715b1039ce4d7ac11bd3237a6e8dd069d229a74670b"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-x64.zip",
-        "size": 139588272,
-        "sha256": "41470eef4ab9c2b2f6a536654fcb2bd25389c540f1aa5b871e2f467aabd3cc60"
+        "name": "Ultra-Tasks-0.4.0-beta.1-x64.zip",
+        "size": 139944353,
+        "sha256": "5cf0853cf51cb55ba80339e1d3855f646febc5d59253f15d1fa8eec24343b5f1"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-x86_64.AppImage",
-        "size": 143712260,
-        "sha256": "5b6a117f6844fc26cf5ba7acafecf39506dadc344c3a3b13f764aef5f2fb0d4f"
+        "name": "Ultra-Tasks-0.4.0-beta.1-x86_64.AppImage",
+        "size": 144023486,
+        "sha256": "ba1dec1436a56eaafb2b3c61086b8b3c31ef240367b57cc1039ce390b635b027"
       },
       {
-        "name": "Ultra-Tasks-0.3.0-x86_64.rpm",
-        "size": 102816693,
-        "sha256": "bf757babec8f27e687e49c341722dcb433470552630cbc89b065077f04bc1f75"
+        "name": "Ultra-Tasks-0.4.0-beta.1-x86_64.rpm",
+        "size": 103021396,
+        "sha256": "6e9f9cd8af782fb3595ae423a6b6ad8e5574087b37599df19985ba70cf34b985"
+      },
+      {
+        "name": "ultra-tasks-web-0.4.0-beta.1.tar.gz",
+        "size": 8738274,
+        "sha256": "0a90072457071e418561273488bdc14a7e46265d9468a36a5a877c0b856f6f56"
+      },
+      {
+        "name": "ultra-tasks-web-0.4.0-beta.1.tar.gz.sha256",
+        "size": 102,
+        "sha256": "53dd356e3f54fa47733c208bb23adb19bda5817994538d0bafd1693841ae706c"
       }
     ],
-    "version": "0.3.0",
-    "name": "Ultra Tasks 0.3.0",
-    "prerelease": false,
+    "version": "0.4.0-beta.1",
+    "name": "Ultra Tasks 0.4.0-beta.1",
+    "prerelease": true,
     "highlights": [
-      "UltraSync: private, end-to-end encrypted account sync across your devices, with a server you can host yourself.",
-      "Sign in from the app or your browser, with two-factor authentication, passkeys and recovery keys.",
-      "Changes sync automatically while your account is unlocked.",
-      "A new integrations workspace with guided setup, project links and field policies.",
-      "Android APKs, signed with the project’s release key."
+      "A calmer interface across desktop and mobile, with compact navigation and clearer planning.",
+      "Improved Android keyboard, system bar and back navigation behavior.",
+      "Task planning Undo preserves later task edits.",
+      "GitHub, GitLab, Linear and Trello connections with explicit field directions; real-account acceptance remains beta testing work.",
+      "Opt-in calendar feeds publish existing scheduled instances when enabled on a compatible server.",
+      "Developer ID signed and Apple-notarized Mac downloads."
     ]
   },
   "server": {
-    "tag": "server-v0.1.0-beta.1",
-    "publishedAt": "2026-11-08T06:52:13Z",
-    "url": "https://github.com/ultra-tasks/ultra-tasks-server/releases/tag/server-v0.1.0-beta.1",
+    "tag": "server-v0.1.0-beta.2",
+    "publishedAt": "2026-11-12T20:21:44Z",
+    "url": "https://github.com/ultra-tasks/ultra-tasks-server/releases/tag/server-v0.1.0-beta.2",
     "assets": [
       {
-        "name": "ultra-tasks-server-compose-6c903b5974cf1f9697361fea9b2e47e65e76f934.tar.gz",
-        "size": 34467,
-        "sha256": "f10a19f92cd2d93fde8f45c717c976515f58e2af4c438b783be5f63d2b22e9db"
+        "name": "ultra-tasks-server-compose-e7f087b1a26169b71e88ed629a774d8a3e02a8e1.tar.gz",
+        "size": 40419,
+        "sha256": "9daa62cf0f272d3324219a7c21a2db07818f188d6a387a94b9bd7a5e5d0970c3"
       },
       {
-        "name": "ultra-tasks-server-compose-6c903b5974cf1f9697361fea9b2e47e65e76f934.tar.gz.sha256",
+        "name": "ultra-tasks-server-compose-e7f087b1a26169b71e88ed629a774d8a3e02a8e1.tar.gz.sha256",
         "size": 141,
-        "sha256": "126a6aba4e15cefd84422b5833952ef4cfbbe08d8da1692241c8b879e214d9be"
+        "sha256": "b5a4eeda0de92b66b58621ec01053883e2ec2a47b95efb94ae40dfd78cfee051"
       }
     ],
-    "version": "0.1.0-beta.1",
+    "version": "0.1.0-beta.2",
     "prerelease": true,
-    "image": "ghcr.io/ultra-tasks/ultra-tasks-server:sha-6c903b5974cf1f9697361fea9b2e47e65e76f934",
-    "imageDigest": "sha256:5b9c8093c191abbbf4e92418d8d88ebe07295706fc0fbdf48723f51e82d0a761"
+    "image": "ghcr.io/ultra-tasks/ultra-tasks-server:sha-e7f087b1a26169b71e88ed629a774d8a3e02a8e1",
+    "imageDigest": "sha256:c48cd8241a5cbc974dd9d7187f6bdb0b93ddd7a9ef84fdf4bb2e7d8cc1584a94"
   }
 }
