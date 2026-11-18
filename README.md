@@ -118,7 +118,7 @@ file when it changes. The page does not call the whole project "MIT" anywhere.
 end-to-end encrypted account sync with an account dashboard at
 `app.ultratasks.app/account` and a self-hostable server (the
 `ultra-tasks-server` repository). The copy follows the release notes: it is a
-beta, new sign-ups on the official service are closed, collaboration comes
+beta, registration is open with email verification (17 November 2026), collaboration comes
 later, and an independent cryptographic review is pending. The hosted web app is
 live (15 November 2026) as a local-only build: no account, no sync, tasks kept in
 the browser. Browser sync is planned for a later release, so the copy must not
@@ -236,7 +236,7 @@ asset makes it stop until you list it in `scripts/release.mjs`, so no file
 appears on GitHub without a decision about the website.
 
 The static copy around the generated blocks (platform descriptions, install
-notes, the self-hosting text, "sign-ups are closed") is hand-written. Re-read it
+notes, the self-hosting text and registration status) is hand-written. Re-read it
 for each release: the Android build descriptions come from `android/app/build.gradle`
 (`play` uses Google Play services, `fdroid` does not), and the unsigned or
 not-notarized warnings come from the release notes.
@@ -250,8 +250,8 @@ card and the self-hosting section repeat it. The markup is
 address. Leave `PUBLIC_ACCOUNT_URL` unset to use the official dashboard, set it
 to an empty value to remove the links, or set it to another HTTPS origin for a
 self-hosted account server (see `.env.example` and
-`docs/account-integration.md`). There is deliberately no "Sign up" link while
-sign-ups on the official service are closed.
+`docs/account-integration.md`). The UltraSync card, FAQ and download page also
+offer `data-account-link="signup"` links now that official registration is open.
 
 ### Sign-in hand-off for the mobile apps (`/oauth-callback/`)
 
