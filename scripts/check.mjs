@@ -226,11 +226,11 @@ assert.deepEqual(
   [manifest.app.version],
   "The home page mentions a version other than the current release",
 );
-// Platforms that are not published say so, instead of offering a dead button.
+// The iOS beta uses TestFlight invitations until a public install link is available.
 assert.match(
   downloadPage.html,
-  /id="ios"[\s\S]*?awaiting[\s\S]*?Beta App Review/,
-  'The ios card must state that TestFlight awaits Beta App Review',
+  /id="ios"[\s\S]*?TestFlight[\s\S]*?invitation-only/,
+  "The iOS card must describe TestFlight invitation access",
 );
 // The hosted web app is live at the official origin. Its card links there, and
 // both pages say plainly that it keeps tasks in the browser and does not sync.

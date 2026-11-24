@@ -123,8 +123,8 @@ later, and an independent cryptographic review is pending. The hosted web app is
 live (15 November 2026) as a local-only build: no account, no sync, tasks kept in
 the browser. Browser sync is planned for a later release, so the copy must not
 promise it.
-Server 0.1.0-beta.3 and the hosted 0.4.0-beta.1 web bundle are live
-(17 November 2026). Optional public calendar feeds are enabled on the official
+Server 0.1.0-beta.4 and the hosted 0.4.0 web bundle are live.
+Optional public calendar feeds are enabled on the official
 server: consented event exports are readable by the server and anyone with the
 secret link, unlike encrypted task sync. The privacy policy explains the
 default busy titles, optional task titles, rotation, revocation and backup
@@ -142,8 +142,8 @@ Portable, x64 and ARM64), macOS (Apple Silicon, Intel and Universal), Linux x64
 (AppImage, DEB, RPM) and Android (signed APKs, with and without Google Play
 services), plus a standalone web bundle and `SHA256SUMS.txt`. Windows builds are unsigned;
 macOS builds are Developer ID signed, notarized and stapled. The iOS beta is
-uploaded to TestFlight and awaiting Beta App Review for invited external testers.
-Android has not been submitted for store approval. The hosted
+available through TestFlight invitations. Android 0.4.0 is available to Google
+Play internal testers while Google reviews the production release. The hosted
 web app is "Available" and is served from
 `app.ultratasks.app` and updated separately. When a release changes this, update together: the platform
 section of the home page, the FAQ, the meta description, `operatingSystem` in

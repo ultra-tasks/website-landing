@@ -134,31 +134,28 @@
               straight away.
             </p>
             <p class="dl-version">
-              <span class="pill">Beta</span>
               <span>
                 <!-- release:version -->
-                Version <strong>0.4.0-beta.1</strong> · 17 November 2026
+                Version <strong>0.4.0</strong> · 24 November 2026
                 <!-- /release:version -->
               </span>
             </p>
             <p class="dl-fine">
-              This is a testing release. Export a backup before upgrading.
-              These are direct downloads from the project’s GitHub release.
-              Ultra Tasks is not in an app store yet. Not ready to install?
-              <a href="https://app.ultratasks.app/">Try it in your browser</a>
-              with no account.
+              Export a backup before upgrading. These files come from the
+              project’s GitHub release. You can also
+              <a href="https://app.ultratasks.app/">use Ultra Tasks in your browser</a>
+              without an account.
             </p>
           </div>
           <aside class="dl-notes" aria-labelledby="dl-notes-title">
             <h2 id="dl-notes-title">What’s new</h2>
             <ul class="dl-highlights">
               <!-- release:highlights -->
-              <li>A calmer interface across desktop and mobile, with compact navigation and clearer planning.</li>
-              <li>Improved Android keyboard, system bar and back navigation behavior.</li>
-              <li>Task planning Undo preserves later task edits.</li>
-              <li>GitHub, GitLab, Linear and Trello connections with explicit field directions; real-account acceptance remains beta testing work.</li>
-              <li>Opt-in calendar feeds publish existing scheduled instances when enabled on a compatible server.</li>
-              <li>Developer ID signed and Apple-notarized Mac downloads.</li>
+              <li>Sign in by email in the app or continue in your browser.</li>
+              <li>Tasks added during an interrupted first sync are preserved when setup resumes.</li>
+              <li>Publish an opt-in calendar subscription from the account page when the server has feeds enabled.</li>
+              <li>Connect GitHub, GitLab, Linear, or Trello with guided sign-in in supported builds.</li>
+              <li>Copy and paste tasks, and undo common task actions.</li>
               <!-- /release:highlights -->
             </ul>
             <p class="dl-notes-link">
@@ -291,6 +288,10 @@
               Android will ask you to allow the install.
               <a href="#before-you-run">What to expect</a>
             </p>
+            <p class="dl-note">
+              The production release is in Google Play review. Enrolled testers can get updates through
+              <a href="https://play.google.com/apps/testing/app.ultratasks">Google Play internal testing</a>.
+            </p>
           </article>
 
           <article
@@ -301,12 +302,11 @@
           >
             <div class="dl-card-top">
               <h3 id="ios-title">iPhone &amp; iPad</h3>
-              <span class="pill">Beta review</span>
+              <span class="pill">TestFlight beta</span>
             </div>
             <p class="dl-spec">iOS</p>
             <p>
-              The iOS beta has been uploaded to TestFlight and is awaiting
-              Apple’s Beta App Review. Invited testers can install it after approval.
+              The iOS beta is available in TestFlight. Access is invitation-only.
             </p>
             <div class="dl-downloads">
               <a
@@ -325,7 +325,6 @@
           >
             <div class="dl-card-top">
               <h3 id="web-title">Web</h3>
-              <span class="pill">Beta</span>
             </div>
             <p class="dl-spec">In your browser, nothing to install</p>
             <p>
@@ -419,11 +418,11 @@
             </p>
             <!-- release:server -->
             <p class="dl-label">Image · Linux AMD64 and ARM64</p>
-            <div class="dl-code"><pre><code id="server-image-command">docker pull ghcr.io/ultra-tasks/ultra-tasks-server:sha-aabcb2b2ad702ca54e8d6ee36634802040a897f1</code></pre><button class="dl-copy" type="button" data-copy="#server-image-command" hidden>Copy</button></div>
-            <p class="dl-meta">Digest <code>sha256:ce3917e7cb1e4e59c1e9c68ccec15b42ab1781999b1fc984b4e46002b17ca11d</code></p>
-            <p class="dl-meta">Server 0.1.0-beta.3 · 17 November 2026</p>
+            <div class="dl-code"><pre><code id="server-image-command">docker pull ghcr.io/ultra-tasks/ultra-tasks-server:sha-72f48b7a7ed9e8166e90f1e20bd51630f96bb5bb</code></pre><button class="dl-copy" type="button" data-copy="#server-image-command" hidden>Copy</button></div>
+            <p class="dl-meta">Digest <code>sha256:6f20f889dcf760ca51363b1ae97b02d6633c27cb4c9890869a0fa9301de0eb6d</code></p>
+            <p class="dl-meta">Server 0.1.0-beta.4 · 20 November 2026</p>
             <div class="dl-actions">
-              <a class="button" href="/download/server-compose"><span>Download Compose bundle</span><span class="dl-size">45 KB</span></a>
+              <a class="button" href="/download/server-compose"><span>Download Compose bundle</span><span class="dl-size">73 KB</span></a>
               <a class="button button-quiet" href="/download/server-compose-checksum">Checksum</a>
             </div>
             <!-- /release:server -->
@@ -501,20 +500,20 @@
                 </caption>
                 <!-- release:checksums -->
                 <tbody>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-Setup.exe</th><td><code>eb5f98823068c841bdba64008014c9d57582e8a0b09651d56e61a54c55c74642</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-Portable.exe</th><td><code>9617b944807ad3f7aff3d042bd738d117a9c23c930eba6021348e3be95d7fbab</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-universal.dmg</th><td><code>122351ee40c81c601cb53270e3bad51bf885c0f92e8d4231a441e3358820b2cd</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-arm64.dmg</th><td><code>2ccc1aabc5cc9cbf0db7349cc8bb6c42f82dd8743567647c354dde0a5ece883c</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-x64.dmg</th><td><code>70d7e6ce5cbf2dc85b846715b1039ce4d7ac11bd3237a6e8dd069d229a74670b</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-arm64.zip</th><td><code>616dbb1070d4f613557db1759c58d7fde81b2c81d29ca1f6ebd6d60af5f8aa2f</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-x64.zip</th><td><code>5cf0853cf51cb55ba80339e1d3855f646febc5d59253f15d1fa8eec24343b5f1</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-x86_64.AppImage</th><td><code>ba1dec1436a56eaafb2b3c61086b8b3c31ef240367b57cc1039ce390b635b027</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-amd64.deb</th><td><code>af34126dca7249c9eee81cc34644b75e099c2c2533664a3facea7cea9a88ac13</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-x86_64.rpm</th><td><code>6e9f9cd8af782fb3595ae423a6b6ad8e5574087b37599df19985ba70cf34b985</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-Android.apk</th><td><code>1976a1c5510ab7e74104b31f6b26050ec1d11cea02d330ba33e93bb13d8d662d</code></td></tr>
-                  <tr><th scope="row">Ultra-Tasks-0.4.0-beta.1-Android-FDroid.apk</th><td><code>b40c3d3ee6bc2b0088346e68759524d31590c464e8157b3a80c62193f369079c</code></td></tr>
-                  <tr><th scope="row">ultra-tasks-web-0.4.0-beta.1.tar.gz</th><td><code>0a90072457071e418561273488bdc14a7e46265d9468a36a5a877c0b856f6f56</code></td></tr>
-                  <tr><th scope="row">ultra-tasks-web-0.4.0-beta.1.tar.gz.sha256</th><td><code>53dd356e3f54fa47733c208bb23adb19bda5817994538d0bafd1693841ae706c</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-Setup.exe</th><td><code>5dc54f0dea92b8cfbb2c038defdb8b8461bc512d7499951ada366cae2ee439a6</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-Portable.exe</th><td><code>2e9a3dc528a1119c39767935a78a44e87865bf5f96890dfb8ebd9bc05480885e</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-universal.dmg</th><td><code>b6a3324b091bfbd0fa1946d5c2ac43c25062278c377697c53b1c9da2ea556fdc</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-arm64.dmg</th><td><code>f03a8c4d63ea9dd723055ccc100a3e0b7135ea8fe347265edff7f07fc40f8757</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-x64.dmg</th><td><code>eb5d8e55a4c3bac30677d9c38b1c7918ba9a094929f57ef97ce4dbfdfd178dbf</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-arm64.zip</th><td><code>f7d20625d7826a5151e06923fa0976e16aac58a631ad90a28de489a7f0976afd</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-x64.zip</th><td><code>9ae8647220244caa576941fe9928563f152bcf6cb52a10f82de6147e68975989</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-x86_64.AppImage</th><td><code>bd761fe5d8a0fe17193f9907cff6ff2dc1f9accaf7d2e1c21217aba27385d837</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-amd64.deb</th><td><code>86f1aac4d0bd346c4ece7db8076603c9f01e112371f35e65ff86d5d43b55d3da</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-x86_64.rpm</th><td><code>34bba49fb232fb3e35008b31c70a312b35a5efa1c6e7d641d58ccd30e03ff034</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-Android.apk</th><td><code>0af73790fcbfcc9d591399ecebbaad56f1d2d094a6148d561a1f288ae5c135b5</code></td></tr>
+                  <tr><th scope="row">Ultra-Tasks-0.4.0-Android-FDroid.apk</th><td><code>9b8342ea4999539bdbfbd7e10b48a3417959af4f02b5de429a9cb31d05926268</code></td></tr>
+                  <tr><th scope="row">ultra-tasks-web-0.4.0.tar.gz</th><td><code>8f5d45062a13a8e81b3e87ab03965f060078d33c3b2dab7846e5ea0263c32ec6</code></td></tr>
+                  <tr><th scope="row">ultra-tasks-web-0.4.0.tar.gz.sha256</th><td><code>b39673253cc1f401000aadd6fa56aa8fd352c8f39e4e6ecb7bbdfe73b70f37b1</code></td></tr>
                 </tbody>
                 <!-- /release:checksums -->
               </table>
